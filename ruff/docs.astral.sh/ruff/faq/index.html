@@ -1,0 +1,1802 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  
+<!-- Mirrored from docs.astral.sh/ruff/faq/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 02:47:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An extremely fast Python linter and code formatter, written in Rust.">
+      
+      
+        <meta name="author" content="charliermarsh">
+      
+      
+        <link rel="canonical" href="index.html">
+      
+      
+        <link rel="prev" href="../integrations/index.html">
+      
+      
+        <link rel="next" href="../contributing/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.38+insiders-4.53.13">
+    
+    
+
+<title>FAQ | Ruff</title>
+
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fd1ad6e4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script src="../../../cdn.usefathom.com/script.js" data-site="DUAEBFLB" defer></script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+<link rel="apple-touch-icon" sizes="180x180" href="../../static/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../static/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="../../static/favicon-16x16.png"/>
+<link rel="manifest" href="https://docs.astral.sh/static/site.webmanifest"/>
+<link rel="mask-icon" href="https://docs.astral.sh/static/safari-pinned-tab.svg" color="#2e183d"/>
+<meta name="msapplication-TileColor" content="#d7ff64"/>
+<meta name="theme-color" content="#ffffff"/>
+<meta name="robots" content="index,follow"/>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Astral Docs",
+        "url": "https://docs.astral.sh"
+    }
+</script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faq" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Ruff" class="md-header__button md-logo" aria-label="Ruff" data-md-component="logo">
+      
+  <img src="../assets/bolt.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ruff
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="astral-light" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="astral-dark" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/astral-sh/ruff" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ruff
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Ruff" class="md-nav__button md-logo" aria-label="Ruff" data-md-component="logo">
+      
+  <img src="../assets/bolt.svg" alt="logo">
+
+    </a>
+    Ruff
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/astral-sh/ruff" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ruff
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing Ruff
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linter/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    The Ruff Linter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../formatter/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    The Ruff Formatter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Editor Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/setup/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/features/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/settings/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/migration/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Migrating from ruff-lsp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring Ruff
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../preview/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Preview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rules/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#is-the-ruff-linter-compatible-with-black" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is the Ruff linter compatible with Black?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-ruffs-formatter-compare-to-black" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does Ruff's formatter compare to Black?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-ruffs-linter-compare-to-flake8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does Ruff's linter compare to Flake8?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-ruffs-linter-compare-to-pylint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does Ruff's linter compare to Pylint?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-ruff-compare-to-mypy-or-pyright-or-pyre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does Ruff compare to Mypy, or Pyright, or Pyre?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-tools-does-ruff-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which tools does Ruff replace?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-i-have-to-use-ruffs-linter-and-formatter-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do I have to use Ruff's linter and formatter together?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-versions-of-python-does-ruff-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What versions of Python does Ruff support?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#do-i-need-to-install-rust-to-use-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Do I need to install Rust to use Ruff?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-i-write-my-own-linter-plugins-for-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I write my own linter plugins for Ruff?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-ruffs-import-sorting-compare-to-isort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does Ruff's import sorting compare to isort?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-ruff-determine-which-of-my-imports-are-first-party-third-party-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does Ruff determine which of my imports are first-party, third-party, etc.?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-ruff-support-jupyter-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does Ruff support Jupyter Notebooks?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-ruff-support-numpy-or-google-style-docstrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does Ruff support NumPy- or Google-style docstrings?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is "preview"?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-tell-what-settings-ruff-is-using-to-check-my-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I tell what settings Ruff is using to check my code?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-want-to-use-ruff-but-i-dont-want-to-use-pyprojecttoml-what-are-my-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I want to use Ruff, but I don't want to use pyproject.toml. What are my options?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-change-ruffs-default-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I change Ruff's default configuration?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ruff-tried-to-fix-something-but-it-broke-my-code-whats-going-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ruff tried to fix something — but it broke my code. What's going on?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-can-i-disableforce-ruffs-color-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How can I disable/force Ruff's color output?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code-actions-in-notebooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ruff behaves unexpectedly when using source.* code actions in Notebooks. What's going on?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="faq"><a class="toclink" href="#faq">FAQ</a></h1>
+<h2 id="is-the-ruff-linter-compatible-with-black"><a class="toclink" href="#is-the-ruff-linter-compatible-with-black">Is the Ruff linter compatible with Black?</a></h2>
+<p>Yes. The Ruff linter is compatible with <a href="https://github.com/psf/black">Black</a> out-of-the-box, as
+long as the <a href="../settings/index.html#line-length"><code>line-length</code></a> setting is consistent between the two.</p>
+<p>Ruff is designed to be used alongside a formatter (like Ruff's own formatter, or Black) and, as
+such, will defer implementing stylistic rules that are obviated by automated formatting.</p>
+<p>Note that Ruff's linter and Black treat line-length enforcement a little differently. Black, like
+Ruff's formatter, makes a best-effort attempt to adhere to the
+<a href="../settings/index.html#line-length"><code>line-length</code></a>, but avoids automatic line-wrapping in some cases (e.g.,
+within comments). Ruff, on the other hand, will flag <a href="../rules/line-too-long/index.html"><code>line-too-long</code></a>
+(<code>E501</code>) for any line that exceeds the <a href="../settings/index.html#line-length"><code>line-length</code></a> setting. As such, if
+<a href="../rules/line-too-long/index.html"><code>line-too-long</code></a> (<code>E501</code>) is enabled, Ruff can still trigger line-length
+violations even when Black or <code>ruff format</code> is enabled.</p>
+<h2 id="how-does-ruffs-formatter-compare-to-black"><a class="toclink" href="#how-does-ruffs-formatter-compare-to-black">How does Ruff's formatter compare to Black?</a></h2>
+<p>The Ruff formatter is designed to be a drop-in replacement for <a href="https://github.com/psf/black">Black</a>.</p>
+<p>Specifically, the formatter is intended to emit near-identical output when run over Black-formatted
+code. When run over extensive Black-formatted projects like Django and Zulip, &gt; 99.9% of lines
+are formatted identically. When migrating an existing project from Black to Ruff, you should expect
+to see a few differences on the margins, but the vast majority of your code should be unchanged.</p>
+<p>When run over <em>non</em>-Black-formatted code, the formatter makes some different decisions than Black,
+and so more deviations should be expected, especially around the treatment of end-of-line comments.</p>
+<p>See <a href="../formatter/index.html#style-guide"><em>Style Guide</em></a> for more.</p>
+<h2 id="how-does-ruffs-linter-compare-to-flake8"><a class="toclink" href="#how-does-ruffs-linter-compare-to-flake8">How does Ruff's linter compare to Flake8?</a></h2>
+<p>Ruff can be used as a drop-in replacement for Flake8 when used (1) without or with a small number of
+plugins, (2) alongside Black, and (3) on Python 3 code.</p>
+<p>Under those conditions, Ruff implements every rule in Flake8. In practice, that means Ruff
+implements all of the <code>F</code> rules (which originate from Pyflakes), along with a subset of the <code>E</code> and
+<code>W</code> rules (which originate from pycodestyle).</p>
+<p>Ruff also re-implements some of the most popular Flake8 plugins and related code quality tools
+natively, including:</p>
+<ul>
+<li><a href="https://pypi.org/project/autoflake/">autoflake</a></li>
+<li><a href="https://pypi.org/project/eradicate/">eradicate</a></li>
+<li><a href="https://pypi.org/project/flake8-2020/">flake8-2020</a></li>
+<li><a href="https://pypi.org/project/flake8-annotations/">flake8-annotations</a></li>
+<li><a href="https://pypi.org/project/flake8-async">flake8-async</a></li>
+<li><a href="https://pypi.org/project/flake8-bandit/">flake8-bandit</a> (<a href="https://github.com/astral-sh/ruff/issues/1646">#1646</a>)</li>
+<li><a href="https://pypi.org/project/flake8-blind-except/">flake8-blind-except</a></li>
+<li><a href="https://pypi.org/project/flake8-boolean-trap/">flake8-boolean-trap</a></li>
+<li><a href="https://pypi.org/project/flake8-bugbear/">flake8-bugbear</a></li>
+<li><a href="https://pypi.org/project/flake8-builtins/">flake8-builtins</a></li>
+<li><a href="https://pypi.org/project/flake8-commas/">flake8-commas</a></li>
+<li><a href="https://pypi.org/project/flake8-comprehensions/">flake8-comprehensions</a></li>
+<li><a href="https://pypi.org/project/flake8-copyright/">flake8-copyright</a></li>
+<li><a href="https://pypi.org/project/flake8-datetimez/">flake8-datetimez</a></li>
+<li><a href="https://pypi.org/project/flake8-debugger/">flake8-debugger</a></li>
+<li><a href="https://pypi.org/project/flake8-django/">flake8-django</a></li>
+<li><a href="https://pypi.org/project/flake8-docstrings/">flake8-docstrings</a></li>
+<li><a href="https://pypi.org/project/flake8-eradicate/">flake8-eradicate</a></li>
+<li><a href="https://pypi.org/project/flake8-errmsg/">flake8-errmsg</a></li>
+<li><a href="https://pypi.org/project/flake8-executable/">flake8-executable</a></li>
+<li><a href="https://pypi.org/project/flake8-gettext/">flake8-gettext</a></li>
+<li><a href="https://pypi.org/project/flake8-implicit-str-concat/">flake8-implicit-str-concat</a></li>
+<li><a href="https://pypi.org/project/flake8-import-conventions/">flake8-import-conventions</a></li>
+<li><a href="https://pypi.org/project/flake8-logging-format/">flake8-logging</a></li>
+<li><a href="https://pypi.org/project/flake8-logging-format/">flake8-logging-format</a></li>
+<li><a href="https://pypi.org/project/flake8-no-pep420">flake8-no-pep420</a></li>
+<li><a href="https://pypi.org/project/flake8-pie/">flake8-pie</a></li>
+<li><a href="https://pypi.org/project/flake8-print/">flake8-print</a></li>
+<li><a href="https://pypi.org/project/flake8-pyi/">flake8-pyi</a></li>
+<li><a href="https://pypi.org/project/flake8-pytest-style/">flake8-pytest-style</a></li>
+<li><a href="https://pypi.org/project/flake8-quotes/">flake8-quotes</a></li>
+<li><a href="https://pypi.org/project/flake8-raise/">flake8-raise</a></li>
+<li><a href="https://pypi.org/project/flake8-return/">flake8-return</a></li>
+<li><a href="https://pypi.org/project/flake8-self/">flake8-self</a></li>
+<li><a href="https://pypi.org/project/flake8-simplify/">flake8-simplify</a></li>
+<li><a href="https://pypi.org/project/flake8-slots/">flake8-slots</a></li>
+<li><a href="https://pypi.org/project/flake8-super/">flake8-super</a></li>
+<li><a href="https://pypi.org/project/flake8-tidy-imports/">flake8-tidy-imports</a></li>
+<li><a href="https://pypi.org/project/flake8-todos/">flake8-todos</a></li>
+<li><a href="https://pypi.org/project/flake8-type-checking/">flake8-type-checking</a></li>
+<li><a href="https://pypi.org/project/flake8-use-pathlib/">flake8-use-pathlib</a></li>
+<li><a href="https://pypi.org/project/flynt/">flynt</a> (<a href="https://github.com/astral-sh/ruff/issues/2102">#2102</a>)</li>
+<li><a href="https://pypi.org/project/isort/">isort</a></li>
+<li><a href="https://pypi.org/project/mccabe/">mccabe</a></li>
+<li><a href="https://pypi.org/project/pandas-vet/">pandas-vet</a></li>
+<li><a href="https://pypi.org/project/pep8-naming/">pep8-naming</a></li>
+<li><a href="https://pypi.org/project/perflint/">perflint</a> (<a href="https://github.com/astral-sh/ruff/issues/4789">#4789</a>)</li>
+<li><a href="https://pypi.org/project/pydocstyle/">pydocstyle</a></li>
+<li><a href="https://github.com/pre-commit/pygrep-hooks">pygrep-hooks</a></li>
+<li><a href="https://pypi.org/project/pyupgrade/">pyupgrade</a></li>
+<li><a href="https://pypi.org/project/tryceratops/">tryceratops</a></li>
+<li><a href="https://pypi.org/project/yesqa/">yesqa</a></li>
+</ul>
+<p>Note that, in some cases, Ruff uses different rule codes and prefixes than would be found in the
+originating Flake8 plugins. For example, Ruff uses <code>TID252</code> to represent the <code>I252</code> rule from
+flake8-tidy-imports. This helps minimize conflicts across plugins and allows any individual plugin
+to be toggled on or off with a single (e.g.) <code>--select TID</code>, as opposed to <code>--select I2</code> (to avoid
+conflicts with the isort rules, like <code>I001</code>).</p>
+<p>Beyond the rule set, Ruff's primary limitation vis-à-vis Flake8 is that it does not support custom
+lint rules. (Instead, popular Flake8 plugins are re-implemented in Rust as part of Ruff itself.)
+One minor difference is that Ruff doesn't include all the 'opinionated' rules from flake8-bugbear.</p>
+<h2 id="how-does-ruffs-linter-compare-to-pylint"><a class="toclink" href="#how-does-ruffs-linter-compare-to-pylint">How does Ruff's linter compare to Pylint?</a></h2>
+<p>At time of writing, Pylint implements ~409 total rules, while Ruff implements over 800, of which at
+least 209 overlap with the Pylint rule set (see: <a href="https://github.com/astral-sh/ruff/issues/970">#970</a>).</p>
+<p>Pylint implements many rules that Ruff does not, and vice versa. For example, Pylint does more type
+inference than Ruff (e.g., Pylint can validate the number of arguments in a function call). As such,
+Ruff is not a "pure" drop-in replacement for Pylint (and vice versa), as they enforce different sets
+of rules.</p>
+<p>Despite these differences, many users have successfully switched from Pylint to Ruff, especially
+those using Ruff alongside a <a href="index.html#how-does-ruff-compare-to-mypy-or-pyright-or-pyre">type checker</a>,
+which can cover some of the functionality that Pylint provides.</p>
+<p>Like Flake8, Pylint supports plugins (called "checkers"), while Ruff implements all rules natively
+and does not support custom or third-party rules. Unlike Pylint, Ruff is capable of automatically
+fixing its own lint violations.</p>
+<p>In some cases, Ruff's rules may yield slightly different results than their Pylint counterparts. For
+example, Ruff's <a href="../rules/too-many-branches/index.html"><code>too-many-branches</code></a> does not count <code>try</code> blocks as
+their own branches, unlike Pylint's <code>R0912</code>. Ruff's <code>PL</code> rule group also includes a small number of
+rules from Pylint <em>extensions</em> (like <a href="../rules/magic-value-comparison/index.html"><code>magic-value-comparison</code></a>),
+which need to be explicitly activated when using Pylint. By enabling Ruff's <code>PL</code> group, you may
+see violations for rules that weren't previously enabled through your Pylint configuration.</p>
+<p>Pylint parity is being tracked in <a href="https://github.com/astral-sh/ruff/issues/970">#970</a>.</p>
+<h2 id="how-does-ruff-compare-to-mypy-or-pyright-or-pyre"><a class="toclink" href="#how-does-ruff-compare-to-mypy-or-pyright-or-pyre">How does Ruff compare to Mypy, or Pyright, or Pyre?</a></h2>
+<p>Ruff is a linter, not a type checker. It can detect some of the same problems that a type checker
+can, but a type checker will catch certain errors that Ruff would miss. The opposite is also true:
+Ruff will catch certain errors that a type checker would typically ignore.</p>
+<p>For example, unlike a type checker, Ruff will notify you if an import is unused, by looking for
+references to that import in the source code; on the other hand, a type checker could flag that you
+passed an integer argument to a function that expects a string, which Ruff would miss. The
+tools are complementary.</p>
+<p>It's recommended that you use Ruff in conjunction with a type checker, like Mypy, Pyright, or Pyre,
+with Ruff providing faster feedback on lint violations and the type checker providing more detailed
+feedback on type errors.</p>
+<h2 id="which-tools-does-ruff-replace"><a class="toclink" href="#which-tools-does-ruff-replace">Which tools does Ruff replace?</a></h2>
+<p>Today, Ruff can be used to replace Flake8 when used with any of the following plugins:</p>
+<ul>
+<li><a href="https://pypi.org/project/flake8-2020/">flake8-2020</a></li>
+<li><a href="https://pypi.org/project/flake8-annotations/">flake8-annotations</a></li>
+<li><a href="https://pypi.org/project/flake8-async">flake8-async</a></li>
+<li><a href="https://pypi.org/project/flake8-bandit/">flake8-bandit</a> (<a href="https://github.com/astral-sh/ruff/issues/1646">#1646</a>)</li>
+<li><a href="https://pypi.org/project/flake8-blind-except/">flake8-blind-except</a></li>
+<li><a href="https://pypi.org/project/flake8-boolean-trap/">flake8-boolean-trap</a></li>
+<li><a href="https://pypi.org/project/flake8-bugbear/">flake8-bugbear</a></li>
+<li><a href="https://pypi.org/project/flake8-builtins/">flake8-builtins</a></li>
+<li><a href="https://pypi.org/project/flake8-commas/">flake8-commas</a></li>
+<li><a href="https://pypi.org/project/flake8-comprehensions/">flake8-comprehensions</a></li>
+<li><a href="https://pypi.org/project/flake8-copyright/">flake8-copyright</a></li>
+<li><a href="https://pypi.org/project/flake8-datetimez/">flake8-datetimez</a></li>
+<li><a href="https://pypi.org/project/flake8-debugger/">flake8-debugger</a></li>
+<li><a href="https://pypi.org/project/flake8-django/">flake8-django</a></li>
+<li><a href="https://pypi.org/project/flake8-docstrings/">flake8-docstrings</a></li>
+<li><a href="https://pypi.org/project/flake8-eradicate/">flake8-eradicate</a></li>
+<li><a href="https://pypi.org/project/flake8-errmsg/">flake8-errmsg</a></li>
+<li><a href="https://pypi.org/project/flake8-executable/">flake8-executable</a></li>
+<li><a href="https://pypi.org/project/flake8-gettext/">flake8-gettext</a></li>
+<li><a href="https://pypi.org/project/flake8-implicit-str-concat/">flake8-implicit-str-concat</a></li>
+<li><a href="https://pypi.org/project/flake8-import-conventions/">flake8-import-conventions</a></li>
+<li><a href="https://pypi.org/project/flake8-logging/">flake8-logging</a></li>
+<li><a href="https://pypi.org/project/flake8-logging-format/">flake8-logging-format</a></li>
+<li><a href="https://pypi.org/project/flake8-no-pep420">flake8-no-pep420</a></li>
+<li><a href="https://pypi.org/project/flake8-pie/">flake8-pie</a></li>
+<li><a href="https://pypi.org/project/flake8-print/">flake8-print</a></li>
+<li><a href="https://pypi.org/project/flake8-pytest-style/">flake8-pytest-style</a></li>
+<li><a href="https://pypi.org/project/flake8-quotes/">flake8-quotes</a></li>
+<li><a href="https://pypi.org/project/flake8-raise/">flake8-raise</a></li>
+<li><a href="https://pypi.org/project/flake8-return/">flake8-return</a></li>
+<li><a href="https://pypi.org/project/flake8-self/">flake8-self</a></li>
+<li><a href="https://pypi.org/project/flake8-simplify/">flake8-simplify</a></li>
+<li><a href="https://pypi.org/project/flake8-slots/">flake8-slots</a></li>
+<li><a href="https://pypi.org/project/flake8-super/">flake8-super</a></li>
+<li><a href="https://pypi.org/project/flake8-tidy-imports/">flake8-tidy-imports</a></li>
+<li><a href="https://pypi.org/project/flake8-todos/">flake8-todos</a></li>
+<li><a href="https://pypi.org/project/flake8-type-checking/">flake8-type-checking</a></li>
+<li><a href="https://pypi.org/project/flake8-use-pathlib/">flake8-use-pathlib</a></li>
+<li><a href="https://pypi.org/project/flynt/">flynt</a> (<a href="https://github.com/astral-sh/ruff/issues/2102">#2102</a>)</li>
+<li><a href="https://pypi.org/project/mccabe/">mccabe</a></li>
+<li><a href="https://pypi.org/project/pandas-vet/">pandas-vet</a></li>
+<li><a href="https://pypi.org/project/pep8-naming/">pep8-naming</a></li>
+<li><a href="https://pypi.org/project/perflint/">perflint</a> (<a href="https://github.com/astral-sh/ruff/issues/4789">#4789</a>)</li>
+<li><a href="https://pypi.org/project/pydocstyle/">pydocstyle</a></li>
+<li><a href="https://pypi.org/project/tryceratops/">tryceratops</a></li>
+</ul>
+<p>Ruff can also replace <a href="https://pypi.org/project/black/">Black</a>, <a href="https://pypi.org/project/isort/">isort</a>,
+<a href="https://pypi.org/project/yesqa/">yesqa</a>, <a href="https://pypi.org/project/eradicate/">eradicate</a>, and
+most of the rules implemented in <a href="https://pypi.org/project/pyupgrade/">pyupgrade</a>.</p>
+<p>If you're looking to use Ruff, but rely on an unsupported Flake8 plugin, feel free to file an
+<a href="https://github.com/astral-sh/ruff/issues/new">issue</a>.</p>
+<h2 id="do-i-have-to-use-ruffs-linter-and-formatter-together"><a class="toclink" href="#do-i-have-to-use-ruffs-linter-and-formatter-together">Do I have to use Ruff's linter and formatter together?</a></h2>
+<p>Nope! Ruff's linter and formatter can be used independently of one another -- you can use
+Ruff as a formatter, but not a linter, or vice versa.</p>
+<h2 id="what-versions-of-python-does-ruff-support"><a class="toclink" href="#what-versions-of-python-does-ruff-support">What versions of Python does Ruff support?</a></h2>
+<p>Ruff can lint code for any Python version from 3.7 onwards, including Python 3.13.</p>
+<p>Ruff does not support Python 2. Ruff <em>may</em> run on pre-Python 3.7 code, although such versions
+are not officially supported (e.g., Ruff does <em>not</em> respect type comments).</p>
+<p>Ruff is installable under any Python version from 3.7 onwards.</p>
+<h2 id="do-i-need-to-install-rust-to-use-ruff"><a class="toclink" href="#do-i-need-to-install-rust-to-use-ruff">Do I need to install Rust to use Ruff?</a></h2>
+<p>Nope! Ruff is available as <a href="https://pypi.org/project/ruff/"><code>ruff</code></a> on PyPI. We recommend installing Ruff with <a href="https://docs.astral.sh/uv/">uv</a>,
+though it's also installable with <code>pip</code>, <code>pipx</code>, and a <a href="../installation/index.html">variety of other package managers</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">$ </span><span class="c1"># Install Ruff globally.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">$ </span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>ruff@latest
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">$ </span><span class="c1"># Or add Ruff to your project.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">$ </span>uv<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>ruff
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="gp">$ </span><span class="c1"># With pip.</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>ruff
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="gp">$ </span><span class="c1"># With pipx.</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="gp">$ </span>pipx<span class="w"> </span>install<span class="w"> </span>ruff
+</code></pre></div>
+<p>Starting with version <code>0.5.0</code>, Ruff can also be installed with our standalone installers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="gp">$ </span><span class="c1"># On macOS and Linux.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="gp">$ </span>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/ruff/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="gp">$ </span><span class="c1"># On Windows.</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="gp">$ </span>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;irm https://astral.sh/ruff/install.ps1 | iex&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="gp">$ </span><span class="c1"># For a specific version.</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="gp">$ </span>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/ruff/0.5.0/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="gp">$ </span>powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;irm https://astral.sh/ruff/0.5.0/install.ps1 | iex&quot;</span>
+</code></pre></div>
+<p>Ruff ships with wheels for all major platforms, which enables <code>uv</code>, <code>pip</code>, and other tools to install Ruff without
+relying on a Rust toolchain at all.</p>
+<h2 id="can-i-write-my-own-linter-plugins-for-ruff"><a class="toclink" href="#can-i-write-my-own-linter-plugins-for-ruff">Can I write my own linter plugins for Ruff?</a></h2>
+<p>Ruff does not yet support third-party plugins, though a plugin system is within-scope for the
+project. See <a href="https://github.com/astral-sh/ruff/issues/283">#283</a> for more.</p>
+<h2 id="how-does-ruffs-import-sorting-compare-to-isort"><a class="toclink" href="#how-does-ruffs-import-sorting-compare-to-isort">How does Ruff's import sorting compare to <a href="https://pypi.org/project/isort/">isort</a>?</a></h2>
+<p>Ruff's import sorting is intended to be near-equivalent to isort's when using isort's
+<code>profile = "black"</code>.</p>
+<p>There are a few known differences in how Ruff and isort treat aliased imports, and in how Ruff and
+isort treat inline comments in some cases (see: <a href="https://github.com/astral-sh/ruff/issues/1381">#1381</a>,
+<a href="https://github.com/astral-sh/ruff/issues/2104">#2104</a>).</p>
+<p>For example, Ruff tends to group non-aliased imports from the same module:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">int8</span><span class="p">,</span> <span class="n">int16</span><span class="p">,</span> <span class="n">int32</span><span class="p">,</span> <span class="n">int64</span><span class="p">,</span> <span class="n">tan</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">,</span> <span class="n">uint64</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span> <span class="k">as</span> <span class="n">np_sin</span>
+</code></pre></div>
+<p>Whereas isort splits them into separate import statements at each aliased boundary:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">int8</span><span class="p">,</span> <span class="n">int16</span><span class="p">,</span> <span class="n">int32</span><span class="p">,</span> <span class="n">int64</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span> <span class="k">as</span> <span class="n">np_sin</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">tan</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">,</span> <span class="n">uint64</span>
+</code></pre></div>
+<p>Ruff also correctly classifies some modules as standard-library that aren't recognized
+by isort, like <code>_string</code> and <code>idlelib</code>.</p>
+<p>Like isort, Ruff's import sorting is compatible with Black.</p>
+<h2 id="how-does-ruff-determine-which-of-my-imports-are-first-party-third-party-etc"><a class="toclink" href="#how-does-ruff-determine-which-of-my-imports-are-first-party-third-party-etc">How does Ruff determine which of my imports are first-party, third-party, etc.?</a></h2>
+<p>Ruff accepts a <code>src</code> option that in your <code>pyproject.toml</code>, <code>ruff.toml</code>, or <code>.ruff.toml</code> file,
+specifies the directories that Ruff should consider when determining whether an import is
+first-party.</p>
+<p>For example, if you have a project with the following structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>my_project
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── pyproject.toml
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>└── src
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    └── foo
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        ├── __init__.py
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        └── bar
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>            ├── __init__.py
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>            └── baz.py
+</code></pre></div>
+<p>When Ruff sees an import like <code>import foo</code>, it will then iterate over the <code>src</code> directories,
+looking for a corresponding Python module (in reality, a directory named <code>foo</code> or a file named
+<code>foo.py</code>).</p>
+<p>If the <code>src</code> field is omitted, Ruff will default to using the "project root", along with a <code>"src"</code>
+subdirectory, as the first-party sources, to support both flat and nested project layouts.
+The "project root" is typically the directory containing your <code>pyproject.toml</code>, <code>ruff.toml</code>, or
+<code>.ruff.toml</code> file, unless a configuration file is provided on the command-line via the <code>--config</code>
+option, in which case, the current working directory is used as the project root.</p>
+<p>In this case, Ruff would check the <code>"src"</code> directory by default, but we can configure it as an
+explicit, exclusive first-party source like so:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">pyproject.toml</label><label for="__tabbed_1_2">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[tool.ruff]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Ruff supports a top-level `src` option in lieu of isort&#39;s `src_paths` setting.</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># All paths are relative to the project root, which is the directory containing the pyproject.toml.</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Ruff supports a top-level `src` option in lieu of isort&#39;s `src_paths` setting.</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># All paths are relative to the project root, which is the directory containing the pyproject.toml.</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If your <code>pyproject.toml</code>, <code>ruff.toml</code>, or <code>.ruff.toml</code> extends another configuration file, Ruff
+will still use the directory containing your <code>pyproject.toml</code>, <code>ruff.toml</code>, or <code>.ruff.toml</code> file as
+the project root (as opposed to the directory of the file pointed to via the <code>extends</code> option).</p>
+<p>For example, if you add a configuration file to the <code>tests</code> directory in the above example, you'll
+want to explicitly set the <code>src</code> option in the extended configuration file:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">pyproject.toml</label><label for="__tabbed_2_2">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">[tool.ruff]</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">extend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../pyproject.toml&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;../src&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">extend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../pyproject.toml&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;../src&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Beyond this <code>src</code>-based detection, Ruff will also attempt to determine the current Python package
+for a given Python file, and mark imports from within the same package as first-party. For example,
+above, <code>baz.py</code> would be identified as part of the Python package beginning at
+<code>./my_project/src/foo</code>, and so any imports in <code>baz.py</code> that begin with <code>foo</code> (like <code>import foo.bar</code>)
+would be considered first-party based on this same-package heuristic.</p>
+<p>For a detailed explanation of <code>src</code> resolution, see the <a href="../contributing/index.html">contributing guide</a>.</p>
+<p>Ruff can also be configured to treat certain modules as (e.g.) always first-party, regardless of
+their location on the filesystem. For example, you can set <a href="../settings/index.html#lint_isort_known-first-party"><code>known-first-party</code></a>
+like so:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">pyproject.toml</label><label for="__tabbed_3_2">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">[tool.ruff]</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tests&quot;</span><span class="p">]</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">[tool.ruff.lint]</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="c1"># Pyflakes</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="s2">&quot;F&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="c1"># Pycodestyle</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="s2">&quot;W&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="c1"># isort</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="s2">&quot;I001&quot;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">]</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">[tool.ruff.lint.isort]</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="n">known-first-party</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;my_module1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;my_module2&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tests&quot;</span><span class="p">]</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">[lint]</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="c1"># Pyflakes</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="s2">&quot;F&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="c1"># Pycodestyle</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="s2">&quot;W&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="c1"># isort</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="s2">&quot;I001&quot;</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">]</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">[lint.isort]</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="n">known-first-party</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;my_module1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;my_module2&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Ruff does not yet support all of isort's configuration options, though it does support many of
+them. You can find the supported settings in the <a href="../settings/index.html#lintisort">API reference</a>.</p>
+<h2 id="does-ruff-support-jupyter-notebooks"><a class="toclink" href="#does-ruff-support-jupyter-notebooks">Does Ruff support Jupyter Notebooks?</a></h2>
+<p>Ruff has built-in support for linting and formatting <a href="https://jupyter.org/">Jupyter Notebooks</a>. Refer to the
+<a href="../configuration/index.html#jupyter-notebook-discovery">Jupyter Notebook section</a> for more details.</p>
+<p>Ruff also integrates with <a href="https://github.com/nbQA-dev/nbQA">nbQA</a>, a tool for running linters and
+code formatters over Jupyter Notebooks.</p>
+<p>After installing <code>ruff</code> and <code>nbqa</code>, you can run Ruff over a notebook like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="gp">$ </span>nbqa<span class="w"> </span>ruff<span class="w"> </span>Untitled.ipynb
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="go">Untitled.ipynb:cell_1:2:5: F841 Local variable `x` is assigned to but never used</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="go">Untitled.ipynb:cell_2:1:1: E402 Module level import not at top of file</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="go">Untitled.ipynb:cell_2:1:8: F401 `os` imported but unused</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="go">Found 3 errors.</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="go">1 potentially fixable with the --fix option.</span>
+</code></pre></div>
+<h2 id="does-ruff-support-numpy-or-google-style-docstrings"><a class="toclink" href="#does-ruff-support-numpy-or-google-style-docstrings">Does Ruff support NumPy- or Google-style docstrings?</a></h2>
+<p>Yes! To enforce a docstring convention, add a <a href="../settings/index.html#lint_pydocstyle_convention"><code>convention</code></a>
+setting following to your configuration file:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">pyproject.toml</label><label for="__tabbed_4_2">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">[tool.ruff.lint.pydocstyle]</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span><span class="w">  </span><span class="c1"># Accepts: &quot;google&quot;, &quot;numpy&quot;, or &quot;pep257&quot;.</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">[lint.pydocstyle]</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span><span class="w">  </span><span class="c1"># Accepts: &quot;google&quot;, &quot;numpy&quot;, or &quot;pep257&quot;.</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>For example, if you're coming from flake8-docstrings, and your originating configuration uses
+<code>--docstring-convention=numpy</code>, you'd instead set <code>convention = "numpy"</code> in your <code>pyproject.toml</code>,
+as above.</p>
+<p>Alongside <a href="../settings/index.html#lint_pydocstyle_convention"><code>convention</code></a>, you'll want to
+explicitly enable the <code>D</code> rule code prefix, since the <code>D</code> rules are not enabled by default:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">pyproject.toml</label><label for="__tabbed_5_2">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">[tool.ruff.lint]</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">[tool.ruff.lint.pydocstyle]</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">[lint]</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="k">[lint.pydocstyle]</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Enabling a <a href="../settings/index.html#lint_pydocstyle_convention"><code>convention</code></a> will disable any rules that are not
+included in the specified convention. As such, the intended workflow is to enable a convention and
+then selectively enable or disable any additional rules on top of it:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">pyproject.toml</label><label for="__tabbed_6_2">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">[tool.ruff.lint]</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="s2">&quot;D&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="c1"># Augment the convention by requiring an imperative mood for all docstrings.</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="s2">&quot;D401&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">]</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="c1"># Relax the convention by _not_ requiring documentation for every function parameter.</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="s2">&quot;D417&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="p">]</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="k">[tool.ruff.lint.pydocstyle]</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">[lint]</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="s2">&quot;D&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="c1"># Augment the convention by requiring an imperative mood for all docstrings.</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="s2">&quot;D401&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">]</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="c1"># Relax the convention by _not_ requiring documentation for every function parameter.</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="s2">&quot;D417&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="p">]</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="k">[lint.pydocstyle]</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The PEP 257 convention includes all <code>D</code> errors apart from:
+<a href="../rules/incorrect-blank-line-before-class/index.html"><code>D203</code></a>,
+<a href="../rules/multi-line-summary-first-line/index.html"><code>D212</code></a>,
+<a href="../rules/multi-line-summary-second-line/index.html"><code>D213</code></a>,
+<a href="../rules/overindented-section/index.html"><code>D214</code></a>,
+<a href="../rules/overindented-section-underline/index.html"><code>D215</code></a>,
+<a href="../rules/docstring-starts-with-this/index.html"><code>D404</code></a>,
+<a href="../rules/non-capitalized-section-name/index.html"><code>D405</code></a>,
+<a href="../rules/missing-new-line-after-section-name/index.html"><code>D406</code></a>,
+<a href="../rules/missing-dashed-underline-after-section/index.html"><code>D407</code></a>,
+<a href="../rules/missing-section-underline-after-name/index.html"><code>D408</code></a>,
+<a href="../rules/mismatched-section-underline-length/index.html"><code>D409</code></a>,
+<a href="../rules/no-blank-line-after-section/index.html"><code>D410</code></a>,
+<a href="../rules/no-blank-line-before-section/index.html"><code>D411</code></a>,
+<a href="../rules/no-blank-line-after-section/index.html"><code>D413</code></a>,
+<a href="../rules/missing-terminal-punctuation/index.html"><code>D415</code></a>,
+<a href="../rules/missing-section-name-colon/index.html"><code>D416</code></a>, and
+<a href="../rules/undocumented-param/index.html"><code>D417</code></a>.</p>
+<p>The NumPy convention includes all <code>D</code> errors apart from:
+<a href="../rules/undocumented-public-init/index.html"><code>D107</code></a>,
+<a href="../rules/incorrect-blank-line-before-class/index.html"><code>D203</code></a>,
+<a href="../rules/multi-line-summary-first-line/index.html"><code>D212</code></a>,
+<a href="../rules/multi-line-summary-second-line/index.html"><code>D213</code></a>,
+<a href="../rules/signature-in-docstring/index.html"><code>D402</code></a>,
+<a href="../rules/no-blank-line-after-section/index.html"><code>D413</code></a>,
+<a href="../rules/missing-terminal-punctuation/index.html"><code>D415</code></a>,
+<a href="../rules/missing-section-name-colon/index.html"><code>D416</code></a>, and
+<a href="../rules/undocumented-param/index.html"><code>D417</code></a>.</p>
+<p>The Google convention includes all <code>D</code> errors apart from:
+<a href="../rules/incorrect-blank-line-before-class/index.html"><code>D203</code></a>,
+<a href="../rules/incorrect-blank-line-after-class/index.html"><code>D204</code></a>,
+<a href="../rules/multi-line-summary-second-line/index.html"><code>D213</code></a>,
+<a href="../rules/overindented-section-underline/index.html"><code>D215</code></a>,
+<a href="../rules/missing-trailing-period/index.html"><code>D400</code></a>,
+<a href="../rules/non-imperative-mood/index.html"><code>D401</code></a>,
+<a href="../rules/docstring-starts-with-this/index.html"><code>D404</code></a>,
+<a href="../rules/missing-new-line-after-section-name/index.html"><code>D406</code></a>,
+<a href="../rules/missing-dashed-underline-after-section/index.html"><code>D407</code></a>,
+<a href="../rules/missing-section-underline-after-name/index.html"><code>D408</code></a>,
+<a href="../rules/mismatched-section-underline-length/index.html"><code>D409</code></a>, and
+<a href="../rules/no-blank-line-after-section/index.html"><code>D413</code></a>.</p>
+<p>By default, no <a href="../settings/index.html#lint_pydocstyle_convention"><code>convention</code></a> is set, and so the enabled rules
+are determined by the <a href="../settings/index.html#lint_select"><code>select</code></a> setting alone.</p>
+<h2 id="what-is-preview"><a class="toclink" href="#what-is-preview">What is "preview"?</a></h2>
+<p>Preview enables a collection of newer rules and fixes that are considered experimental or unstable.
+See the <a href="../preview/index.html">preview documentation</a> for more details; or, to see which rules are currently
+in preview, visit the <a href="../rules/index.html">rules reference</a>.</p>
+<h2 id="how-can-i-tell-what-settings-ruff-is-using-to-check-my-code"><a class="toclink" href="#how-can-i-tell-what-settings-ruff-is-using-to-check-my-code">How can I tell what settings Ruff is using to check my code?</a></h2>
+<p>Run <code>ruff check /path/to/code.py --show-settings</code> to view the resolved settings for a given file.</p>
+<h2 id="i-want-to-use-ruff-but-i-dont-want-to-use-pyprojecttoml-what-are-my-options"><a class="toclink" href="#i-want-to-use-ruff-but-i-dont-want-to-use-pyprojecttoml-what-are-my-options">I want to use Ruff, but I don't want to use <code>pyproject.toml</code>. What are my options?</a></h2>
+<p>In lieu of a <code>pyproject.toml</code> file, you can use a <code>ruff.toml</code> file for configuration. The two
+files are functionally equivalent and have an identical schema, with the exception that a <code>ruff.toml</code>
+file can omit the <code>[tool.ruff]</code> section header. For example:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">pyproject.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">[tool.ruff]</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">[tool.ruff.lint.pydocstyle]</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">ruff.toml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">[lint.pydocstyle]</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">convention</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;google&quot;</span>
+</code></pre></div>
+<p>Ruff doesn't currently support INI files, like <code>setup.cfg</code> or <code>tox.ini</code>.</p>
+<h2 id="how-can-i-change-ruffs-default-configuration"><a class="toclink" href="#how-can-i-change-ruffs-default-configuration">How can I change Ruff's default configuration?</a></h2>
+<p>When no configuration file is found, Ruff will look for a user-specific <code>ruff.toml</code> file as a
+last resort. This behavior is similar to Flake8's <code>~/.config/flake8</code>.</p>
+<p>On macOS and Linux, Ruff expects that file to be located at <code>~/.config/ruff/ruff.toml</code>,
+and respects the <code>XDG_CONFIG_HOME</code> specification.</p>
+<p>On Windows, Ruff expects that file to be located at <code>~\AppData\Roaming\ruff\ruff.toml</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Prior to <code>v0.5.0</code>, Ruff would read user-specific configuration from
+<code>~/Library/Application Support/ruff/ruff.toml</code> on macOS. While Ruff will still respect
+such configuration files, the use of <code>~/Library/Application Support</code> is considered deprecated.</p>
+</div>
+<p>For more, see the <a href="https://crates.io/crates/etcetera"><code>etcetera</code></a> crate.</p>
+<h2 id="ruff-tried-to-fix-something-but-it-broke-my-code-whats-going-on"><a class="toclink" href="#ruff-tried-to-fix-something-but-it-broke-my-code-whats-going-on">Ruff tried to fix something — but it broke my code. What's going on?</a></h2>
+<p>Ruff labels fixes as "safe" and "unsafe". By default, Ruff will fix all violations for which safe
+fixes are available, while unsafe fixes can be enabled via the <a href="../settings/index.html#unsafe-fixes"><code>unsafe-fixes</code></a>
+setting, or passing the <a href="../settings/index.html#unsafe-fixes"><code>--unsafe-fixes</code></a> flag to <code>ruff check</code>. For
+more, see <a href="../linter/index.html#fixes">the fix documentation</a>.</p>
+<p>Even still, given the dynamic nature of Python, it's difficult to have <em>complete</em> certainty when
+making changes to code, even for seemingly trivial fixes. If a "safe" fix breaks your code, please
+<a href="https://github.com/astral-sh/ruff/issues/new">file an Issue</a>.</p>
+<h2 id="how-can-i-disableforce-ruffs-color-output"><a class="toclink" href="#how-can-i-disableforce-ruffs-color-output">How can I disable/force Ruff's color output?</a></h2>
+<p>Ruff's color output is powered by the <a href="https://crates.io/crates/colored"><code>colored</code></a> crate, which
+attempts to automatically detect whether the output stream supports color. However, you can force
+colors off by setting the <code>NO_COLOR</code> environment variable to any value (e.g., <code>NO_COLOR=1</code>), or
+force colors on by setting <code>FORCE_COLOR</code> to any non-empty value (e.g., <code>FORCE_COLOR=1</code>).</p>
+<p><a href="https://crates.io/crates/colored"><code>colored</code></a> also supports the <code>CLICOLOR</code> and <code>CLICOLOR_FORCE</code>
+environment variables (see the <a href="https://bixense.com/clicolors/">spec</a>).</p>
+<h2 id="source-code-actions-in-notebooks"><a class="toclink" href="#source-code-actions-in-notebooks">Ruff behaves unexpectedly when using <code>source.*</code> code actions in Notebooks. What's going on?</a></h2>
+<p>Ruff does not support <code>source.organizeImports</code> and <code>source.fixAll</code> code actions in Jupyter Notebooks
+(<code>notebook.codeActionsOnSave</code> in VS Code). It's recommended to use the <code>notebook</code> prefixed code
+actions for the same such as <code>notebook.source.organizeImports</code> and <code>notebook.source.fixAll</code>
+respectively.</p>
+<p>Ruff requires to have a full view of the notebook to provide accurate diagnostics and fixes. For
+example, if you have a cell that imports a module and another cell that uses that module, Ruff
+needs to see both cells to mark the import as used. If Ruff were to only see one cell at a time,
+it would incorrectly mark the import as unused.</p>
+<p>When using the <code>source.*</code> code actions for a Notebook, Ruff will be asked to fix any issues for each
+cell in parallel, which can lead to unexpected behavior. For example, if a user has configured to
+run <code>source.organizeImports</code> code action on save for a Notebook, Ruff will attempt to fix the
+imports for the entire notebook corresponding to each cell. This leads to the client making the same
+changes to the notebook multiple times, which can lead to unexpected behavior
+(<a href="https://github.com/astral-sh/ruff-vscode/issues/680">astral-sh/ruff-vscode#680</a>,
+<a href="https://github.com/astral-sh/ruff-vscode/issues/640">astral-sh/ruff-vscode#640</a>,
+<a href="https://github.com/astral-sh/ruff-vscode/issues/391">astral-sh/ruff-vscode#391</a>).</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs Insiders
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/astral-sh/ruff" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.com/invite/astral-sh" target="_blank" rel="noopener" title="discord.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485 485 0 0 0 404.081 32.03a1.82 1.82 0 0 0-1.923.91 338 338 0 0 0-14.9 30.6 447.9 447.9 0 0 0-134.426 0 310 310 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.7 483.7 0 0 0-119.688 37.107 1.7 1.7 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.02 2.02 0 0 0 .765 1.375 487.7 487.7 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348 348 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321 321 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251 251 0 0 0 9.109-7.137 1.82 1.82 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.81 1.81 0 0 1 1.924.233 235 235 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.4 301.4 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391 391 0 0 0 30.014 48.815 1.86 1.86 0 0 0 2.063.7A486 486 0 0 0 610.7 405.729a1.88 1.88 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541M222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241m195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/ruff/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/astral_sh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "content.code.annotate", "toc.integrate", "toc.follow", "navigation.path", "navigation.top", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.c7c1ca2c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c4a99efa.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+    
+  </body>
+
+<!-- Mirrored from docs.astral.sh/ruff/faq/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 02:47:36 GMT -->
+</html>
