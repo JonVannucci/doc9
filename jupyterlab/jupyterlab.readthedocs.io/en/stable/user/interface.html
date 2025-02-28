@@ -1,0 +1,818 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/interface.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:16:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The JupyterLab Interface &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user/interface';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JupyterLab URLs" href="urls.html" />
+    <link rel="prev" title="Announcements" href="announcements.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/user/interface.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="announcements.html">Announcements</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The JupyterLab Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">JupyterLab URLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_editor.html">Text Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_console.html">Code Consoles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="completer.html">Completer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal.html">Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Managing Kernels and Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="documents_kernels.html">Documents and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats.html">File and Output Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugger.html">Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc.html">Table Of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspaces.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterhub.html">JupyterLab on JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">Exporting Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Localization and language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rtc.html">Real Time Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lsp.html">Language Server Protocol support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface_customization.html">Interface Customization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="directories.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binder.html">JupyterLab on Binder</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">The JupyterLab Interface</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-jupyterlab-interface">
+<span id="interface"></span><h1>The JupyterLab Interface<a class="headerlink" href="#the-jupyterlab-interface" title="Link to this heading">#</a></h1>
+<p>JupyterLab provides flexible building blocks for interactive,
+exploratory computing. While JupyterLab has many features found in
+traditional integrated development environments (IDEs), it remains
+focused on interactive, exploratory computing.</p>
+<p>The JupyterLab interface consists of a <a class="reference internal" href="#main-area"><span class="std std-ref">main work area</span></a>
+containing tabs of documents and activities, a collapsible <a class="reference internal" href="#left-sidebar"><span class="std std-ref">left sidebar</span></a>, and a <a class="reference internal" href="#menu-bar"><span class="std std-ref">menu bar</span></a>. The left sidebar contains a
+<a class="reference internal" href="files.html#working-with-files"><span class="std std-ref">file browser</span></a>, the <a class="reference internal" href="running.html#running"><span class="std std-ref">list of running kernels and
+terminals</span></a>, the <a class="reference internal" href="commands.html#commands"><span class="std std-ref">command palette</span></a>, the <a class="reference internal" href="notebook.html#notebook"><span class="std std-ref">notebook
+cell tools inspector</span></a>, and the <a class="reference internal" href="#tabs"><span class="std std-ref">tabs list</span></a>.</p>
+<img alt="A screenshot of the default JupyterLab interface. The main work area is in the middle. There is also a left sidebar and a top menu bar." class="jp-screenshot align-center" src="../_images/interface-jupyterlab.png" />
+<p>JupyterLab sessions always reside in a <a class="reference internal" href="workspaces.html#workspaces"><span class="std std-ref">workspace</span></a>.
+Workspaces contain the state of JupyterLab: the files that are currently open,
+the layout of the application areas and tabs, etc.
+Workspaces can be saved on the server with
+<a class="reference internal" href="urls.html#url-workspaces"><span class="std std-ref">named workspace URLs</span></a> or
+<a class="reference internal" href="workspaces.html#workspaces-gui"><span class="std std-ref">using workspace commands</span></a> available in the menu and sidebar.
+To learn more about URLs in Jupyterlab, visit <a class="reference internal" href="urls.html#urls"><span class="std std-ref">JupyterLab URLs</span></a>.</p>
+<section id="menu-bar">
+<span id="id1"></span><h2>Menu Bar<a class="headerlink" href="#menu-bar" title="Link to this heading">#</a></h2>
+<p>The menu bar at the top of JupyterLab has top-level menus that expose
+actions available in JupyterLab with their keyboard shortcuts. The
+default menus are:</p>
+<ul class="simple">
+<li><p><strong>File</strong>: actions related to files and folders</p></li>
+<li><p><strong>Edit</strong>: actions related to editing documents and other activities</p></li>
+<li><p><strong>View</strong>: actions that alter the appearance of JupyterLab</p></li>
+<li><p><strong>Run</strong>: actions for running code in different activities such as
+notebooks and code consoles</p></li>
+<li><p><strong>Kernel</strong>: actions for managing kernels, which are separate processes
+for running code</p></li>
+<li><p><strong>Tabs</strong>: a list of the open documents and activities in the dock panel</p></li>
+<li><p><strong>Settings</strong>: common settings and an advanced settings editor</p></li>
+<li><p><strong>Help</strong>: a list of JupyterLab and kernel help links</p></li>
+</ul>
+<p><a class="reference internal" href="extensions.html#user-extensions"><span class="std std-ref">JupyterLab extensions</span></a> can also create new top-level menus in the menu
+bar.</p>
+</section>
+<section id="left-and-right-sidebar">
+<span id="sidebars"></span><h2>Left and Right Sidebar<a class="headerlink" href="#left-and-right-sidebar" title="Link to this heading">#</a></h2>
+<p id="left-sidebar">The left sidebar contains a number of commonly-used tabs including:</p>
+<ul class="simple">
+<li><p>a file browser,</p></li>
+<li><p>a list of tabs in the main work and of running kernels and terminals,</p></li>
+<li><p>the command palette (in 3.0+ moved to a modal window accessible with a <a class="reference internal" href="commands.html#access-palette"><span class="std std-ref">keyboard shortcut</span></a>),</p></li>
+<li><p>the <a class="reference internal" href="toc.html#toc"><span class="std std-ref">table of contents</span></a>,</p></li>
+<li><p>the <a class="reference internal" href="extensions.html#extension-manager"><span class="std std-ref">extension manager</span></a>.</p></li>
+</ul>
+<img alt="The left JupyterLab sidebar showing a variety of files in the file browser." class="jp-screenshot align-center" src="../_images/interface-left.png" />
+<p id="right-sidebar">The right sidebar contains:</p>
+<ul class="simple">
+<li><p>the property inspector (active in notebooks),</p></li>
+<li><p>the <a class="reference internal" href="debugger.html#debugger"><span class="std std-ref">debugger</span></a>.</p></li>
+</ul>
+<img alt="The right JupyterLab sidebar showing the property inspector." class="jp-screenshot align-center" src="../_images/interface-right.png" />
+<p>The column that allows to switch between tabs is called Activity Bar in JupyterLab.</p>
+<p id="left-sidebar-toggle">The sidebars can be collapsed or expanded by selecting “Show Left Sidebar”
+or “Show Right Sidebar” in the View menu or by clicking on the active sidebar tab:</p>
+<p>The location of tabs can be switched between the left and the right sidebar from the <a class="reference internal" href="#context-menus-rightclick"><span class="std std-ref">context menu</span></a>.</p>
+<div class="jp-youtube-video">
+   <iframe src="https://www.youtube-nocookie.com/embed/PlJGecfetek?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div><p>JupyterLab extensions can add additional panels to the sidebars.</p>
+</section>
+<section id="main-work-area">
+<span id="main-area"></span><h2>Main Work Area<a class="headerlink" href="#main-work-area" title="Link to this heading">#</a></h2>
+<p id="main-area-vid">The main work area in JupyterLab enables you to arrange documents (notebooks,
+text files, etc.) and other activities (terminals, code consoles, etc.) into
+panels of tabs that can be resized or subdivided. Drag a tab to the center of a
+tab panel to move the tab to the panel. Subdivide a tab panel by dragging a tab to
+the left, right, top, or bottom of the panel:</p>
+<div class="jp-youtube-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/Ka8qS7CO1XQ?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div><p>The work area has a single current activity. The tab for the current activity is
+marked with a colored top border (blue by default).</p>
+</section>
+<section id="tabs-and-simple-interface-mode">
+<span id="tabs"></span><h2>Tabs and Simple Interface Mode<a class="headerlink" href="#tabs-and-simple-interface-mode" title="Link to this heading">#</a></h2>
+<p>The Tabs panel in the left sidebar lists the open documents or
+activities in the main work area:</p>
+<img alt="The tabs panel in JupyterLab with a list of sample documents." class="jp-screenshot align-center" src="../_images/interface-tabs.png" />
+<p>The same information is also available in the Tabs menu:</p>
+<img alt="The tabs menu in JupyterLab with a list of sample documents." class="jp-screenshot align-center" src="../_images/interface-tabs-menu.png" />
+<p id="tabs-singledocument">It is often useful to focus on a single document or activity without closing
+other tabs in the main work area. Simple Interface mode enables this, while making
+it easy to return to your multi-activity layout in the main work area.
+Toggle Simple Interface mode using the View menu:</p>
+<div class="jp-youtube-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/DO7NOenMQC0?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div><p>When you leave Simple Interface mode, the original layout of the main
+area is restored.</p>
+</section>
+<section id="searching">
+<h2>Searching<a class="headerlink" href="#searching" title="Link to this heading">#</a></h2>
+<p>JupyterLab has an advanced built-in search plugin for finding text within a
+notebook or other document, which uses the <code class="docutils literal notranslate"><span class="pre">Ctrl+F</span></code> (<code class="docutils literal notranslate"><span class="pre">Cmd+F</span></code> for macOS) shortcut by default.</p>
+<p>Your browser’s <code class="docutils literal notranslate"><span class="pre">find</span></code> function will give unexpected results because it doesn’t have
+access to the full content of a document (by default), but you can still use your browser find
+function from the browser menu if you want, or you can disable the built-in search
+shortcut using the Advanced Settings Editor.</p>
+<p>Alternatively, you can disable windowed notebook rendering to expose the full
+document content to the browser at the expense of performance.</p>
+</section>
+<section id="context-menus">
+<h2>Context Menus<a class="headerlink" href="#context-menus" title="Link to this heading">#</a></h2>
+<p id="context-menus-rightclick">Many parts of JupyterLab, such as notebooks, text files, code consoles,
+and tabs, have context menus that can be accessed by right-clicking on
+the element:</p>
+<div class="jp-youtube-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/y30fs6kg6fc?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div><p id="context-menus-shiftrightclick">The browser’s native context menu can be accessed by holding down
+<code class="docutils literal notranslate"><span class="pre">Shift</span></code> and right-clicking:</p>
+<div class="jp-youtube-video">
+  <iframe src="https://www.youtube-nocookie.com/embed/XPPWW-7WJ40?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div></section>
+<section id="keyboard-shortcuts">
+<span id="shortcuts"></span><h2>Keyboard Shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading">#</a></h2>
+<p id="shortcuts-settings">As in the classic Notebook, you can navigate the user interface through keyboard
+shortcuts. You can find and customize the current list of keyboard shortcuts by
+selecting the Advanced Settings Editor item in the Settings menu, then selecting
+Keyboard Shortcuts in the Settings tab.</p>
+<div class="jp-youtube-video">
+   <iframe src="https://www.youtube-nocookie.com/embed/rhW3kAExCik?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div><p>To define a custom keyboard shortcut which runs more than one command, add a keyboard shortcut
+for <code class="docutils literal notranslate"><span class="pre">apputils:run-all-enabled</span></code> command in Keyboard Shortcuts advanced settings. The commands you
+wish to run are passed in the <code class="docutils literal notranslate"><span class="pre">args</span></code> argument as a list of strings:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;shortcuts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apputils:run-all-enabled&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;Accel T&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">&quot;docmanager:save&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">&quot;application:close&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;selector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;body&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example <code class="docutils literal notranslate"><span class="pre">docmanager:save</span></code> and <code class="docutils literal notranslate"><span class="pre">application:close</span></code> commands are mapped to <code class="docutils literal notranslate"><span class="pre">Accel</span> <span class="pre">T</span></code>.
+The commands are run in succession when you use the shortcut.</p>
+<p id="editor-keymaps">You can also customize the <a class="reference internal" href="file_editor.html#file-editor"><span class="std std-ref">text editor</span></a> to use vim, emacs, or Sublime Text
+keyboard maps by using the Text Editor Key Map submenu in the Settings
+menu:</p>
+<div class="jp-youtube-video">
+   <iframe src="https://www.youtube-nocookie.com/embed/COheO7sA4-U?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div></section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="announcements.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Announcements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="urls.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">JupyterLab URLs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menu-bar">Menu Bar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#left-and-right-sidebar">Left and Right Sidebar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-work-area">Main Work Area</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabs-and-simple-interface-mode">Tabs and Simple Interface Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching">Searching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-menus">Context Menus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/user/interface.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user/interface.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/interface.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:16:52 GMT -->
+</html>

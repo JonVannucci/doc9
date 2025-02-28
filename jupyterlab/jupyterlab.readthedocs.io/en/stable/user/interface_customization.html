@@ -1,0 +1,1165 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/interface_customization.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interface Customization &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user/interface_customization';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced Usage" href="directories.html" />
+    <link rel="prev" title="Language Server Protocol support" href="lsp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/user/interface_customization.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="announcements.html">Announcements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">The JupyterLab Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">JupyterLab URLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_editor.html">Text Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_console.html">Code Consoles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="completer.html">Completer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal.html">Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Managing Kernels and Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="documents_kernels.html">Documents and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats.html">File and Output Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugger.html">Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc.html">Table Of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspaces.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterhub.html">JupyterLab on JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">Exporting Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Localization and language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rtc.html">Real Time Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lsp.html">Language Server Protocol support</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interface Customization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="directories.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binder.html">JupyterLab on Binder</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Interface Customization</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="interface-customization">
+<span id="id1"></span><h1>Interface Customization<a class="headerlink" href="#interface-customization" title="Link to this heading">#</a></h1>
+<p>Multiple elements in the JupyterLab interface are customizable to display
+new elements or hide default ones.</p>
+<section id="layout">
+<span id="layout-customization"></span><h2>Layout<a class="headerlink" href="#layout" title="Link to this heading">#</a></h2>
+<p>The JupyterLab layout has two modes: the simple mode (or <em>single document</em> mode) and the default
+mode (or <em>multiple documents</em> mode). In both modes, the widgets are attached in one of the four
+area: the <code class="docutils literal notranslate"><span class="pre">left</span></code> or <code class="docutils literal notranslate"><span class="pre">right</span></code> sidebars, the <code class="docutils literal notranslate"><span class="pre">main</span></code> dock panel area or the <code class="docutils literal notranslate"><span class="pre">down</span></code> area.</p>
+<p>The default positions of widgets can be overridden through the settings based on the
+type of widgets. The setting to modify is the <em>layout</em> one in section <em>JupyterLab Shell</em>.</p>
+<p>The available widget types and their default area is listed below</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>multiple</p></th>
+<th class="head"><p>single</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Console</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>CSVTable</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>TSVTable</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Editor</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>HTML Viewer</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Image (Text)</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>JSON</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Markdown Preview</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Notebook</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Cloned Output</p></td>
+<td><p>main</p></td>
+<td><p>down</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linked Console</p></td>
+<td><p>main</p></td>
+<td><p>down</p></td>
+</tr>
+<tr class="row-even"><td><p>Inspector</p></td>
+<td><p>main</p></td>
+<td><p>down</p></td>
+</tr>
+<tr class="row-odd"><td><p>PDF</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Terminal</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>VDOM</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Vega-Lite4</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vega5</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Settings</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Advanced Settings</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Licenses</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Debugger</p></td>
+<td><p>right</p></td>
+<td><p>right</p></td>
+</tr>
+<tr class="row-even"><td><p>Debugger Variables</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-odd"><td><p>Debugger Sources</p></td>
+<td><p>main</p></td>
+<td><p>main</p></td>
+</tr>
+<tr class="row-even"><td><p>Property Inspector</p></td>
+<td><p>right</p></td>
+<td><p>right</p></td>
+</tr>
+<tr class="row-odd"><td><p>Extension Manager</p></td>
+<td><p>left</p></td>
+<td><p>left</p></td>
+</tr>
+<tr class="row-even"><td><p>File Browser</p></td>
+<td><p>left</p></td>
+<td><p>left</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sessions and Tabs</p></td>
+<td><p>left</p></td>
+<td><p>left</p></td>
+</tr>
+<tr class="row-even"><td><p>Table of Contents</p></td>
+<td><p>left</p></td>
+<td><p>left</p></td>
+</tr>
+<tr class="row-odd"><td><p>Log Console</p></td>
+<td><p>down</p></td>
+<td><p>down</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;layout&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;single&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;Linked Console&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;down&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;Inspector&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;down&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;Cloned Output&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;down&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// Add new terminals in the down area in simple mode</span>
+<span class="w">    </span><span class="s2">&quot;Terminal&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;down&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="s2">&quot;multiple&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Add new terminals in the right sidebar in default mode</span>
+<span class="w">    </span><span class="s2">&quot;Terminal&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;area&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;right&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The above example will result in the following changes:</p>
+<figure class="align-default" id="id3">
+<img alt="(Before Change) Default terminal position in &quot;multiple&quot; (default) mode" src="../_images/default-terminal-position-single.png" />
+<figcaption>
+<p><span class="caption-text">(Before Change) Default terminal position in “multiple” (default) mode</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<img alt="(After Change) Customized terminal position in &quot;multiple&quot; (default) mode" src="../_images/customized-terminal-position-single.png" />
+<figcaption>
+<p><span class="caption-text">(After Change) Customized terminal position in “multiple” (default) mode</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="toolbars">
+<span id="toolbars-customization"></span><h2>Toolbars<a class="headerlink" href="#toolbars" title="Link to this heading">#</a></h2>
+<p>Lots of toolbars are customizable. Here is a mapping of the customizable toolbars
+and the associated setting.</p>
+<ul class="simple">
+<li><p>Cell: <em>Cell Toolbar</em> -&gt; <em>toolbar</em></p></li>
+<li><p>CSV Viewer: <em>CSV Viewer</em> -&gt; <em>toolbar</em></p></li>
+<li><p>File Browser: <em>File Browser Widget</em> -&gt; <em>toolbar</em></p></li>
+<li><p>HTML Viewer: <em>HTML Viewer</em> -&gt; <em>toolbar</em></p></li>
+<li><p>Notebook panel: <em>Notebook Panel</em> -&gt; <em>toolbar</em></p></li>
+<li><p>Text Editor: <em>Text Editor</em> -&gt; <em>toolbar</em></p></li>
+<li><p>TSV Viewer: <em>TSV Viewer</em> -&gt; <em>toolbar</em></p></li>
+</ul>
+<p>Those settings are accessible through the interactive <em>Settings Editor</em>. But you
+may find more comfortable to use the <em>Advanced Settings Editor</em> (accessible by clicking
+on <em>JSON Settings Editor</em> button in the top right corner of the <em>Settings Editor</em>).</p>
+<p>Your <code class="docutils literal notranslate"><span class="pre">toolbar</span></code> customization will be merged with the default menu bar definition (this
+is a different behavior as the other settings that are overriding the default settings).
+So to remove a default item, you will need to disable it. To do that, you will need
+to set the toolbar item <code class="docutils literal notranslate"><span class="pre">disabled</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">true</span></code>; an item is uniquely identified
+by its <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;toolbar&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="c1">// Disable the restart and run all button</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;restart-and-run&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;disabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="c1">// Add a new button to clear all cell outputs</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clear-all-outputs&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;command&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;notebook:clear-all-cell-outputs&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The above example for the notebook panel, will results in the following changes:</p>
+<figure class="align-default" id="id5">
+<img alt="Default notebook toolbar" src="../_images/default-notebook-toolbar.png" />
+<figcaption>
+<p><span class="caption-text">Default notebook toolbar</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<img alt="Customized notebook toolbar" src="../_images/customized-notebook-toolbar.png" />
+<figcaption>
+<p><span class="caption-text">Customized notebook toolbar</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A toolbar is defined by a list of items. Each item must have an unique <code class="docutils literal notranslate"><span class="pre">name</span></code>. That
+name will create a toolbar item if it is associated with a special widget (e.g. the
+cell type toolbar selector). Otherwise it will require a <code class="docutils literal notranslate"><span class="pre">command</span></code> that will be triggered
+when clicking on a toolbar button (see the available <a class="reference internal" href="commands.html#commands-list"><span class="std std-ref">Commands list</span></a>).
+The items are sorted by their <code class="docutils literal notranslate"><span class="pre">rank</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to more advanced customization please refer to the <a class="reference internal" href="../extension/extension_points.html#toolbar-item"><span class="std std-ref">Toolbar item definition</span></a>.</p>
+</div>
+</section>
+<section id="menu-bar">
+<span id="menu-bar-customization"></span><h2>Menu Bar<a class="headerlink" href="#menu-bar" title="Link to this heading">#</a></h2>
+<p>The top menu bar definition can be customized through the <em>Advanced Settings Editor</em>. You can
+access it by opening the <em>Settings Editor</em> from the <em>Settings</em> menu, then click on the
+<em>JSON Settings Editor</em> in the top right corner.</p>
+<p>In the <em>Advanced Settings Editor</em>, you will need to select the <em>Main Menu</em> section in
+the left panel. Your <code class="docutils literal notranslate"><span class="pre">menus</span></code> customization will be merged with the default menu bar definition (this
+is a different behavior as the other settings that are overriding the default settings).
+So to remove a default entry, you will need to disable it. To do that, you will need
+to set the menu entry <code class="docutils literal notranslate"><span class="pre">disabled</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">true</span></code>; an entry is uniquely identified
+by its <code class="docutils literal notranslate"><span class="pre">command</span></code> and <code class="docutils literal notranslate"><span class="pre">args</span></code> attributes.</p>
+<p>New entries can be added to existing menus or you can create new menus.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;menus&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Disable the Run menu</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jp-mainmenu-run&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;disabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Move the Tabs menu to the end by changing its rank</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jp-mainmenu-tabs&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;rank&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1100</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="c1">// Add a new entry in the Tabs menu</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;command&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;launcher:create&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;rank&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Disable the Open from Path entry in the File menu</span>
+<span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jp-mainmenu-file&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;items&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;command&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;filebrowser:open-path&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;disabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The above example, will results in the following changes:</p>
+<figure class="align-default" id="id7">
+<img alt="Default menu bar" src="../_images/default-menu-bar.png" />
+<figcaption>
+<p><span class="caption-text">Default menu bar</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<img alt="Customized menu bar" src="../_images/customized-menu-bar.png" />
+<figcaption>
+<p><span class="caption-text">Customized menu bar</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The menu are identified by the following ids:</p>
+<ul class="simple">
+<li><p>File menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-file</span></code></p>
+<ul>
+<li><p>New file submenu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-file-new</span></code></p></li>
+</ul>
+</li>
+<li><p>Edit menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-edit</span></code></p></li>
+<li><p>View menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-view</span></code></p>
+<ul>
+<li><p>Appearance submenu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-view-appearance</span></code></p></li>
+</ul>
+</li>
+<li><p>Run menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-run</span></code></p></li>
+<li><p>Kernel menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-kernel</span></code></p></li>
+<li><p>Tabs menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-tabs</span></code></p></li>
+<li><p>Settings menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-settings</span></code></p></li>
+<li><p>Help menu: <code class="docutils literal notranslate"><span class="pre">jp-mainmenu-help</span></code></p></li>
+</ul>
+<p>An entry can be any valid command available; see <a class="reference internal" href="commands.html#commands-list"><span class="std std-ref">Commands list</span></a>.
+And the entries are sorted by their ranks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to more advanced customization (e.g. changing the separators or sub-menus),
+please refer to the <a class="reference internal" href="../extension/extension_points.html#mainmenu"><span class="std std-ref">Main Menu settings definition</span></a>.</p>
+</div>
+</section>
+<section id="context-menu">
+<span id="context-menu-customization"></span><h2>Context Menu<a class="headerlink" href="#context-menu" title="Link to this heading">#</a></h2>
+<p>The context menu definition can be customized through the <em>Advanced Settings Editor</em>. You can
+access it by opening the <em>Settings Editor</em> from the <em>Settings</em> menu, then click on the
+<em>JSON Settings Editor</em> in the top right corner.</p>
+<p>In the <em>Advanced Settings Editor</em>, you will need to the select the <em>Application Context Menu</em> section in
+the left panel. Your <code class="docutils literal notranslate"><span class="pre">contextMenu</span></code> customization will be merged with the default context menu definition (this
+is a different behavior as the other settings that are overriding the default settings).
+So to remove a default entry, you will need to disable it. To do that, you will need
+to set the menu entry <code class="docutils literal notranslate"><span class="pre">disabled</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">true</span></code>; an entry is uniquely identified
+by its <code class="docutils literal notranslate"><span class="pre">command</span></code>, <code class="docutils literal notranslate"><span class="pre">selector</span></code> and <code class="docutils literal notranslate"><span class="pre">args</span></code> attributes.</p>
+<p>New entries can be added to existing menus.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;contextMenu&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="c1">// Disable New notebook entry</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;command&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;notebook:create-new&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;selector&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.jp-DirListing-content&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;isContextMenu&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;disabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="c1">// Add new entry on notebook file to export them as Markdown</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;command&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;notebook:export-to-format&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;selector&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.jp-DirListing-item[data-file-type=\&quot;notebook\&quot;]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;rank&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Command arguments</span>
+<span class="w">    </span><span class="s2">&quot;args&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;format&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;label&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Export as Markdown&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The above example, will results in the following changes:</p>
+<figure class="align-default" id="id9">
+<img alt="Default context menu" src="../_images/default-context-menu.png" />
+<figcaption>
+<p><span class="caption-text">Default context menu</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<img alt="Customized context menu" src="../_images/customized-context-menu.png" />
+<figcaption>
+<p><span class="caption-text">Customized context menu</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>An entry can be any valid command available; see <a class="reference internal" href="commands.html#commands-list"><span class="std std-ref">Commands list</span></a>.
+And a CSS selector to define which elements will have that context menu entry.
+And the entries are sorted by their ranks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to more advanced customization (e.g. changing the separators or sub-menus),
+please refer to the <a class="reference internal" href="../extension/extension_points.html#context-menu"><span class="std std-ref">Context Menu settings definition</span></a>.</p>
+</div>
+<section id="file-browser">
+<h3>File Browser<a class="headerlink" href="#file-browser" title="Link to this heading">#</a></h3>
+<p>Users can add a “Open in Simple Mode” context menu option by adding the following to <em>Settings</em> -&gt; <em>Application Context Menu</em> -&gt; <code class="docutils literal notranslate"><span class="pre">contextMenu</span></code></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;filebrowser:open-browser-tab&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;single-document&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;selector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.jp-DirListing-item[data-isdir=\&quot;false\&quot;]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.6</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="custom-css">
+<span id="id2"></span><h1>Custom CSS<a class="headerlink" href="#custom-css" title="Link to this heading">#</a></h1>
+<section id="applying-custom-css">
+<h2>Applying Custom CSS<a class="headerlink" href="#applying-custom-css" title="Link to this heading">#</a></h2>
+<p>To apply custom CSS, you can add a <code class="docutils literal notranslate"><span class="pre">/custom/custom.css</span></code> file in the
+jupyter <code class="docutils literal notranslate"><span class="pre">config</span></code> directory. You can find the path, <code class="docutils literal notranslate"><span class="pre">~/.jupyter</span></code>, to
+this directory by running <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">--paths</span></code>. There you can create a
+folder named <code class="docutils literal notranslate"><span class="pre">custom</span></code> and create a <code class="docutils literal notranslate"><span class="pre">custom.css</span></code> file within the
+folder.</p>
+<p>Custom CSS is not loaded by default. In the jupyter configuration directory, the
+<code class="docutils literal notranslate"><span class="pre">~/.jupyter/custom/custom.css</span></code> file will not be loaded unless the the application is
+initialized with the <code class="docutils literal notranslate"><span class="pre">--custom-css</span></code> flag  (<cite>LabApp.custom_css</cite> config).</p>
+</section>
+<section id="jupyter-styling">
+<h2>Jupyter Styling<a class="headerlink" href="#jupyter-styling" title="Link to this heading">#</a></h2>
+<p>You can use a custom CSS file to modify default Jupyter styling.</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Modify Jupyter Styles */</span>
+
+<span class="p">.</span><span class="nc">lm-BoxPanel-child</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">jp-FileBrowser-Panel</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">lm-StackedPanel-child</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">jp-FileBrowser-toolbar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#aecad4</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">top-panel-wrapper</span><span class="o">,</span>
+<span class="p">#</span><span class="nn">jp-top-bar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#aecad4</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">menu-panel-wrapper</span><span class="o">,</span>
+<span class="p">#</span><span class="nn">jp-MainMenu</span><span class="o">,</span>
+<span class="p">#</span><span class="nn">menu-panel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#aecad4</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">jp-NotebookPanel-toolbar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#aecad4</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">lm-MenuBar-content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#02484d</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">lm-TabBar-content</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">jp-DirListing-content</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">lm-MenuBar-content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="kc">small</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="a screenshot custom jupyter styling" src="../_images/custom-css-main.png" />
+</figure>
+</section>
+<section id="markdown">
+<h2>Markdown<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h2>
+<p>Another potential application for custom CSS is styling markdown.</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Styling Markdown */</span>
+
+<span class="c">/* Headings */</span>
+<span class="nt">h1</span><span class="o">,</span>
+<span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Impact</span><span class="p">,</span><span class="w"> </span><span class="n">Charcoal</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="mh">#000</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#10929e</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">underline</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#76b4be</span><span class="p">;</span>
+<span class="w">  </span><span class="k">text-transform</span><span class="p">:</span><span class="w"> </span><span class="kc">uppercase</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Block Quotes */</span>
+<span class="nt">blockquote</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Georgia</span><span class="p">,</span><span class="w"> </span><span class="kc">serif</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#19085c</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#effffc</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#eafcff</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Lists */</span>
+<span class="nt">ul</span><span class="o">,</span>
+<span class="nt">ol</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Verdana</span><span class="p">,</span><span class="w"> </span><span class="n">Geneva</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="a screenshot of custom markdown styling" src="../_images/custom-css-notebook-markdown.png" />
+</figure>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lsp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Language Server Protocol support</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="directories.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced Usage</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Interface Customization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolbars">Toolbars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menu-bar">Menu Bar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-menu">Context Menu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-browser">File Browser</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-css">Custom CSS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-custom-css">Applying Custom CSS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-styling">Jupyter Styling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">Markdown</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/user/interface_customization.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user/interface_customization.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/interface_customization.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:15 GMT -->
+</html>

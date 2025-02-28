@@ -1,0 +1,824 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/developer/patterns.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Design Patterns &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'developer/patterns';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessibility: A JupyterLab Developer’s Guide" href="accessibility.html" />
+    <link rel="prev" title="Using JupyterLab components" href="components.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/developer/patterns.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="repo.html">General Codebase Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Using JupyterLab components</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Design Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="css.html">CSS Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">JupyterLab API Reference</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="contributing.html" class="nav-link">Contribute</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Design Patterns</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="design-patterns">
+<h1>Design Patterns<a class="headerlink" href="#design-patterns" title="Link to this heading">#</a></h1>
+<p>There are several design patterns that are repeated throughout the
+repository. This guide is meant to supplement the <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/wiki/TypeScript-Style-Guide">TypeScript Style
+Guide</a>.</p>
+<section id="typescript">
+<h2>TypeScript<a class="headerlink" href="#typescript" title="Link to this heading">#</a></h2>
+<p>TypeScript is used in all of the source code. TypeScript is used because
+it provides features from the most recent EMCAScript 6 standards, while
+providing type safety. The TypeScript compiler eliminates an entire
+class of bugs, while making it much easier to refactor code.</p>
+</section>
+<section id="initialization-options">
+<h2>Initialization Options<a class="headerlink" href="#initialization-options" title="Link to this heading">#</a></h2>
+<p>Objects will typically have an <code class="docutils literal notranslate"><span class="pre">IOptions</span></code> interface for initializing
+the widget. The use of this interface enables options to be later added
+while preserving backward compatibility.</p>
+</section>
+<section id="contentfactory-option">
+<h2>ContentFactory Option<a class="headerlink" href="#contentfactory-option" title="Link to this heading">#</a></h2>
+<div class="line-block">
+<div class="line">A common option for a widget is a <code class="docutils literal notranslate"><span class="pre">IContentFactory</span></code>, which is used
+to customize the child content in the widget.</div>
+<div class="line">If not given, a <code class="docutils literal notranslate"><span class="pre">defaultRenderer</span></code> instance is used if no arguments
+are required. In this way, widgets can be customized without
+subclassing them, and widgets can support customization of their
+nested content.</div>
+</div>
+</section>
+<section id="static-namespace">
+<h2>Static Namespace<a class="headerlink" href="#static-namespace" title="Link to this heading">#</a></h2>
+<p>An object class will typically have an exported static namespace sharing
+the same name as the object. The namespace is used to declutter the
+class definition.</p>
+</section>
+<section id="private-module-namespace">
+<h2>Private Module Namespace<a class="headerlink" href="#private-module-namespace" title="Link to this heading">#</a></h2>
+<p>The “Private” module namespace is used to group variables and functions
+that are not intended to be exported and may have otherwise existed as
+module-level variables and functions. The use of the namespace also
+makes it clear when a variable access is to an imported name or from the
+module itself. Finally, the namespace enables the entire section to be
+collapsed in an editor if desired.</p>
+</section>
+<section id="disposables">
+<h2>Disposables<a class="headerlink" href="#disposables" title="Link to this heading">#</a></h2>
+<div class="line-block">
+<div class="line">JavaScript does not support “destructors”, so the <code class="docutils literal notranslate"><span class="pre">IDisposable</span></code>
+pattern is used to ensure resources are freed and can be claimed by
+the Garbage Collector when no longer needed. It should always be safe
+to <code class="docutils literal notranslate"><span class="pre">dispose()</span></code> of an object more than once. Typically the object
+that creates another object is responsible for calling the dispose
+method of that object unless explicitly stated otherwise.</div>
+<div class="line">To mirror the pattern of construction, <code class="docutils literal notranslate"><span class="pre">super.dispose()</span></code> should be
+called last in the <code class="docutils literal notranslate"><span class="pre">dispose()</span></code> method if there is a parent class.
+Make sure any signal connections are cleared in either the local or
+parent <code class="docutils literal notranslate"><span class="pre">dispose()</span></code> method. Use a sentinel value to guard against
+reentry, typically by checking if an internal value is null, and then
+immediately setting the value to null. A subclass should never
+override the <code class="docutils literal notranslate"><span class="pre">isDisposed</span></code> getter, because it short-circuits the
+parent class getter. The object should not be considered disposed
+until the base class <code class="docutils literal notranslate"><span class="pre">dispose()</span></code> method is called.</div>
+</div>
+</section>
+<section id="messages">
+<h2>Messages<a class="headerlink" href="#messages" title="Link to this heading">#</a></h2>
+<p>Messages are intended for many-to-one communication where outside
+objects influence another object. Messages can be conflated and
+processed as a single message. They can be posted and handled on the
+next animation frame.</p>
+</section>
+<section id="signals">
+<h2>Signals<a class="headerlink" href="#signals" title="Link to this heading">#</a></h2>
+<p>Signals are intended for one-to-many communication where outside objects
+react to changes on another object. Signals are always emitted with the
+sender as the first argument, and contain a single second argument with
+the payload. Signals should generally not be used to trigger the
+“default” behavior for an action, but to enable others to trigger
+additional behavior. If a “default” behavior is intended to be provided
+by another object, then a callback should be provided by that object.
+Wherever possible a signal connection should be made with the pattern
+<code class="docutils literal notranslate"><span class="pre">.connect(this._onFoo,</span> <span class="pre">this)</span></code>. Providing the <code class="docutils literal notranslate"><span class="pre">this</span></code> context enables
+the connection to be properly cleared by <code class="docutils literal notranslate"><span class="pre">Signal.clearData(this)</span></code>.
+Using a private method avoids allocating a closure for each connection.</p>
+</section>
+<section id="models">
+<h2>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h2>
+<p>Some of the more advanced widgets have a model associated with them. The
+common pattern used is that the model is settable and must be set
+outside of the constructor. This means that any consumer of the widget
+must account for a model that may be <code class="docutils literal notranslate"><span class="pre">null</span></code>, and may change at any
+time. The widget should emit a <code class="docutils literal notranslate"><span class="pre">modelChanged</span></code> signal to enable
+consumers to handle a change in model. The reason to enable a model to
+swap is that the same widget could be used to display different model
+content while preserving the widget’s location in the application. The
+reason the model cannot be provided in the constructor is the
+initialization required for a model may have to call methods that are
+subclassed. The subclassed methods would be called before the subclass
+constructor has finished evaluating, resulting in undefined state.</p>
+</section>
+<section id="getters-vs-methods">
+<span id="id1"></span><h2>Getters vs. Methods<a class="headerlink" href="#getters-vs-methods" title="Link to this heading">#</a></h2>
+<p>Prefer a method when the return value must be computed each time. Prefer
+a getter for simple attribute lookup. A getter should yield the same
+value every time.</p>
+</section>
+<section id="data-structures">
+<h2>Data Structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h2>
+<p>For public API, we have three options: JavaScript <code class="docutils literal notranslate"><span class="pre">Array</span></code>,
+<code class="docutils literal notranslate"><span class="pre">IIterator</span></code>, and <code class="docutils literal notranslate"><span class="pre">ReadonlyArray</span></code> (an interface defined by
+TypeScript).</p>
+<p>Prefer an <code class="docutils literal notranslate"><span class="pre">Array</span></code> for:</p>
+<ul class="simple">
+<li><p>A value that is meant to be mutable.</p></li>
+</ul>
+<p>Prefer a <code class="docutils literal notranslate"><span class="pre">ReadonlyArray</span></code></p>
+<ul class="simple">
+<li><p>A return value is the result of a newly allocated array, to avoid the
+extra allocation of an iterator.</p></li>
+<li><p>A signal payload - since it will be consumed by multiple listeners.</p></li>
+<li><p>The values may need to be accessed randomly.</p></li>
+<li><p>A public attribute that is inherently static.</p></li>
+</ul>
+<p>Prefer an <code class="docutils literal notranslate"><span class="pre">IIterator</span></code> for:</p>
+<ul class="simple">
+<li><p>A return value where the value is based on an internal data structure
+but the value should not need to be accessed randomly.</p></li>
+<li><p>A set of return values that can be computed lazily.</p></li>
+</ul>
+</section>
+<section id="dom-events">
+<h2>DOM Events<a class="headerlink" href="#dom-events" title="Link to this heading">#</a></h2>
+<p>If an object instance should respond to DOM events, create a
+<code class="docutils literal notranslate"><span class="pre">handleEvent</span></code> method for the class and register the object instance as
+the event handler. The <code class="docutils literal notranslate"><span class="pre">handleEvent</span></code> method should switch on the event
+type and could call private methods to carry out the actions. Often a
+widget class will add itself as an event listener to its own node in the
+<code class="docutils literal notranslate"><span class="pre">onAfterAttach</span></code> method with something like
+<code class="docutils literal notranslate"><span class="pre">this.node.addEventListener('mousedown',</span> <span class="pre">this)</span></code> and unregister itself
+in the <code class="docutils literal notranslate"><span class="pre">onBeforeDetach</span></code> method with
+<code class="docutils literal notranslate"><span class="pre">this.node.removeEventListener('mousedown',</span> <span class="pre">this)</span></code> Dispatching events
+from the <code class="docutils literal notranslate"><span class="pre">handleEvent</span></code> method makes it easier to trace, log, and debug
+event handling. For more information about the <code class="docutils literal notranslate"><span class="pre">handleEvent</span></code> method,
+see the
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/EventListener">EventListener</a>
+API.</p>
+</section>
+<section id="promises">
+<h2>Promises<a class="headerlink" href="#promises" title="Link to this heading">#</a></h2>
+<p>We use Promises for asynchronous function calls, and a shim for browsers
+that do not support them. When handling a resolved or rejected Promise,
+make sure to check for the current state (typically by checking an
+<code class="docutils literal notranslate"><span class="pre">.isDisposed</span></code> property) before proceeding.</p>
+</section>
+<section id="command-names">
+<h2>Command Names<a class="headerlink" href="#command-names" title="Link to this heading">#</a></h2>
+<p>Commands used in the application command registry should be formatted as
+follows: <code class="docutils literal notranslate"><span class="pre">package-name:verb-noun</span></code>. They are typically grouped into a
+<code class="docutils literal notranslate"><span class="pre">CommandIDs</span></code> namespace in the extension that is not exported.</p>
+</section>
+<section id="dialogs">
+<h2>Dialogs<a class="headerlink" href="#dialogs" title="Link to this heading">#</a></h2>
+<p>Buttons in dialogs with a single, dismissal button (e.g., <em>About JupyterLab</em>)
+should have the following attributes:</p>
+<ul class="simple">
+<li><p>Button variant: Cancel (<code class="docutils literal notranslate"><span class="pre">Dialog.cancelButton()</span></code>)</p></li>
+<li><p>Label: <code class="docutils literal notranslate"><span class="pre">Close</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="components.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using JupyterLab components</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="accessibility.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accessibility: A JupyterLab Developer’s Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typescript">TypeScript</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization-options">Initialization Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contentfactory-option">ContentFactory Option</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-namespace">Static Namespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private-module-namespace">Private Module Namespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disposables">Disposables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messages">Messages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signals">Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getters-vs-methods">Getters vs. Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures">Data Structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dom-events">DOM Events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#promises">Promises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-names">Command Names</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dialogs">Dialogs</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/developer/patterns.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/developer/patterns.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/developer/patterns.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:45 GMT -->
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html><html class="default" lang="en">
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@jupyterlab</title><meta name="description" content="Documentation for @jupyterlab"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/api/" /><meta name="readthedocs-http-status" content="200" /></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"><a href="https://github.com/jupyterlab/jupyterlab">GitHub</a><a href="https://jupyter.org/">Jupyter</a></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="https://jupyterlab.readthedocs.io/en/latest" class="title">@jupyterlab</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>@jupyterlab</h2></div><div class="tsd-panel tsd-typography"><p><strong><a href="#md:installation">Installation</a></strong> |
+<strong><a href="https://jupyterlab.readthedocs.io/">Documentation</a></strong> |
+<strong><a href="#md:contributing">Contributing</a></strong> |
+<strong><a href="#md:license">License</a></strong> |
+<strong><a href="#md:team">Team</a></strong> |
+<strong><a href="#md:getting-help">Getting help</a></strong> |</p>
+<a id="md:jupyterlab" class="tsd-anchor"></a><h1><a href="#md:jupyterlab"><a href="https://jupyterlab.readthedocs.io/">JupyterLab</a></a></h1><p><a href="https://badge.fury.io/py/jupyterlab"><img src="https://badge.fury.io/py/jupyterlab.svg" alt="PyPI version"></a>
+<a href="https://pepy.tech/project/jupyterlab"><img src="https://static.pepy.tech/badge/jupyterlab/month" alt="Downloads"></a>
+<a href="https://github.com/jupyterlab/jupyterlab/actions?query=branch%3Amain+workflow%3A%22Linux+Tests%22"><img src="https://github.com/jupyterlab/jupyterlab/workflows/Linux Tests/badge.svg" alt="Build Status"></a>
+<a href="https://github.com/jupyterlab/jupyterlab/actions?query=branch%3Amain+workflow%3A%22Windows+Tests%22"><img src="https://github.com/jupyterlab/jupyterlab/workflows/Windows Tests/badge.svg" alt="Build Status"></a>
+<a href="../index-2.html"><img src="https://readthedocs.org/projects/jupyterlab/badge/?version=stable" alt="Documentation Status"></a>
+<a href="https://crowdin.com/project/jupyterlab"><img src="https://badges.crowdin.net/jupyterlab/localized.svg" alt="Crowdin"></a>
+<a href="https://www.bestpractices.dev/projects/8675"><img src="https://www.bestpractices.dev/projects/8675/badge" alt="OpenSSF Best Practices"></a>
+<a href="https://scorecard.dev/viewer/?uri=github.com/jupyterlab/jupyterlab"><img src="https://api.scorecard.dev/projects/github.com/jupyterlab/jupyterlab/badge" alt="OpenSSF Scorecard"></a>
+<a href="https://github.com/jupyterlab/jupyterlab/issues"><img src="https://img.shields.io/badge/issue_tracking-github-blue.svg" alt="GitHub"></a>
+<a href="https://discourse.jupyter.org/c/jupyterlab"><img src="https://img.shields.io/badge/help_forum-discourse-blue.svg" alt="Discourse"></a>
+<a href="https://jupyter.zulipchat.com/#narrow/channel/469762-jupyterlab"><img src="https://img.shields.io/badge/social_chat-zulip-blue.svg" alt="Zulip"></a>
+<a href="https://gitpod.io/#https://github.com/jupyterlab/jupyterlab"><img src="https://img.shields.io/badge/gitpod_editor-open-blue.svg" alt="Gitpod"></a></p>
+<p><a href="https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/HEAD?urlpath=lab/tree/demo"><img src="https://mybinder.org/badge_logo.svg" alt="Binder"></a></p>
+<p>An extensible environment for interactive and reproducible computing, based on the
+Jupyter Notebook and Architecture.</p>
+<p><a href="../index-2.html">JupyterLab</a> is the next-generation user interface for <a href="https://jupyter.org/">Project Jupyter</a> offering
+all the familiar building blocks of the classic Jupyter Notebook (notebook,
+terminal, text editor, file browser, rich outputs, etc.) in a flexible and
+powerful user interface.</p>
+<p>JupyterLab can be extended using <a href="https://www.npmjs.com/">npm</a> packages
+that use our public APIs. The <em>prebuilt</em> extensions can be distributed
+via <a href="https://pypi.org/search/?q=jupyterlab&amp;o=-created&amp;c=Framework+%3A%3A+Jupyter">PyPI</a>,
+conda, and other package managers. The <em>source</em> extensions can be installed
+directly from npm (search for <a href="https://www.npmjs.com/search?q=keywords:jupyterlab-extension">jupyterlab-extension</a>) but require an additional build step.
+You can also find JupyterLab extensions exploring GitHub topic <a href="https://github.com/topics/jupyterlab-extension">jupyterlab-extension</a>.
+To learn more about extensions, see the <a href="../user/extensions.html">user documentation</a>.</p>
+<p>Read the current JupyterLab documentation on <a href="../index-2.html">ReadTheDocs</a>.</p>
+<blockquote>
+<p>[!IMPORTANT]
+JupyterLab 3 reached its end of maintenance date on May 15, 2024. Fixes for critical issues will still be backported until December 31, 2024. If you are still running JupyterLab 3, we strongly encourage you to <strong>upgrade to JupyterLab 4 as soon as possible.</strong> For more information, see <a href="https://blog.jupyter.org/jupyterlab-3-end-of-maintenance-879778927db2">JupyterLab 3 end of maintenance</a> on the Jupyter Blog.</p>
+</blockquote>
+<hr>
+<a id="md:getting-started" class="tsd-anchor"></a><h2><a href="#md:getting-started">Getting started</a></h2><a id="md:installation" class="tsd-anchor"></a><h3><a href="#md:installation">Installation</a></h3><p>If you use <a href="https://docs.conda.io/en/latest/">conda</a>, <a href="https://mamba.readthedocs.io/en/latest/">mamba</a>, or <a href="https://docs.python.org/3/installing/index.html">pip</a>, you can install JupyterLab with one of the following commands.</p>
+<ul>
+<li>If you use conda:<pre><code class="language-shell"><span class="hl-0">conda</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-3">-c</span><span class="hl-1"> </span><span class="hl-2">conda-forge</span><span class="hl-1"> </span><span class="hl-2">jupyterlab</span>
+</code><button>Copy</button></pre>
+</li>
+<li>If you use mamba:<pre><code class="language-shell"><span class="hl-0">mamba</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-3">-c</span><span class="hl-1"> </span><span class="hl-2">conda-forge</span><span class="hl-1"> </span><span class="hl-2">jupyterlab</span>
+</code><button>Copy</button></pre>
+</li>
+<li>If you use pip:<pre><code class="language-shell"><span class="hl-0">pip</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">jupyterlab</span>
+</code><button>Copy</button></pre>
+If installing using <code>pip install --user</code>, you must add the user-level <code>bin</code> directory to your <code>PATH</code> environment variable in order to launch <code>jupyter lab</code>. If you are using a Unix derivative (e.g., FreeBSD, GNU/Linux, macOS), you can do this by running <code>export PATH=&quot;$HOME/.local/bin:$PATH&quot;</code>.</li>
+</ul>
+<p>For more detailed instructions, consult the <a href="../getting_started/installation.html">installation guide</a>. Project installation instructions from the git sources are available in the <a href="CONTRIBUTING.html">contributor documentation</a>.</p>
+<a id="md:installing-with-previous-versions-of-jupyter-notebook" class="tsd-anchor"></a><h4><a href="#md:installing-with-previous-versions-of-jupyter-notebook">Installing with Previous Versions of Jupyter Notebook</a></h4><p>When using a version of Jupyter Notebook earlier than 5.3, the following command must be run after installing JupyterLab to enable the JupyterLab server extension:</p>
+<pre><code class="language-bash"><span class="hl-0">jupyter</span><span class="hl-1"> </span><span class="hl-2">serverextension</span><span class="hl-1"> </span><span class="hl-2">enable</span><span class="hl-1"> </span><span class="hl-3">--py</span><span class="hl-1"> </span><span class="hl-2">jupyterlab</span><span class="hl-1"> </span><span class="hl-3">--sys-prefix</span>
+</code><button>Copy</button></pre>
+<a id="md:running" class="tsd-anchor"></a><h3><a href="#md:running">Running</a></h3><p>Start up JupyterLab using:</p>
+<pre><code class="language-bash"><span class="hl-0">jupyter</span><span class="hl-1"> </span><span class="hl-2">lab</span>
+</code><button>Copy</button></pre>
+<p>JupyterLab will open automatically in the browser. See the <a href="../getting_started/starting.html">documentation</a> for additional details.</p>
+<p>If you encounter an error like &quot;Command &#39;jupyter&#39; not found&quot;, please make sure <code>PATH</code> environment variable is set correctly. Alternatively, you can start up JupyterLab using <code>~/.local/bin/jupyter lab</code> without changing the <code>PATH</code> environment variable.</p>
+<a id="md:prerequisites-and-supported-browsers" class="tsd-anchor"></a><h3><a href="#md:prerequisites-and-supported-browsers">Prerequisites and Supported Browsers</a></h3><p>The latest versions of the following browsers are currently <em>known to work</em>:</p>
+<ul>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Safari</li>
+</ul>
+<p>See our <a href="../getting_started/installation.html">documentation</a> for additional details.</p>
+<hr>
+<a id="md:getting-help" class="tsd-anchor"></a><h2><a href="#md:getting-help">Getting help</a></h2><p>We encourage you to ask questions on the <a href="https://discourse.jupyter.org/c/jupyterlab">Discourse forum</a>. A question answered there can become a useful resource for others.</p>
+<a id="md:bug-report" class="tsd-anchor"></a><h3><a href="#md:bug-report">Bug report</a></h3><p>To report a bug please read the <a href="../getting_started/issue.html">guidelines</a> and then open a <a href="https://github.com/jupyterlab/jupyterlab/issues/new?labels=bug%2C+status%3ANeeds+Triage&amp;template=bug_report.md">Github issue</a>. To keep resolved issues self-contained, the <a href="https://github.com/apps/lock">lock bot</a> will lock closed issues as resolved after a period of inactivity. If a related discussion is still needed after an issue is locked, please open a new issue and reference the old issue.</p>
+<a id="md:feature-request" class="tsd-anchor"></a><h3><a href="#md:feature-request">Feature request</a></h3><p>We also welcome suggestions for new features as they help make the project more useful for everyone. To request a feature please use the <a href="https://github.com/jupyterlab/jupyterlab/issues/new?labels=enhancement%2C+status%3ANeeds+Triage&amp;template=feature_request.md">feature request template</a>.</p>
+<hr>
+<a id="md:development" class="tsd-anchor"></a><h2><a href="#md:development">Development</a></h2><a id="md:extending-jupyterlab" class="tsd-anchor"></a><h3><a href="#md:extending-jupyterlab">Extending JupyterLab</a></h3><p>To start developing an extension for JupyterLab, see the <a href="../extension/extension_dev.html">developer documentation</a> and the <a href="index.html">API docs</a>.</p>
+<a id="md:contributing" class="tsd-anchor"></a><h3><a href="#md:contributing">Contributing</a></h3><p>To contribute code or documentation to JupyterLab itself, please read the <a href="../developer/contributing.html">contributor documentation</a>.</p>
+<p>JupyterLab follows the Jupyter <a href="https://jupyter.readthedocs.io/en/latest/community/content-community.html">Community Guides</a>.</p>
+<a id="md:license" class="tsd-anchor"></a><h3><a href="#md:license">License</a></h3><p>JupyterLab uses a shared copyright model that enables all contributors to maintain the
+copyright on their contributions. All code is licensed under the terms of the revised <a href="https://github.com/jupyterlab/jupyterlab/blob/4.3.x/LICENSE">BSD license</a>.</p>
+<a id="md:team" class="tsd-anchor"></a><h3><a href="#md:team">Team</a></h3><p>JupyterLab is part of <a href="https://jupyter.org/">Project Jupyter</a> and is developed by an open community. The maintenance team is assisted by a much larger group of contributors to JupyterLab and Project Jupyter as a whole.</p>
+<p>JupyterLab&#39;s current maintainers are listed in alphabetical order, with affiliation, and main areas of contribution:</p>
+<ul>
+<li>Mehmet Bektas, Netflix (general development, extensions).</li>
+<li>Alex Bozarth, IBM (general development, extensions).</li>
+<li>Eric Charles, Datalayer, (general development, extensions).</li>
+<li>Frédéric Collonval, WebScIT (general development, extensions).</li>
+<li>Martha Cryan, Mito (general development, extensions).</li>
+<li>Afshin Darian, QuantStack (co-creator, application/high-level architecture,
+prolific contributions throughout the code base).</li>
+<li>Vidar T. Fauske, JPMorgan Chase (general development, extensions).</li>
+<li>Brian Granger, AWS (co-creator, strategy, vision, management, UI/UX design,
+architecture).</li>
+<li>Jason Grout, Databricks (co-creator, vision, general development).</li>
+<li>Michał Krassowski, Quansight (general development, extensions).</li>
+<li>Max Klein, JPMorgan Chase (UI Package, build system, general development, extensions).</li>
+<li>Gonzalo Peña-Castellanos, QuanSight (general development, i18n, extensions).</li>
+<li>Fernando Perez, UC Berkeley (co-creator, vision).</li>
+<li>Isabela Presedo-Floyd, QuanSight Labs (design/UX).</li>
+<li>Steven Silvester, MongoDB (co-creator, release management, packaging,
+prolific contributions throughout the code base).</li>
+<li>Jeremy Tuloup, QuantStack (general development, extensions).</li>
+</ul>
+<p>Maintainer emeritus:</p>
+<ul>
+<li>Chris Colbert, Project Jupyter (co-creator, application/low-level architecture,
+technical leadership, vision, PhosphorJS)</li>
+<li>Jessica Forde, Project Jupyter (demo, documentation)</li>
+<li>Tim George, Cal Poly (UI/UX design, strategy, management, user needs analysis).</li>
+<li>Cameron Oelsen, Cal Poly (UI/UX design).</li>
+<li>Ian Rose, Quansight/City of LA (general core development, extensions).</li>
+<li>Andrew Schlaepfer, Bloomberg (general development, extensions).</li>
+<li>Saul Shanabrook, Quansight (general development, extensions)</li>
+</ul>
+<p>This list is provided to give the reader context on who we are and how our team functions.
+To be listed, please submit a pull request with your information.</p>
+<hr>
+<a id="md:weekly-dev-meeting" class="tsd-anchor"></a><h3><a href="#md:weekly-dev-meeting">Weekly Dev Meeting</a></h3><p>We have videoconference meetings every week where we discuss what we have been working on and get feedback from one another.</p>
+<p>Anyone is welcome to attend, if they would like to discuss a topic or just listen in.</p>
+<ul>
+<li>When: Wednesdays 9:00 AM Pacific Time (USA)</li>
+<li>Where: <a href="https://zoom.us/my/jovyan?pwd=c0JZTHlNdS9Sek9vdzR3aTJ4SzFTQT09"><code>jovyan</code> Zoom</a></li>
+<li>What: <a href="https://hackmd.io/Y7fBMQPSQ1C08SDGI-fwtg?both">Meeting notes</a></li>
+</ul>
+<blockquote>
+<p>Notes are archived on <a href="https://github.com/jupyterlab/frontends-team-compass/issues">GitHub Jupyter Frontends team compass</a>.</p>
+</blockquote>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-index-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><h4 class="uppercase">Member Visibility</h4><form><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div><div class="tsd-theme-toggle"><h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:jupyterlab"><span>Jupyter<wbr/>Lab</span></a><ul><li><a href="#md:getting-started"><span>Getting started</span></a></li><li><ul><li><a href="#md:installation"><span>Installation</span></a></li><li><ul><li><a href="#md:installing-with-previous-versions-of-jupyter-notebook"><span>Installing with <wbr/>Previous <wbr/>Versions of <wbr/>Jupyter <wbr/>Notebook</span></a></li></ul></li><li><a href="#md:running"><span>Running</span></a></li><li><a href="#md:prerequisites-and-supported-browsers"><span>Prerequisites and <wbr/>Supported <wbr/>Browsers</span></a></li></ul></li><li><a href="#md:getting-help"><span>Getting help</span></a></li><li><ul><li><a href="#md:bug-report"><span>Bug report</span></a></li><li><a href="#md:feature-request"><span>Feature request</span></a></li></ul></li><li><a href="#md:development"><span>Development</span></a></li><li><ul><li><a href="#md:extending-jupyterlab"><span>Extending <wbr/>Jupyter<wbr/>Lab</span></a></li><li><a href="#md:contributing"><span>Contributing</span></a></li><li><a href="#md:license"><span>License</span></a></li><li><a href="#md:team"><span>Team</span></a></li><li><a href="#md:weekly-dev-meeting"><span>Weekly <wbr/>Dev <wbr/>Meeting</span></a></li></ul></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="index-2.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>@jupyterlab</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body>
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/api/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:42 GMT -->
+</html>

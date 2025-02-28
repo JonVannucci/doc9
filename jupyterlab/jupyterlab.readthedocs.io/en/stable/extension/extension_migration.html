@@ -1,0 +1,1962 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/extension_migration.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Extension Migration Guide &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extension/extension_migration';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contribute" href="../developer/contributing.html" />
+    <link rel="prev" title="Targeting Multiple Applications" href="extension_multiple_ui.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/extension/extension_migration.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="extension_points.html">Common Extension Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_components.html">Reusing JupyterLab UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualdom.html">React</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_helpers.html">User Interface Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity.html">Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_tutorial.html">Extension Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_multiple_ui.html">Targeting Multiple Applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Extension Migration Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="extension_dev.html" class="nav-link">Develop Extensions</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Extension Migration Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="extension-migration-guide">
+<span id="extension-migration"></span><h1>Extension Migration Guide<a class="headerlink" href="#extension-migration-guide" title="Link to this heading">#</a></h1>
+<section id="jupyterlab-4-2-to-4-3">
+<h2>JupyterLab 4.2 to 4.3<a class="headerlink" href="#jupyterlab-4-2-to-4-3" title="Link to this heading">#</a></h2>
+<section id="css-styling">
+<h3>CSS styling<a class="headerlink" href="#css-styling" title="Link to this heading">#</a></h3>
+<p>Previously JupyterLab was leaking CSS rules globally. Starting from 4.3, this is not the case
+anymore. The side effects for extensions are:</p>
+<ul class="simple">
+<li><p>DOM elements attached outside the application shell may have broken styles. To fix this,
+you should add the class <code class="docutils literal notranslate"><span class="pre">jp-ThemedContainer</span></code> to the DOM elements added outside the application shell.</p></li>
+<li><p>DOM elements <code class="docutils literal notranslate"><span class="pre">code</span></code>, <code class="docutils literal notranslate"><span class="pre">kbd</span></code>, <code class="docutils literal notranslate"><span class="pre">pre</span></code>, <code class="docutils literal notranslate"><span class="pre">samp</span></code> and <code class="docutils literal notranslate"><span class="pre">tt</span></code> may have broken styles. To fix this,
+prepend the class <code class="docutils literal notranslate"><span class="pre">.jp-ThemedContainer</span></code> to your rule; e.g.
+<code class="docutils literal notranslate"><span class="pre">.jp-Inspector-content</span> <span class="pre">pre</span></code> becomes <code class="docutils literal notranslate"><span class="pre">.jp-ThemedContainer</span> <span class="pre">.jp-Inspector-content</span> <span class="pre">pre</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">jp-Inspector-default-content</span></code> class was renamed to <code class="docutils literal notranslate"><span class="pre">jp-Inspector-placeholderContent</span></code>.
+The name of this contextual help class is now consistent with the equivalent table of contents and property inspector classes.</p>
+<p>JupyterLab 4.3 updated to its dependency on <code class="docutils literal notranslate"><span class="pre">&#64;lumino/widget</span></code> to the <code class="docutils literal notranslate"><span class="pre">2.5.0</span></code> version, which removed the following global styling
+of widgets:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">lm-Widget</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you notice some inconsistencies with the styling of your extension, you may need to add this general rule back to the CSS of your extension,
+or (preferably) scope it to the relevant widgets.</p>
+</section>
+<section id="testing-with-galata">
+<h3>Testing with Galata<a class="headerlink" href="#testing-with-galata" title="Link to this heading">#</a></h3>
+<p>Playwright was updated to version 1.46.1 (or higher). The changelog for version <code class="docutils literal notranslate"><span class="pre">1.46.0</span></code> mentions a possible
+breaking change when defining fixture values that are array of objects.</p>
+<p>See the <a class="reference external" href="https://github.com/microsoft/playwright/releases/tag/v1.46.0">Playwright 1.46.0 release notes</a> for more information.</p>
+<section id="shared-model">
+<h4>Shared model<a class="headerlink" href="#shared-model" title="Link to this heading">#</a></h4>
+<p>The outputs set on the shared cell model are now expected to be wrapped
+in the <code class="docutils literal notranslate"><span class="pre">Y.Map</span></code> objects rather than provided as plain objects
+(or pycrdt <code class="docutils literal notranslate"><span class="pre">Map</span></code> objects rather than dictionaries when set on the backend).
+Further, the <code class="docutils literal notranslate"><span class="pre">&quot;text&quot;</span></code> entry must now be specified as an <code class="docutils literal notranslate"><span class="pre">Array&lt;string&gt;</span></code>
+object for outputs of <code class="docutils literal notranslate"><span class="pre">&quot;stream&quot;</span></code> type, allowing for better performance.
+The use of plain objects is deprecated and will stop working in a future version.
+For reference, see PRs:</p>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/jupyterlab/jupyterlab/pull/16498">jupyterlab/jupyterlab#16498</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/jupyter-server/jupyter_ydoc/pull/241">jupyter-server/jupyter_ydoc#241</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="jupyterlab-4-1-to-4-2">
+<h2>JupyterLab 4.1 to 4.2<a class="headerlink" href="#jupyterlab-4-1-to-4-2" title="Link to this heading">#</a></h2>
+<section id="api-updates">
+<h3>API updates<a class="headerlink" href="#api-updates" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">CodeEditor.ICoordinate</span></code> interface was corrected to not include <code class="docutils literal notranslate"><span class="pre">toJSON()</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>,
+<code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code>; these properties were never set by methods returning <code class="docutils literal notranslate"><span class="pre">ICoordinate</span></code>
+and they were never used by methods accepting it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CodeEditor.getCoordinateForPosition</span></code> return type was corrected to clarify that it can return
+<code class="docutils literal notranslate"><span class="pre">null</span></code>; previously <code class="docutils literal notranslate"><span class="pre">null</span></code> could be returned despite the return type indicating it would always
+return a non-null <code class="docutils literal notranslate"><span class="pre">ICoordinate</span></code> value.</p></li>
+<li><p>The commands <code class="docutils literal notranslate"><span class="pre">workspace-ui:save</span></code> and <code class="docutils literal notranslate"><span class="pre">workspace-ui:save-as</span></code> were moved
+from the <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils-extension:workspaces</span></code> plugin to a new dedicated
+<code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/workspaces-extension</span></code> package and can be explicitly required by
+requesting the <code class="docutils literal notranslate"><span class="pre">IWorkspaceCommands</span></code> token. This token is by default provided
+by the new <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/workspaces-extension:commands</span></code> plugin.
+The <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils-extension:workspaces</span></code> plugin now only defines the
+workspace MIME type renderer used to open files with <code class="docutils literal notranslate"><span class="pre">.jupyterlab-workspace</span></code>
+extension as JupyterLab workspaces.</p></li>
+<li><p>The cell toolbar node has been moved from the cell node to the cell input node.
+Therefore the parent of the cell toolbar has changed and can not be used directly to
+retrieve the corresponding cell node anymore.</p></li>
+</ul>
+</section>
+<section id="shortcuts-extension-rework">
+<h3>Shortcuts extension rework<a class="headerlink" href="#shortcuts-extension-rework" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/shortcuts-extension</span></code> package was reworked to fix multiple bugs and increase type safety.
+While this package does not expose any programmatic APIs, and changes to the theming were minimal,
+the major version of the package was increased to 5.0 to reflect the extend of the changes.</p>
+<p>No action is required from extension authors (unless you used non-public components from <cite>/lib</cite>),
+however the authors of applications built on top of JupyterLab components are encouraged to upgrade
+to this new version as it can significantly improve the user experience.</p>
+</section>
+</section>
+<section id="jupyterlab-4-0-to-4-1">
+<h2>JupyterLab 4.0 to 4.1<a class="headerlink" href="#jupyterlab-4-0-to-4-1" title="Link to this heading">#</a></h2>
+<section id="plugin-manager-and-extension-locks">
+<h3>Plugin manager and extension locks<a class="headerlink" href="#plugin-manager-and-extension-locks" title="Link to this heading">#</a></h3>
+<p>Prior to JupyterLab 4.1 there was no mechanisms:
+- for users to disable/enable individual plugins (rather than entire extensions)
+- for administrators to fully block users from enabling/disabling certain extensions</p>
+<p>This version of JupyterLab enables both with the addition of <a class="reference internal" href="../user/extensions.html#plugin-manager"><span class="std std-ref">Plugin Manager</span></a>.</p>
+<p>If your installation had any plugins disabled these will be automatically <a class="reference internal" href="../user/extensions.html#locking-plugins"><span class="std std-ref">locked</span></a>
+on the first startup to ensure that there is no change to user-exposed functionality. The plugin manager
+itself can be disabled and locked using <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code> commands, but we recommend to instead
+lock individual plugins as required.</p>
+<p>If your extension previously included a custom enable/disable setting, you may be able to replace it
+with instructions pointing users to the Plugin Manager. However, please consider whether your extension
+may be used in distributions which do not include Plugin Manager or have it disabled.</p>
+</section>
+<section id="use-of-ui-toolkit-for-toolbar-and-toolbarbuttoncomponent">
+<h3>Use of UI toolkit for Toolbar and ToolbarButtonComponent<a class="headerlink" href="#use-of-ui-toolkit-for-toolbar-and-toolbarbuttoncomponent" title="Link to this heading">#</a></h3>
+<p>The Toolbar and ToolbarButtonComponent (from the package <em>ui-components</em>) now relies on the external library
+<a class="reference external" href="https://github.com/jupyterlab-contrib/jupyter-ui-toolkit">jupyter-ui-toolkit</a>.</p>
+<p>This library uses the web component technology (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">https://developer.mozilla.org/en-US/docs/Web/API/Web_components</a>),
+and is based on <a class="reference external" href="https://www.fast.design/">FAST</a> library by Microsoft.</p>
+<p>See <a class="github reference external" href="https://github.com/jupyterlab/frontends-team-compass/issues/143">jupyterlab/frontends-team-compass#143</a> for more context on the change.</p>
+<ul>
+<li><p>Changes the selectors of the <code class="docutils literal notranslate"><span class="pre">Toolbar</span></code> and <code class="docutils literal notranslate"><span class="pre">ToolbarButtonComponent</span></code>.</p>
+<ul>
+<li><p>The DOM of <code class="docutils literal notranslate"><span class="pre">Toolbar</span></code> is now a <code class="docutils literal notranslate"><span class="pre">jp-toolbar</span></code> component instead of a <code class="docutils literal notranslate"><span class="pre">div</span></code>.</p></li>
+<li><p>The DOM of <code class="docutils literal notranslate"><span class="pre">ToolbarButtonComponent</span></code> is now <code class="docutils literal notranslate"><span class="pre">jp-button</span></code> element instead of a <code class="docutils literal notranslate"><span class="pre">button</span></code>.</p>
+<p>This must be taken into account since the button itself is in the shadow DOM of the <code class="docutils literal notranslate"><span class="pre">jp-button</span></code> component,
+and cannot be accessed as a child of the toolbar component.</p>
+</li>
+<li><p>The icon in the <code class="docutils literal notranslate"><span class="pre">ToolbarButtonComponent</span></code> is a direct child of the <code class="docutils literal notranslate"><span class="pre">jp-button</span></code> component.</p>
+<p>The icon was previously encapsulated in a span with the class <code class="docutils literal notranslate"><span class="pre">.jp-ToolbarButtonComponent-icon</span></code>.
+Accessing that icon to change its properties require now something like <code class="docutils literal notranslate"><span class="pre">jp-button</span> <span class="pre">&gt;</span> <span class="pre">svg</span></code>.</p>
+</li>
+</ul>
+</li>
+<li><p>If you are using jest to test your extension, some new ES6 packages dependencies are added to JupyterLab.</p>
+<p>They need to be ignored when transforming the code with Jest. You will need to update the
+<code class="docutils literal notranslate"><span class="pre">transformIgnorePatterns</span></code> to add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">esModules</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;@microsoft&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;@jupyter/react-components&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;@jupyter/web-components&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;exenv-es6&#39;</span><span class="p">,</span>
+  <span class="o">...</span>
+<span class="p">]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Some CSS rules for <code class="docutils literal notranslate"><span class="pre">button</span></code> with the class <code class="docutils literal notranslate"><span class="pre">.jp-ToolbarButtonComponent</span></code> has been kept for backward compatibility.</p>
+<p>These rules are now <strong>deprecated</strong> and will be removed in Jupyterlab 5.
+The <code class="docutils literal notranslate"><span class="pre">button</span></code> elements in toolbars must be updated to <code class="docutils literal notranslate"><span class="pre">jp-button</span></code>, from
+<a class="reference external" href="https://github.com/jupyterlab-contrib/jupyter-ui-toolkit">jupyter-ui-toolkit</a>.</p>
+</li>
+</ul>
+</section>
+<section id="css-class-name-change-in-the-windowedlist-superclass-of-staticnotebook">
+<h3>CSS class name change in the <code class="docutils literal notranslate"><span class="pre">WindowedList</span></code> superclass of <code class="docutils literal notranslate"><span class="pre">StaticNotebook</span></code><a class="headerlink" href="#css-class-name-change-in-the-windowedlist-superclass-of-staticnotebook" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The class <code class="docutils literal notranslate"><span class="pre">.jp-WindowedPanel-window</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">.jp-WindowedPanel-viewport</span></code>.</p></li>
+<li><p>The notebook scroll container is now <code class="docutils literal notranslate"><span class="pre">.jp-WindowedPanel-outer</span></code> rather than <code class="docutils literal notranslate"><span class="pre">.jp-Notebook</span></code></p></li>
+<li><p>Galata notebook helpers <cite>getCell</cite> and <cite>getCellCount</cite> were updated accordingly</p></li>
+</ul>
+</section>
+<section id="change-of-notebook-focus-handling-impacting-command-mode-shortcut-selectors">
+<h3>Change of notebook focus handling impacting command-mode shortcut selectors<a class="headerlink" href="#change-of-notebook-focus-handling-impacting-command-mode-shortcut-selectors" title="Link to this heading">#</a></h3>
+<p>Previously, focus in the notebook would revert to the notebook HTML node
+when switching to command mode, which was preventing <kbd class="kbd docutils literal notranslate">Tab</kbd> navigation
+between cells, especially impacting users with accessibility needs.
+In JupyterLab 4.1+ the focus stays on the active cell when switching to command
+mode; this requires all shortcut selectors to be adjusted as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.jp-Notebook:focus.jp-mod-commandMode</span></code>, <code class="docutils literal notranslate"><span class="pre">.jp-Notebook:focus</span></code>, and <code class="docutils literal notranslate"><span class="pre">[data-jp-traversable]:focus</span></code> should be replaced with:
+- <code class="docutils literal notranslate"><span class="pre">.jp-Notebook.jp-mod-commandMode</span> <span class="pre">:focus:not(:read-write)</span></code> for JupyterLab 4.1.0+
+- <code class="docutils literal notranslate"><span class="pre">.jp-Notebook.jp-mod-commandMode:not(.jp-mod-readWrite)</span> <span class="pre">:focus</span></code> for JupyterLab 4.1.1+</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-jp-kernel-user]:focus</span></code> should be replaced with:
+- <code class="docutils literal notranslate"><span class="pre">[data-jp-kernel-user]</span> <span class="pre">:focus:not(:read-write)</span></code> for JupyterLab 4.1.0+
+- <code class="docutils literal notranslate"><span class="pre">[data-jp-kernel-user]:not(.jp-mod-readWrite)</span> <span class="pre">:focus:not(:read-write)</span></code> for JupyterLab 4.1.1+</p></li>
+</ul>
+<p>Please note that <code class="docutils literal notranslate"><span class="pre">:not(:read-write)</span></code> fragment disables shortcuts
+when text fields  (such as cell editor) are focused to avoid intercepting
+characters typed by the user into the text fields, however if your shortcut
+does not correspond to any key/typographic character (e.g. most shortcuts
+with <kbd class="kbd docutils literal notranslate">Ctrl</kbd> modifier) you may prefer to drop this fragment
+if you want the shortcut to be active in text fields.</p>
+<p>Further, JupyterLab 4.1.1 introduced indicator class <code class="docutils literal notranslate"><span class="pre">.jp-mod-readWrite</span></code>
+that is applied to the notebook node when the active element accepts
+keyboard input as defined by <code class="docutils literal notranslate"><span class="pre">:read-write</span></code> selector. This indicator
+class is required to detect <code class="docutils literal notranslate"><span class="pre">:read-write</span></code> elements which are nested
+within an <em>open</em> shadow DOM (such as Panel framework widgets).</p>
+<p>If your framework uses a <em>closed</em> shadow DOM, or expects keyboard
+interactions on elements that are not recognised as editable by browser
+heuristics of <code class="docutils literal notranslate"><span class="pre">:read-write</span></code> selector, you need to set a data attribute
+<cite>lm-suppress-shortcuts</cite> on the outer host element to suppress shortcuts.</p>
+<p>To prevent breaking the user experience these changes are made transparently
+in the background, but will emit a warning and extension developers should
+make the change at the source before the next major JupyterLab release.</p>
+</section>
+<section id="visibility-of-statusbar-elements-at-high-magnifications">
+<h3>Visibility of <code class="docutils literal notranslate"><span class="pre">StatusBar</span></code> elements at high magnifications<a class="headerlink" href="#visibility-of-statusbar-elements-at-high-magnifications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Statusbar items are now hidden by default at high magnification/low resolution to prevent overlap for those using the application at high magnifications.</p></li>
+<li><p>An additional <code class="docutils literal notranslate"><span class="pre">priority</span></code> property has been added to the options of <code class="docutils literal notranslate"><span class="pre">IStatusBar.registerStatusItem</span></code> method to allow the status bar item to remain visible;
+the intended usage is for small statusbar items that either add functionality that would be particularly useful at high zoom or is inaccessible otherwise.</p></li>
+</ul>
+</section>
+</section>
+<section id="jupyterlab-3-x-to-4-x">
+<h2>JupyterLab 3.x to 4.x<a class="headerlink" href="#jupyterlab-3-x-to-4-x" title="Link to this heading">#</a></h2>
+<p>Because of significant type changes from JupyterLab 3.x to 4.x, we recommend <strong>publishing a new major version</strong>
+of your extension to work with each major version of JupyterLab. For examples of extensions that use different
+major versions for Lab 3 and Lab 4, see <a class="reference external" href="https://github.com/jupyterlab-contrib/jupyterlab-vim">jupyterlab-vim</a>
+and <a class="reference external" href="https://github.com/jupyterlab/jupyter-ai">jupyter-ai</a>.</p>
+<section id="upgrading-extension-using-the-upgrade-script">
+<h3>Upgrading extension using the upgrade script<a class="headerlink" href="#upgrading-extension-using-the-upgrade-script" title="Link to this heading">#</a></h3>
+<p>JupyterLab 4.x provides a script to upgrade an existing extension to use the new extension system and packaging.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Back up your extension - the best if you use a version control like git, is to work on a new branch.</p>
+</div>
+<p>First, make sure to update to JupyterLab 4 and install <code class="docutils literal notranslate"><span class="pre">copier</span></code> and some dependencies. With <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>jupyterlab<span class="o">[</span>upgrade-extension<span class="o">]</span>
+</pre></div>
+</div>
+<p>Or with <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">jupyterlab</span><span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="s2">&quot;copier=9&quot;</span><span class="w"> </span>jinja2-time
+</pre></div>
+</div>
+<p>Then at the root folder of the extension, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>jupyterlab.upgrade_extension<span class="w"> </span>.
+</pre></div>
+</div>
+<p>The upgrade script creates the necessary files for packaging the JupyterLab extension as a Python package.
+The script will ask you for all files if you want to override them or not. By default the configuration files
+will be overridden for the newer version. In particular, if you were using Python setuptools (aka <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>
+and/or <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>), you will like need to update the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file (see
+<a class="reference external" href="https://peps.python.org/pep-0621/#example">PEP example</a>).</p>
+<p>The upgrade script also updates the dependencies in <code class="docutils literal notranslate"><span class="pre">package.json</span></code> to the <code class="docutils literal notranslate"><span class="pre">^4.0.0</span></code> packages.</p>
+<p>For more details about the new file structure and packaging of the extension, check out the extension tutorial: <a class="reference internal" href="extension_tutorial.html#extension-tutorial"><span class="std std-ref">Extension Tutorial</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will need to modify the code of your extension if it is impacted by the API changes mentioned below.</p>
+</div>
+</section>
+<section id="jlpm">
+<h3>jlpm<a class="headerlink" href="#jlpm" title="Link to this heading">#</a></h3>
+<p>The utility <code class="docutils literal notranslate"><span class="pre">jlpm</span></code> uses Yarn 3 (previously Yarn 1). This will require updating your
+package configuration.</p>
+<ul class="simple">
+<li><p>Create a file <code class="docutils literal notranslate"><span class="pre">.yarnrc.yml</span></code> containing:</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">enableImmutableInstalls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">nodeLinker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-modules</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">yarn</span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">jlpm</span> <span class="pre">install</span></code>
+This will reset your <code class="docutils literal notranslate"><span class="pre">yarn.lock</span></code> content as its format has changed.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find more information on upgrading Yarn from version 1 to version 3 in
+<a class="reference external" href="https://v3.yarnpkg.com/getting-started/migration">Yarn documentation</a>.</p>
+</div>
+<p>If you are hit by multiple versions of the same packages (like <code class="docutils literal notranslate"><span class="pre">&#64;lumino/widgets</span></code>),
+TypeScript may complain that the types are not matching. One possible solution
+is to force packages deduplication using:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jlpm<span class="w"> </span>dlx<span class="w"> </span>yarn-berry-deduplicate
+</pre></div>
+</div>
+</section>
+<section id="api-breaking-changes">
+<h3>API breaking changes<a class="headerlink" href="#api-breaking-changes" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With JupyterLab 4.x, the npm package version policy changed to not bump major version with
+the Python package unless required to ease extension compatibility.</p>
+</div>
+<p>Here is a list of JupyterLab npm packages that encountered API changes and therefore have
+bumped their major version (following semver convention). We want to point out particularly
+<code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/documentsearch</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/toc</span></code> API that have been fully reworked.</p>
+<ul>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/application</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Major version bump to allow alternate <code class="docutils literal notranslate"><span class="pre">ServiceManager</span></code> implementations in <code class="docutils literal notranslate"><span class="pre">JupyterFrontEnd</span></code>.
+Specifically this allows the use of a mock manager.
+This also makes the <code class="docutils literal notranslate"><span class="pre">JupyterLab.IOptions</span></code> more permissive to not require a shell when options are
+given and allow a shell that meets the <code class="docutils literal notranslate"><span class="pre">ILabShell</span></code> interface.
+As a consequence, all other <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/</span></code> packages have their major version bumped too.
+See <a class="github reference external" href="https://github.com/jupyterlab/jupyterlab/pull/11537">jupyterlab/jupyterlab#11537</a> for more details.</p></li>
+<li><p>Rename token <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils:IConnectionLost</span></code> to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/application:IConnectionLost</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">IToolbarWidgetRegistry.registerFactory</span></code> to <code class="docutils literal notranslate"><span class="pre">IToolbarWidgetRegistry.addFactory</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ISanitizer</span></code> and <code class="docutils literal notranslate"><span class="pre">ISanitizer.IOptions</span></code> are deprecated in favor of <code class="docutils literal notranslate"><span class="pre">IRenderMime.ISanitizer</span></code> and
+<code class="docutils literal notranslate"><span class="pre">IRenderMime.ISanitizerOptions</span></code> in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/rendermime-interfaces</span></code>.</p></li>
+<li><p>Global <code class="docutils literal notranslate"><span class="pre">sessionContextDialogs</span></code> is removed; you should request the token <code class="docutils literal notranslate"><span class="pre">ISessionContextDialogs</span></code> (from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/attachments</span></code> from 3.x to 4.x</dt><dd><p>Removed <code class="docutils literal notranslate"><span class="pre">modelDB</span></code> from <code class="docutils literal notranslate"><span class="pre">IAttachmentsModel.IOptions</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/buildutils</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">create-theme</span></code> script has been removed. If you want to create a new theme extension, you
+should use the <a class="reference external" href="https://github.com/jupyterlab/extension-template">TypeScript extension template</a>
+(choosing <code class="docutils literal notranslate"><span class="pre">theme</span></code> as <code class="docutils literal notranslate"><span class="pre">kind</span></code> ) instead.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">add-sibling</span></code> script has been removed. Check out <a class="reference internal" href="extension_dev.html#source-dev-workflow"><span class="std std-ref">Development workflow for source extensions</span></a> instead.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">exitOnUuncaughtException</span></code> util function has been renamed to <code class="docutils literal notranslate"><span class="pre">exitOnUncaughtException</span></code> (typo fix).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/cells</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MarkdownCell.toggleCollapsedSignal</span></code> renamed <code class="docutils literal notranslate"><span class="pre">MarkdownCell.headingCollapsedChanged</span></code>
+To support notebook windowing, cell widget children (e.g. the editor or the output area) are not instantiated
+when the cell is attached to the notebook. You can test for <code class="docutils literal notranslate"><span class="pre">isPlaceholder()</span></code> to see if the cell has been
+fully instantiated or wait for the promise <code class="docutils literal notranslate"><span class="pre">ready</span></code> to be resolved. Additionally an attribute <code class="docutils literal notranslate"><span class="pre">inViewport</span></code>
+and a signal <code class="docutils literal notranslate"><span class="pre">inViewportChanged</span></code> are available to test if the cell is attached to the DOM.
+If you instantiate standalone cells outside of a notebook, you will probably need to set the constructor option
+<code class="docutils literal notranslate"><span class="pre">placeholder</span></code> to <code class="docutils literal notranslate"><span class="pre">false</span></code> to ensure direct rendering of the cell.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InputArea.defaultContentFactory</span></code> and <code class="docutils literal notranslate"><span class="pre">Cell.defaultContentFactory</span></code> have been removed. If you need it, you
+can request the token <code class="docutils literal notranslate"><span class="pre">IEditorServices</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codeeditor</span></code>. Then you can use
+<code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">Cell.ContentFactory({</span> <span class="pre">editorFactory:</span> <span class="pre">token.factoryService.newInlineEditor</span> <span class="pre">});</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/celltags</span></code> from 3.x to 4.0
+The <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/celltags</span></code> package has been removed and replaced by a widget in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/celltags-extension</span></code>.
+This widget is now rendered using <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/metadataform</span></code>.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codeeditor</span></code> from 3.x to 4.0</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CodeEditor.IEditor</span></code> has changed:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">resizeToFit()</span></code> is removed</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">addKeydownHandler()</span></code> is removed - you should add a CodeMirror extension <code class="docutils literal notranslate"><span class="pre">EditorView.domEventHandlers</span></code> with</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Prec.high</span></code> (to ensure it is not captured by keyboard shortcuts).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">injectExtension()</span></code> added as experimental to inject a CodeMirror extension - you should prefer registering</dt><dd><p>new extensions with <code class="docutils literal notranslate"><span class="pre">IEditorExtensionRegistry</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CodeEditor.IOptions</span></code> has two new optional attributes:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">extensions?:</span> <span class="pre">Extensions[]</span></code> to provide custom extensions at editor instantiation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inline?:</span> <span class="pre">boolean</span></code> whether the editor is a subpart of a document (like the notebook) or not.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CodeEditorWrapper.IOptions</span></code> has changed to <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">factory,</span> <span class="pre">model,</span> <span class="pre">editorOptions</span> <span class="pre">}</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CodeViewerWidget.IOptions</span></code> has changed to <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">factory,</span> <span class="pre">model,</span> <span class="pre">editorOptions</span> <span class="pre">}</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror</span></code> from 3.x to 4.0</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Configuration parameters changes:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fontFamily</span></code>, <code class="docutils literal notranslate"><span class="pre">fontSize</span></code> and <code class="docutils literal notranslate"><span class="pre">lineHeight</span></code>: grouped in a subdictionnary <code class="docutils literal notranslate"><span class="pre">customStyles</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertSpaces</span></code>: changed for <code class="docutils literal notranslate"><span class="pre">indentUnit</span></code> that can take a value within [‘Tab’, ‘1’, ‘2’, ‘4’, ‘8’]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lineWrap</span></code>: changed - it is now a boolean.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">showTrailingSpace</span></code>: renamed <code class="docutils literal notranslate"><span class="pre">highlightTrailingWhitespace</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coverGutterNextToScrollbar</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">electricChars</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extraKeys</span></code>: removed - you should register new keymap using the CodeMirror extension <code class="docutils literal notranslate"><span class="pre">keymap.of(KeyBinding[])</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">handlePaste</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keymap</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lineSeparator</span></code>: removed - Line separator are normalized to <code class="docutils literal notranslate"><span class="pre">\n</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lineWiseCopyCut</span></code>: removed - this is the default behavior</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scrollbarStyle</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">styleSelectedText</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selectionPointer</span></code>: removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wordWrapColumn</span></code>: removed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Mode</span></code> has been removed. You can instead request the token <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler</span></code>. That provides
+similar API:
+- <code class="docutils literal notranslate"><span class="pre">Mode.registerModeInfo</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.addLanguage</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.ensure()</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.getLanguage()</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.modeList</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.getLanguages()</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.run()</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.highlight()</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.findBest()</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.findBest()</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.findByName()</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.findByName()</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.findByMIME()</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.findByMIME()</span></code>
+- <code class="docutils literal notranslate"><span class="pre">Mode.findByExtension()</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler.findByExtension()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EditorSyntaxStatus</span></code> moved to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/fileeditor</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror-extension</span></code> from 3.x to 4.0</dt><dd><ul class="simple">
+<li><p>Moved commands:
+- <code class="docutils literal notranslate"><span class="pre">codemirror:change-theme</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">fileeditor:change-theme</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">&#64;juptyerlab/fileeditor-extension</span></code>)
+- <code class="docutils literal notranslate"><span class="pre">codemirror:change-mode</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">fileeditor:change-language</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">&#64;juptyerlab/fileeditor-extension</span></code>)
+- <code class="docutils literal notranslate"><span class="pre">codemirror:find</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">fileeditor:find</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">&#64;juptyerlab/fileeditor-extension</span></code>)
+- <code class="docutils literal notranslate"><span class="pre">codemirror:go-to-line</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">fileeditor:go-to-line</span></code> (moved to <code class="docutils literal notranslate"><span class="pre">&#64;juptyerlab/fileeditor-extension</span></code>)</p></li>
+<li><p>Removed command: <code class="docutils literal notranslate"><span class="pre">codemirror:change-keymap</span></code></p></li>
+<li><p>Moved plugins:
+- <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror-extension:commands</span></code> integrated within <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/fileeditor-extension:plugin</span></code>
+- <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror-extension:editor-syntax-status</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/fileeditor-extension:editor-syntax-status</span></code>
+- <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror-extension:editor-syntax-status</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/fileeditor-extension:editor-syntax-status</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/completer</span></code> from 3.x to 4.x</dt><dd><p>Major version was bumped following major refactor aimed at performance improvements and enabling easier third-party integration.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Adding custom completion suggestions (items):</dt><dd><ul>
+<li><p>In 3.x and earlier adding custom completion items required re-registering the completer connector for each file/cell
+using <code class="docutils literal notranslate"><span class="pre">register</span></code> method of old manager provided by <code class="docutils literal notranslate"><span class="pre">ICompletionManager</span></code> token; in 4.x this token and associated
+<code class="docutils literal notranslate"><span class="pre">ICompletableAttributes</span></code> interface was removed and a proper method of registering a custom source of completions
+(a provider of completions) was added. To create a completer provider  for JupyterLab, users need to implement the
+<code class="docutils literal notranslate"><span class="pre">ICompletionProvider</span></code> interface and then register this provider with <code class="docutils literal notranslate"><span class="pre">ICompletionProviderManager</span></code> token.</p></li>
+<li><p>In 3.x merging completions from different sources had to be performed by creating a connector internally merging
+results from other connectors. in 4.x <code class="docutils literal notranslate"><span class="pre">IProviderReconciliator</span></code> is used to merge completions from multiple providers,
+and can be customised in constructor for custom completion handlers (<code class="docutils literal notranslate"><span class="pre">CompletionHandler</span></code>); customizing reconciliator
+in JupyterLab-managed completers is not yet possible.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Rendering with <code class="docutils literal notranslate"><span class="pre">Completer.IRenderer</span></code>:</dt><dd><ul>
+<li><p>In 3.x it was not possible to easily swap the renderer of JupyterLab-managed completers.
+In 4.x the renderer from the completion provider with highest rank is now used for all
+JupyterLab-managed completers. This behaviour is subject to revision in the future (please leave feedback).</p></li>
+<li><p>Completer box is now using delayed rendering for off-screen content to improve time to first paint
+for top suggestions. To position the completer without rendering all items we search for the widest
+item using heuristic which can be adjusted in custom renderers (<code class="docutils literal notranslate"><span class="pre">itemWidthHeuristic</span></code>).</p></li>
+<li><p>The documentation panel now implements a loading indicator (a progress bar) customizable via
+optional <code class="docutils literal notranslate"><span class="pre">createLoadingDocsIndicator</span></code> renderer method.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">createItemNode</span></code> was removed in favour of <code class="docutils literal notranslate"><span class="pre">createCompletionItemNode</span></code> which is now required.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">createCompletionItemNode</span></code> is no longer responsible for sanitization of labels which is now a
+responsibility of the model (see below).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Model:</dt><dd><ul>
+<li><p>In 3.x it was not possible to easily swap the model of JupyterLab-managed completers.
+In 4.x the model factory from the completion provider with highest rank is now used for
+JupyterLab-managed completers. This behaviour is subject to revision in the future (please leave feedback).</p></li>
+<li><p>Old methods for updating and accessing the completion items: <code class="docutils literal notranslate"><span class="pre">setOptions</span></code>, <code class="docutils literal notranslate"><span class="pre">options</span></code>, and <code class="docutils literal notranslate"><span class="pre">items</span></code> were removed
+in favour of <code class="docutils literal notranslate"><span class="pre">completionItems</span></code> and <code class="docutils literal notranslate"><span class="pre">setCompletionItems</span></code> which are now required members of <code class="docutils literal notranslate"><span class="pre">Completer.IModel</span></code>.</p></li>
+<li><p>New signal <code class="docutils literal notranslate"><span class="pre">queryChanged</span></code> was added and has to be emitted by models.</p></li>
+<li><p>Model is now responsible for sanitization of labels and preserving original label on <code class="docutils literal notranslate"><span class="pre">insertText</span></code> attribute
+(if not already defined); this change was required to properly handle escaping of HTML tags.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codeeditor</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">ISelectionStyle</span></code> (and therefore <code class="docutils literal notranslate"><span class="pre">defaultSelectionStyle</span></code> and <code class="docutils literal notranslate"><span class="pre">IEditor.selectionStyle</span></code>). This was envisaged
+for real-time collaboration. But this is not used in the final implementation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/console</span></code> from 3.x to 4.x</dt><dd><p>The type of <code class="docutils literal notranslate"><span class="pre">IConsoleHistory.sessionContext</span></code> has been updated to <code class="docutils literal notranslate"><span class="pre">ISessionContext</span> <span class="pre">|</span> <span class="pre">null</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ISessionContext</span></code>.
+This might break the compilation of plugins accessing the <code class="docutils literal notranslate"><span class="pre">sessionContext</span></code> from a <code class="docutils literal notranslate"><span class="pre">ConsoleHistory</span></code>,
+in particular those with the strict null checks enabled.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/coreutils</span></code> from 3.x to 4.x</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">Time</span></code> namespace does not use the <code class="docutils literal notranslate"><span class="pre">moment</span></code> library anymore for managing dates. Instead it switched to using
+the <code class="docutils literal notranslate"><span class="pre">Intl</span></code> API now available in modern web browsers. The <code class="docutils literal notranslate"><span class="pre">Time.format</span></code> function is still available but does not accept the
+<code class="docutils literal notranslate"><span class="pre">timeFormat</span></code> argument anymore.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/debugger</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>The command <code class="docutils literal notranslate"><span class="pre">debugger:pause</span></code> command ID has been renamed <code class="docutils literal notranslate"><span class="pre">debugger:pause-on-exceptions</span></code> to avoid ambiguity with
+pausing the current running thread.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/docmanager</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">renameDialog</span></code> now receives the <code class="docutils literal notranslate"><span class="pre">DocumentRegistry.Context</span></code> instead of a path.</p></li>
+<li><p>The interface <code class="docutils literal notranslate"><span class="pre">DocumentManager.IWidgetOpener</span></code> is now <code class="docutils literal notranslate"><span class="pre">IDocumentWidgetOpener</span></code> and is provided
+by a new plugin <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/docmanager-extension:opener</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">IDocumentWidgetOpener</span></code> interface also now defines an <code class="docutils literal notranslate"><span class="pre">`opened`</span></code> signal that is emitted when a widget is opened.</p></li>
+<li><p>Removed the property <code class="docutils literal notranslate"><span class="pre">docProviderFactory</span></code> from the interface <code class="docutils literal notranslate"><span class="pre">DocumentManager.IOptions</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/docregister</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TextModelFactory.preferredLanguage(path:</span> <span class="pre">string)</span></code> will always return <code class="docutils literal notranslate"><span class="pre">''</span></code>. The editor languages is not available globally to provided it.
+You can recover the feature if needed, by requesting the token <code class="docutils literal notranslate"><span class="pre">IEditorLanguageHandler</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror</span></code>. Then you can use
+<code class="docutils literal notranslate"><span class="pre">token.findByFileName(widget.context.path)?.name</span> <span class="pre">??</span> <span class="pre">''</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/docprovider</span></code> from 3.x to 4.x</dt><dd><p>This package is no longer present in JupyterLab. For documentation related to Real-Time Collaboration, please check out
+<a class="reference external" href="../user/rtc.html">RTC’s documentation</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/docregistry</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Removed the property <code class="docutils literal notranslate"><span class="pre">docProviderFactory</span></code> from the interface <code class="docutils literal notranslate"><span class="pre">Context.IOptions</span></code>.</p></li>
+<li><p>The constructor of the class <code class="docutils literal notranslate"><span class="pre">DocumentModel</span></code> receives a parameter <code class="docutils literal notranslate"><span class="pre">DocumentModel.IOptions</span></code>.</p></li>
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">IModelFactory.createNew</span></code> receives a parameter <code class="docutils literal notranslate"><span class="pre">DocumentRegistry.IModelOptions</span></code>.</p></li>
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">TextModelFactory.createNew</span></code> receives a parameter <code class="docutils literal notranslate"><span class="pre">DocumentModel.IOptions</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/documentsearch</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/documentsearch:plugin</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/documentsearch-extension:plugin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/documentsearch:labShellWidgetListener</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/documentsearch-extension:labShellWidgetListener</span></code></p></li>
+</ul>
+<p>This may impact application configuration (for instance if the plugin was disabled).
+The search provider API has been fully reworked. But the logic is similar, for new type of documents
+you will need to register a <code class="docutils literal notranslate"><span class="pre">ISearchProviderFactory</span></code> to the <code class="docutils literal notranslate"><span class="pre">ISearchProviderRegistry</span></code>. The
+factory will build a <code class="docutils literal notranslate"><span class="pre">ISearchProvider</span></code> for the document widget.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/extensionmanager</span></code> from 3.x to 4.x</dt><dd><p>The frontend API has been drastically reduced to fetch all information from the backend. It is now advised
+that you implement a custom <code class="docutils literal notranslate"><span class="pre">ExtensionManager</span></code> class for your needs rather than overriding the frontend plugins.
+See <code class="docutils literal notranslate"><span class="pre">jupyterlab/extensions/pypi.py</span></code> for an example using PyPI.org and pip. You can then register your manager
+by defining an entry point in the Python package; see <code class="docutils literal notranslate"><span class="pre">pyproject.toml::project.entry-points.&quot;jupyterlab.extension_manager_v1&quot;</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/fileeditor</span></code> from 3.x to 4.x</dt><dd><p>Remove the class <code class="docutils literal notranslate"><span class="pre">FileEditorCodeWrapper</span></code>, instead, you can use <code class="docutils literal notranslate"><span class="pre">CodeEditorWrapper</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codeeditor</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/filebrowser</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Remove the property <code class="docutils literal notranslate"><span class="pre">defaultBrowser</span></code> from the interface  <code class="docutils literal notranslate"><span class="pre">IFileBrowserFactory</span></code>. The default browser is now provided by it own
+plugin by requiring the token <code class="docutils literal notranslate"><span class="pre">IDefaultFileBrowser</span></code>.</p></li>
+<li><p>Remove the <code class="docutils literal notranslate"><span class="pre">useFuzzyFilter</span></code> setter from the <code class="docutils literal notranslate"><span class="pre">FileBrowser</span></code> class.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/filebrowser-extension</span></code> from 3.x to 4.x</dt><dd><p>Remove command <code class="docutils literal notranslate"><span class="pre">filebrowser:create-main-launcher</span></code>. You can replace by <code class="docutils literal notranslate"><span class="pre">launcher:create</span></code> (same behavior)
+All launcher creation actions are moved to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/launcher-extension</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/imageviewer-extension</span></code> from 3.x to 4.x</dt><dd><p>Removed <code class="docutils literal notranslate"><span class="pre">addCommands</span></code> from public API</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/mainmenu</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">IMainMenu.addMenu</span></code> signature changed from <code class="docutils literal notranslate"><span class="pre">addMenu(menu:</span> <span class="pre">Menu,</span> <span class="pre">options?:</span> <span class="pre">IMainMenu.IAddOptions):</span> <span class="pre">void</span></code>
+to <code class="docutils literal notranslate"><span class="pre">addMenu(menu:</span> <span class="pre">Menu,</span> <span class="pre">update?:</span> <span class="pre">boolean,</span> <span class="pre">options?:</span> <span class="pre">IMainMenu.IAddOptions):</span> <span class="pre">void</span></code></p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">createEditMenu</span></code>, <code class="docutils literal notranslate"><span class="pre">createFileMenu</span></code>, <code class="docutils literal notranslate"><span class="pre">createKernelMenu</span></code>, <code class="docutils literal notranslate"><span class="pre">createViewMenu</span></code>, <code class="docutils literal notranslate"><span class="pre">createRunMenu</span></code>,
+<code class="docutils literal notranslate"><span class="pre">createTabsMenu</span></code>, <code class="docutils literal notranslate"><span class="pre">createHelpMenu</span></code> from public API.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/notebook</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NotebookWidgetFactory.IOptions</span></code> has no <code class="docutils literal notranslate"><span class="pre">sessionDialogs</span></code> option any more.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">NotebookPanel._onSave</span></code> method is now <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NotebookActions.collapseAll</span></code> method renamed to <code class="docutils literal notranslate"><span class="pre">NotebookActions.collapseAllHeadings</span></code>.</p></li>
+<li><p>Command <code class="docutils literal notranslate"><span class="pre">Collapsible_Headings:Toggle_Collapse</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">notebook:toggle-heading-collapse</span></code>.</p></li>
+<li><p>Command <code class="docutils literal notranslate"><span class="pre">Collapsible_Headings:Collapse_All</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">notebook:collapse-all-headings</span></code>.</p></li>
+<li><p>Command <code class="docutils literal notranslate"><span class="pre">Collapsible_Headings:Expand_All</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">notebook:expand-all-headings</span></code>.</p></li>
+<li><p>To support windowing, a new method <code class="docutils literal notranslate"><span class="pre">scrollToItem(index,</span> <span class="pre">behavior)</span></code> is available to scroll to any
+cell that may or may not be in the DOM. And new <code class="docutils literal notranslate"><span class="pre">cellInViewportChanged</span></code> signal is available to listen
+for cells entering or leaving the viewport (in windowing mode). And <code class="docutils literal notranslate"><span class="pre">scrollToCell(cell)</span></code> is now returning
+a <code class="docutils literal notranslate"><span class="pre">Promise&lt;void&gt;</span></code> calling internally <code class="docutils literal notranslate"><span class="pre">scrollToItem</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fullyRendered</span></code>, <code class="docutils literal notranslate"><span class="pre">placeholderCellRendered</span></code> and <code class="docutils literal notranslate"><span class="pre">remainingCellToRenderCount</span></code> have been removed.
+The defer rendering mode still exists. It will render some cells during spare CPU Idle time.</p></li>
+<li><p>Settings <code class="docutils literal notranslate"><span class="pre">numberCellsToRenderDirectly</span></code>, <code class="docutils literal notranslate"><span class="pre">remainingTimeBeforeRescheduling</span></code>, <code class="docutils literal notranslate"><span class="pre">renderCellOnIdle</span></code>,
+<code class="docutils literal notranslate"><span class="pre">observedTopMargin</span></code> and <code class="docutils literal notranslate"><span class="pre">observedBottomMargin</span></code> have been removed. Instead a <code class="docutils literal notranslate"><span class="pre">windowingMode</span></code>
+with value of <em>defer</em>, <em>full</em> or <em>none</em> and <code class="docutils literal notranslate"><span class="pre">overscanCount</span></code> have been added to manage the rendering
+mode.</p></li>
+<li><p>Added the property <code class="docutils literal notranslate"><span class="pre">sharedModel</span></code> to the interface <code class="docutils literal notranslate"><span class="pre">NotebookModel.IOptions</span></code>.</p></li>
+<li><p>The method <code class="docutils literal notranslate"><span class="pre">NotebookModelFactory.createNew</span></code> receives a parameter <code class="docutils literal notranslate"><span class="pre">NotebookModelFactory.IModelOptions</span></code>.</p></li>
+<li><p>The default Notebook toolbar’s <code class="docutils literal notranslate"><span class="pre">restart-and-run</span></code> button now refers to the command
+<code class="docutils literal notranslate"><span class="pre">notebook:restart-run-all</span></code> instead of <code class="docutils literal notranslate"><span class="pre">runmenu:restart-and-run-all</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StaticNotebook.defaultContentFactory</span></code> has been removed. If you need it, you can request the token
+<code class="docutils literal notranslate"><span class="pre">IEditorServices</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codeeditor</span></code>. You can obtain it by requested
+<code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">NotebookPanel.ContentFactory({</span> <span class="pre">editorFactory:</span> <span class="pre">token.factoryService.newInlineEditor</span> <span class="pre">});</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">notebooktools</span></code> module does not provides anymore the <code class="docutils literal notranslate"><span class="pre">ActiveCellTool</span></code>, the <code class="docutils literal notranslate"><span class="pre">NotebookMetadataEditorTool</span></code>
+and the <code class="docutils literal notranslate"><span class="pre">CellMetadataEditorTool</span></code>. All these widget are replaced by widgets in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/notebook-extension</span></code>,
+and are rendered using <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/metadataform</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">KeySelector</span></code> has also been removed as not used anymore, replaced by the use of <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/metadataform</span></code>
+to provides selection for metadata keys.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/rendermime</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>The markdown parser has been extracted to its own plugin <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/markedparser-extension:plugin</span></code>
+that provides a new token <code class="docutils literal notranslate"><span class="pre">IMarkdownParser</span></code> (defined in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/rendermime</span></code>).
+Consequently the <code class="docutils literal notranslate"><span class="pre">IRendererFactory.createRenderer</span></code> has a new option <code class="docutils literal notranslate"><span class="pre">markdownParser</span></code>.</p></li>
+<li><p>[Not breaking] <code class="docutils literal notranslate"><span class="pre">IRenderMime.IExtension</span></code> has a new optional <code class="docutils literal notranslate"><span class="pre">description:</span> <span class="pre">string</span></code> attribute for documentation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/rendermime-interfaces</span></code> from 3.x to 4.x
+Remove <code class="docutils literal notranslate"><span class="pre">IRenderMime.IRenderer.translator?</span></code> attribute; the translator object is still passed to
+the constructor if needed by the renderer factory.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/services</span></code> from 6.x to 7.x</dt><dd><ul class="simple">
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">Contents.IDrive.modelDBFactory</span></code> and <code class="docutils literal notranslate"><span class="pre">Contents.IManager.getModelDBFactory</span></code>.</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Contents.IDrive.sharedModelFactory</span></code> and <code class="docutils literal notranslate"><span class="pre">Contents.IManager.getsharedModelFactory</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/shared-models</span></code> from 3.x to 4.x</dt><dd><p>This package is no longer present in JupyterLab. For documentation related to the shared models,
+please check out <a class="reference external" href="https://jupyter-ydoc.readthedocs.io/en/latest">&#64;jupyter/ydoc documentation</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statusbar</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Setting <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statusbar-extension:plugin</span> <span class="pre">.</span> <span class="pre">startMode</span></code> moved to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/application-extension:shell</span> <span class="pre">.</span> <span class="pre">startMode</span></code></p></li>
+<li><p>Plugin <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statusbar-extension:mode-switch</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/application-extension:mode-switch</span></code></p></li>
+<li><p>Plugin <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statusbar-extension:kernel-status</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils-extension:kernel-status</span></code></p></li>
+<li><p>Plugin <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statusbar-extension:running-sessions-status</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils-extension:running-sessions-status</span></code></p></li>
+<li><p>Plugin <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statusbar-extension:line-col-status</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/codemirror-extension:line-col-status</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HoverBox</span></code> component moved from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/apputils</span></code> to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code>.</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">STATUSBAR_PLUGIN_ID</span></code> from public API.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/terminal</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Xterm.js upgraded from 4.x to 5.x</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IThemeObject.selection</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">selectionBackground</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/terminal-extension</span></code> from 3.x to 4.x</dt><dd><p>Removed <code class="docutils literal notranslate"><span class="pre">addCommands</span></code> from public API</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/toc</span></code> from 3.x to 4.x</dt><dd><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/toc:plugin</span></code> renamed <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/toc-extension:registry</span></code>
+This may impact application configuration (for instance if the plugin was disabled).
+The namespace <code class="docutils literal notranslate"><span class="pre">TableOfContentsRegistry</span></code> has been renamed <code class="docutils literal notranslate"><span class="pre">TableOfContents</span></code>.
+The API has been fully reworked. The new table of content providers must implement a factory
+<code class="docutils literal notranslate"><span class="pre">TableOfContents.IFactory</span></code> that will create a model <code class="docutils literal notranslate"><span class="pre">TableOfContents.IModel&lt;TableOfContents.IHeading&gt;</span></code>
+for supported widget. The model provides a list of headings described by a <code class="docutils literal notranslate"><span class="pre">text</span></code> and
+a <code class="docutils literal notranslate"><span class="pre">level</span></code> and optionally a <code class="docutils literal notranslate"><span class="pre">prefix</span></code>, a <code class="docutils literal notranslate"><span class="pre">collapsed</span></code> state and a <code class="docutils literal notranslate"><span class="pre">dataset</span></code> (data
+DOM attributes dictionary).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Major version bumped following removal of Blueprint JS dependency. Extensions using proxied
+components like <code class="docutils literal notranslate"><span class="pre">Checkbox</span></code>, <code class="docutils literal notranslate"><span class="pre">Select</span></code> or <code class="docutils literal notranslate"><span class="pre">Intent</span></code> will need to import them explicitly
+from Blueprint JS library. Extensions using <code class="docutils literal notranslate"><span class="pre">Button</span></code>, <code class="docutils literal notranslate"><span class="pre">Collapse</span></code> or <code class="docutils literal notranslate"><span class="pre">InputGroup</span></code> may
+need to switch to the Blueprint components as the interfaces of those components in JupyterLab
+do not match those of Blueprint JS.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">Collapse</span></code> React component.</p></li>
+<li><dl class="simple">
+<dt>Form component registry changes:</dt><dd><ul>
+<li><p>Rename the plugin <code class="docutils literal notranslate"><span class="pre">'&#64;jupyterlab/ui-components-extension:form-component-registry'</span></code> to <code class="docutils literal notranslate"><span class="pre">'&#64;jupyterlab/ui-components-extension:form-renderer-registry'</span></code></p></li>
+<li><p>Rename the <code class="docutils literal notranslate"><span class="pre">IFormComponentRegistry</span></code> token to <code class="docutils literal notranslate"><span class="pre">IFormRendererRegistry</span></code>, from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components:ISettingEditorRegistry</span></code>
+to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components:IFormRendererRegistry</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">FormRendererRegistry</span></code> registers <code class="docutils literal notranslate"><span class="pre">IFormRenderer</span></code> instead of <code class="docutils literal notranslate"><span class="pre">Field</span></code> renderers.
+A <code class="docutils literal notranslate"><span class="pre">IFormRenderer</span></code> defines a <code class="docutils literal notranslate"><span class="pre">fieldRenderer</span></code> (this is the renderer to set for backward compatibility)
+or a <code class="docutils literal notranslate"><span class="pre">widgetRenderer</span></code>.
+The renderer id must follow the convention <code class="docutils literal notranslate"><span class="pre">&lt;ISettingRegistry.IPlugin.id&gt;.&lt;propertyName&gt;</span></code>. This is to
+ensure a custom renderer is not used for property with the same name but different schema.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/translation</span></code> from 3.x to 4.x
+Renamed the method <code class="docutils literal notranslate"><span class="pre">locale</span></code> into the property <code class="docutils literal notranslate"><span class="pre">languageCode</span></code> in the <code class="docutils literal notranslate"><span class="pre">NullTranslator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/vdom</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/vdom-extension</span></code> have been removed.
+The underlying <a class="reference external" href="https://github.com/nteract/vdom">vdom</a> Python package is unmaintained.
+So it was decided to drop it from core packages.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">jupyter.extensions.hub-extension</span></code> from 3.x to 4.x</dt><dd><ul class="simple">
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">jupyter.extensions.hub-extension</span></code> to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/hub-extension:plugin</span></code>.</p></li>
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">jupyter.extensions.hub-extension:plugin</span></code> to <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/hub-extension:menu</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>TypeScript 5.0 update
+As a result of the update to TypeScript 5.0, a couple of interfaces have had their definitions changed.
+The <code class="docutils literal notranslate"><span class="pre">anchor</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">HoverBox.IOptions</span></code> is now a <code class="docutils literal notranslate"><span class="pre">DOMRect</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ClientRect</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">CodeEditor.ICoordinate</span></code> interface now extends <code class="docutils literal notranslate"><span class="pre">DOMRectReadOnly</span></code> instead of <code class="docutils literal notranslate"><span class="pre">JSONObject,</span> <span class="pre">ClientRect</span></code>.</p></li>
+<li><p>React 18.2.0 update
+The update to React 18.2.0 (from 17.0.1) should be propagated to extensions as well.
+Here is the documentation about the <a class="reference external" href="https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html">migration to react 18</a>.</p></li>
+</ul>
+</section>
+<section id="testing-with-jest">
+<h3>Testing with Jest<a class="headerlink" href="#testing-with-jest" title="Link to this heading">#</a></h3>
+<p>Jest has been updated to 29.2.0 (and <em>ts-jest</em> to 29.0.0). And therefore the jest configuration provided by
+<code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/testutils</span></code> is compatible for that version. In particular:</p>
+<ul class="simple">
+<li><p>The unmaintained reporter <code class="docutils literal notranslate"><span class="pre">jest-summary-reporter</span></code> has been replaced by the new default <code class="docutils literal notranslate"><span class="pre">github-actions</span></code> reporter.</p></li>
+<li><p>The helper <code class="docutils literal notranslate"><span class="pre">flakyIt</span></code> has been removed. You can use the new <a class="reference external" href="https://jestjs.io/docs/jest-object#jestretrytimesnumretries-options">jest.retryTimes</a> instead.</p></li>
+</ul>
+<p>With JupyterLab 4, we fixed circular dependencies due to the <code class="docutils literal notranslate"><span class="pre">testutils</span></code> package. So it is now only a facade to export
+helpers from various core packages. The exported helpers are the same as before expect for:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NBTestUtils.DEFAULT_CONTENT</span></code>: Removed - you could imported from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/notebook/lib/testutils</span></code> but we strongly advice not to and to use your own test data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NBTestUtils.DEFAULT_CONTENT_45</span></code>: Removed</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Testing with Galata<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>The in-page helpers are now in an JupyterLab extension to live in the common Webpack shared scoped. That new extension
+is contained in the JupyterLab python package at <code class="docutils literal notranslate"><span class="pre">jupyterlab.galata</span></code>. It requires to update your Jupyter server
+configuration by adding the following line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">jupyterlab</span>
+<span class="n">c</span><span class="o">.</span><span class="n">LabApp</span><span class="o">.</span><span class="n">extra_labextensions_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">jupyterlab</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;galata&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To ease configuration, we have introduce a new helper function <code class="docutils literal notranslate"><span class="pre">jupyterlab.galata.configure_jupyter_server</span></code>. So you can
+simplify the server configuration to be <code class="docutils literal notranslate"><span class="pre">jupyterlab.galata.configure_jupyter_server(c)</span></code>.</p>
+</div>
+<dl class="simple">
+<dt>Here are the changes in the Javascript package <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/galata</span></code> from 4.x to 5.x:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ContentsHelper</span></code> and <code class="docutils literal notranslate"><span class="pre">galata.newContentsHelper</span></code> have new constructor arguments to use Playwright API request object:
+<code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">ContentsHelper(baseURL,</span> <span class="pre">page?,</span> <span class="pre">request?)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">ContentsHelper(request?,</span> <span class="pre">page?)</span></code>
+<code class="docutils literal notranslate"><span class="pre">galata.newContentsHelper(baseURL,</span> <span class="pre">page?,</span> <span class="pre">request?)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">galata.newContentsHelper(request?,</span> <span class="pre">page?)</span></code>
+you need to provide <code class="docutils literal notranslate"><span class="pre">request</span></code> or <code class="docutils literal notranslate"><span class="pre">page</span></code>; they both are fixtures provided by Playwright.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">galata.Mock.clearRunners(baseURL,</span> <span class="pre">runners,</span> <span class="pre">type)</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">galata.Mock.clearRunners(request,</span> <span class="pre">runners,</span> <span class="pre">type)</span></code></p></li>
+<li><p>In-pages helpers are now in an extension define in <code class="docutils literal notranslate"><span class="pre">jupyterlab/galata/extension</span></code> and
+store in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/galata/lib/extension</span></code>. And the global object has been renamed <code class="docutils literal notranslate"><span class="pre">window.galata</span></code> instead
+of <code class="docutils literal notranslate"><span class="pre">window.galataip</span></code> (it still exists but it is deprecated).</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="deprecated-code-removed">
+<h3>Deprecated code removed<a class="headerlink" href="#deprecated-code-removed" title="Link to this heading">#</a></h3>
+<p>The following deprecated API’s have been removed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/csvviewer</span></code>: <code class="docutils literal notranslate"><span class="pre">CSVDelimiter.delimiterChanged</span></code> has been removed - dead code. You can directly access the delimiter from the <code class="docutils literal notranslate"><span class="pre">CSVViewer</span></code> widget.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/mainmenu</span></code>: <code class="docutils literal notranslate"><span class="pre">IJupyterLabMenu</span></code> and <code class="docutils literal notranslate"><span class="pre">JupyterLabMenu</span></code> have been removed. You can use directly <code class="docutils literal notranslate"><span class="pre">IRankedMenu</span></code> and <code class="docutils literal notranslate"><span class="pre">RankedMenu</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/notebook</span></code>: <code class="docutils literal notranslate"><span class="pre">NotebookWidgetFactory</span></code> default toolbar is now empty as the button helpers are deprecated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/rendermime</span></code>: <code class="docutils literal notranslate"><span class="pre">RenderMimeRegistry.IUrlResolverOptions</span></code> does not accept <code class="docutils literal notranslate"><span class="pre">session</span></code>; you must set the <code class="docutils literal notranslate"><span class="pre">path</span></code> (accessible through <code class="docutils literal notranslate"><span class="pre">session.path</span></code>).</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">RankedMenu.menu</span> <span class="pre">:</span> <span class="pre">Menu</span></code> has been removed as <code class="docutils literal notranslate"><span class="pre">RankedMenu</span></code> inherits from <code class="docutils literal notranslate"><span class="pre">Menu</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LabIconStyle.IProps</span></code> does not accept <code class="docutils literal notranslate"><span class="pre">kind</span></code> nor <code class="docutils literal notranslate"><span class="pre">justify</span></code>. You should use <code class="docutils literal notranslate"><span class="pre">stylesheet</span></code> or <code class="docutils literal notranslate"><span class="pre">elementPosition</span></code> respectively.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="extension-development-changes">
+<h3>Extension Development Changes<a class="headerlink" href="#extension-development-changes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">externalExtensions</span></code> field in the <code class="docutils literal notranslate"><span class="pre">dev_mode/package.json</span></code> file corresponding to the <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/application-top</span></code>
+<code class="docutils literal notranslate"><span class="pre">private</span></code> package has now been removed in <code class="docutils literal notranslate"><span class="pre">4.0</span></code>. If you were using this field to develop source extensions against
+a development build of JupyterLab, you should instead switch to the federated extensions system (via the <code class="docutils literal notranslate"><span class="pre">--extensions-in-dev-mode</span></code> flag)
+or to using the <code class="docutils literal notranslate"><span class="pre">--splice-source</span></code> option. See <a class="reference internal" href="extension_dev.html#prebuilt-dev-workflow"><span class="std std-ref">Developing a prebuilt extension</span></a> and <a class="reference internal" href="extension_dev.html#source-dev-workflow"><span class="std std-ref">Development workflow for source extensions</span></a> for more information.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">webpack</span></code> dependency in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/builder</span></code> has been updated to <code class="docutils literal notranslate"><span class="pre">5.72</span></code> (or newer). Base rules have been updated to use the
+<a class="reference external" href="https://webpack.js.org/guides/asset-modules">Asset Modules</a> instead of the previous <code class="docutils literal notranslate"><span class="pre">file-loader</span></code>, <code class="docutils literal notranslate"><span class="pre">raw-loader</span></code> and <code class="docutils literal notranslate"><span class="pre">url-loader</span></code>.
+This might affect third-party extensions if they were relying on specific behaviors from these loaders.</p></li>
+<li><p>In JupyterLab 3.x, the CSS for a _disabled_ prebuilt extensions would still be loaded on the page.
+This is no longer the case in JupyterLab 4.0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">window.jupyterlab</span></code> is not exposed anymore when starting JupyterLab with the <code class="docutils literal notranslate"><span class="pre">--expose-app-in-browser</span></code> flag.
+Use <code class="docutils literal notranslate"><span class="pre">window.jupyterapp</span></code> instead.</p></li>
+</ul>
+</section>
+</section>
+<section id="jupyterlab-3-5-to-3-6">
+<span id="extension-migration-3-5-3-6"></span><h2>JupyterLab 3.5 to 3.6<a class="headerlink" href="#jupyterlab-3-5-to-3-6" title="Link to this heading">#</a></h2>
+<section id="asynciterable-support">
+<h3>AsyncIterable Support<a class="headerlink" href="#asynciterable-support" title="Link to this heading">#</a></h3>
+<p>For the events service, we are using a JavaScript feature introduced in ES2018. If your code is
+using TypeScript with ES2017 target (as JupyterLab 3.6), you will either need to update your
+target to ES2018 or add <code class="docutils literal notranslate"><span class="pre">&quot;ES2018&quot;</span></code> to the <a class="reference external" href="https://www.typescriptlang.org/tsconfig#lib">TypeScript lib option</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>JupyterLab 3.6.0 was released with an updated target “ES2018”. We strongly advise updating to 3.6.1,
+which reverts the target back to “ES2017”.</p>
+</div>
+</section>
+<section id="jest-configuration-update">
+<h3>Jest configuration update<a class="headerlink" href="#jest-configuration-update" title="Link to this heading">#</a></h3>
+<p>If you are using jest to test your extension, some new ES6 packages dependencies are added to JupyterLab 3.6.
+They need to be ignore when transforming the code with Jest. You will need to update the
+<code class="docutils literal notranslate"><span class="pre">transformIgnorePatterns</span></code> to match:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">esModules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s1">&#39;@jupyterlab/&#39;</span><span class="p">,</span>
+<span class="hll"><span class="w">  </span><span class="s1">&#39;@jupyter/ydoc&#39;</span><span class="p">,</span>
+</span><span class="w">  </span><span class="s1">&#39;lib0&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;y\\-protocols&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;y\\-websocket&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;yjs&#39;</span>
+<span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+
+<span class="nx">transformIgnorePatterns</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="sb">`/node_modules/(?!</span><span class="si">${</span><span class="nx">esModules</span><span class="si">}</span><span class="sb">).+`</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For more information, have a look at <a class="reference internal" href="extension_dev.html#testing-with-jest"><span class="std std-ref">Testing your extension</span></a>.</p>
+</section>
+<section id="real-time-collaboration">
+<h3>Real-Time Collaboration<a class="headerlink" href="#real-time-collaboration" title="Link to this heading">#</a></h3>
+<p>In JupyterLab v3.6, it is necessary to install Jupyter Server v2.0 to use real-time collaboration.
+This requirement was introduced to take advantage of the new identity API in Jupyter Server v2.0.</p>
+<p>On the other side, we also changed how JupyterLab loads documents (only in collaborative mode).
+Instead of using the content API, now the provider opens a WebSocket connection to the
+<cite>YDocWebSocketHandler</cite>, which is implemented in an external
+<a class="reference external" href="https://github.com/jupyter-server/jupyter_server_ydoc">jupyter server extension</a>.</p>
+<p>In addition, the shared models’ package was moved to an external package called <a class="reference external" href="https://github.com/jupyter-server/jupyter_ydoc">&#64;jupyter/ydoc</a>. All the extensions that depend on
+<code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/shared-models</span></code> will need to update to depend in <code class="docutils literal notranslate"><span class="pre">&#64;jupyter/ydoc&#64;~0.2.2</span></code>; the API should
+be the same.</p>
+<p><strong>API Changes:</strong>
+To be able to fix RTC and make it stable. It was necessary to change the API and make a few breaking changes.
+These changes should not affect the vast majority of extensions. They will only affect a couple
+of extensions focused on RTC.</p>
+<p>It was necessary to change the paradigm of how JupyterLab loads documents and replace the locking mechanism
+in the back-end. Instead of identifying the first client to open the document, it now centralizes
+the process by instantiating a YDoc client in the back-end. This client is the only one that loads
+the content of the document into memory and shares it with every other client connected.</p>
+<p>The involved packages are:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/docprovider</span></code>:</dt><dd><ul>
+<li><p>The interface <code class="docutils literal notranslate"><span class="pre">IDocumentProvider</span></code>, now extends from <code class="docutils literal notranslate"><span class="pre">IDisposable</span></code>.
+Removed: <code class="docutils literal notranslate"><span class="pre">acquireLock</span></code>, <code class="docutils literal notranslate"><span class="pre">releaseLock</span></code>, <code class="docutils literal notranslate"><span class="pre">setPath</span></code>, <code class="docutils literal notranslate"><span class="pre">destroy</span></code>, <code class="docutils literal notranslate"><span class="pre">requestInitialContent</span></code> and <code class="docutils literal notranslate"><span class="pre">putInitializedState</span></code>.
+Added: <code class="docutils literal notranslate"><span class="pre">ready</span></code> and <code class="docutils literal notranslate"><span class="pre">isDisposed</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IDocumentProviderFactory.IOptions</span></code> is now templated with <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">extends</span> <span class="pre">ISharedDocument</span> <span class="pre">=</span> <span class="pre">ISharedDocument</span></code>.
+And the <code class="docutils literal notranslate"><span class="pre">ymodel</span></code> attribute has been renamed <code class="docutils literal notranslate"><span class="pre">model</span></code> typed <code class="docutils literal notranslate"><span class="pre">T</span></code> (relaxing typing from <code class="docutils literal notranslate"><span class="pre">YDocument</span></code> to <code class="docutils literal notranslate"><span class="pre">ISharedDocument</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WebSocketProviderWithLocks</span></code> has been renamed to <code class="docutils literal notranslate"><span class="pre">WebSocketProvider</span></code>.
+It does not extend <code class="docutils literal notranslate"><span class="pre">WebSocketProvider</span></code> from <code class="docutils literal notranslate"><span class="pre">y-websocket</span></code> anymore.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WebSocketProvider.IOptions</span></code> has a new optional attribute, <code class="docutils literal notranslate"><span class="pre">user</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/services</span></code>:</dt><dd><ul>
+<li><p>The interface <code class="docutils literal notranslate"><span class="pre">IManager</span></code> has a new optional property, <code class="docutils literal notranslate"><span class="pre">user</span></code> that implement <a class="reference external" href="../api/interfaces/services.User.IManager.html">User.IManager</a>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ServiceManager</span></code> class implements the optional property <code class="docutils literal notranslate"><span class="pre">user</span></code> from the <code class="docutils literal notranslate"><span class="pre">IManager</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="jupyterlab-3-0-to-3-1">
+<span id="extension-migration-3-0-3-1"></span><h2>JupyterLab 3.0 to 3.1<a class="headerlink" href="#jupyterlab-3-0-to-3-1" title="Link to this heading">#</a></h2>
+<section id="new-main-and-context-menus-customization">
+<h3>New main and context menus customization<a class="headerlink" href="#new-main-and-context-menus-customization" title="Link to this heading">#</a></h3>
+<p>JupyterLab 3.1 introduces a new way to hook commands into <a class="reference internal" href="extension_points.html#mainmenu"><span class="std std-ref">Main Menu</span></a> and <a class="reference internal" href="extension_points.html#context-menu"><span class="std std-ref">Context Menu</span></a>.
+It allows the final user to customize those menus through settings as it is already possible for
+the shortcuts.
+Using the API is not recommended any longer except to create dynamic menus.</p>
+</section>
+<section id="id3">
+<h3>Jest configuration update<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>If you are using jest to test your extension, some new ES6 packages dependencies are added to JupyterLab.
+They need to be ignore when transforming the code with Jest. You will need to update the
+<code class="docutils literal notranslate"><span class="pre">transformIgnorePatterns</span></code> to match:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>const esModules = [
+  &#39;@jupyterlab/&#39;,
+  &#39;lib0&#39;,
+  &#39;y\\-protocols&#39;,
+  &#39;y\\-websocket&#39;,
+  &#39;yjs&#39;
+].join(&#39;|&#39;);
+
+// ...
+
+transformIgnorePatterns: [`/node_modules/(?!${esModules}).+`]
+</pre></div>
+</div>
+<p>For more information, have a look at <a class="reference internal" href="extension_dev.html#testing-with-jest"><span class="std std-ref">Testing your extension</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is an example of pull request to update to JupyterLab 3.1 in <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/git</span></code> extension:
+<a class="github reference external" href="https://github.com/jupyterlab/jupyterlab-git/pull/979/files">jupyterlab/jupyterlab-git#files</a></p>
+</div>
+</section>
+</section>
+<section id="jupyterlab-2-x-to-3-x">
+<span id="extension-migration-2-3"></span><h2>JupyterLab 2.x to 3.x<a class="headerlink" href="#jupyterlab-2-x-to-3-x" title="Link to this heading">#</a></h2>
+<p>Here are some helpful tips for migrating an extension from JupyterLab 2.x to JupyterLab 3.x.</p>
+<section id="upgrading-library-versions-manually">
+<h3>Upgrading library versions manually<a class="headerlink" href="#upgrading-library-versions-manually" title="Link to this heading">#</a></h3>
+<p>To update the extensions so it is compatible with the 3.0 release, update the compatibility
+range of the <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab</span></code> dependencies in the <code class="docutils literal notranslate"><span class="pre">package.json</span></code>. The diff should be similar to:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gh">index 6f1562f..3fcdf37 100644</span>
+^^^ a/package.json
+<span class="gi">+++ b/package.json</span>
+<span class="w"> </span>  &quot;dependencies&quot;: {
+<span class="gd">-    &quot;@jupyterlab/application&quot;: &quot;^2.0.0&quot;,</span>
+<span class="gi">+    &quot;@jupyterlab/application&quot;: &quot;^3.0.0&quot;,</span>
+</pre></div>
+</div>
+</section>
+<section id="upgrading-library-versions-using-the-upgrade-script">
+<h3>Upgrading library versions using the upgrade script<a class="headerlink" href="#upgrading-library-versions-using-the-upgrade-script" title="Link to this heading">#</a></h3>
+<p>JupyterLab 3.0 provides a script to upgrade an existing extension to use the new extension system and packaging.</p>
+<p>First, make sure to update to JupyterLab 3.0 and install <code class="docutils literal notranslate"><span class="pre">jupyter-packaging</span></code> and <code class="docutils literal notranslate"><span class="pre">cookiecutter</span></code>. With <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab<span class="w"> </span>-U
+pip<span class="w"> </span>install<span class="w"> </span>jupyter-packaging<span class="w"> </span>cookiecutter
+</pre></div>
+</div>
+<p>Or with <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span><span class="nv">jupyterlab</span><span class="o">=</span><span class="m">3</span><span class="w"> </span>jupyter-packaging<span class="w"> </span>cookiecutter
+</pre></div>
+</div>
+<p>Then at the root folder of the extension, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>jupyterlab.upgrade_extension<span class="w"> </span>.
+</pre></div>
+</div>
+<p>The upgrade script creates the necessary files for packaging the JupyterLab extension as a Python package, such as
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
+<p>The upgrade script also updates the dependencies in <code class="docutils literal notranslate"><span class="pre">package.json</span></code> to the <code class="docutils literal notranslate"><span class="pre">^3.0.0</span></code> packages. Here is an example diff:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gh">index 6f1562f..3fcdf37 100644</span>
+^^^ a/package.json
+<span class="gi">+++ b/package.json</span>
+<span class="gu">@@ -29,9 +29,13 @@</span>
+<span class="w"> </span>  &quot;scripts&quot;: {
+<span class="gd">-    &quot;build&quot;: &quot;tsc&quot;,</span>
+<span class="gd">-    &quot;build:labextension&quot;: &quot;npm run clean:labextension &amp;&amp; mkdirp myextension/labextension &amp;&amp; cd myextension/labextension &amp;&amp; npm pack ../..&quot;,</span>
+<span class="gd">-    &quot;clean&quot;: &quot;rimraf lib tsconfig.tsbuildinfo&quot;,</span>
+<span class="gi">+    &quot;build&quot;: &quot;jlpm run build:lib &amp;&amp; jlpm run build:labextension:dev&quot;,</span>
+<span class="gi">+    &quot;build:prod&quot;: &quot;jlpm run build:lib &amp;&amp; jlpm run build:labextension&quot;,</span>
+<span class="gi">+    &quot;build:lib&quot;: &quot;tsc&quot;,</span>
+<span class="gi">+    &quot;build:labextension&quot;: &quot;jupyter labextension build .&quot;,</span>
+<span class="gi">+    &quot;build:labextension:dev&quot;: &quot;jupyter labextension build --development True .&quot;,</span>
+<span class="gi">+    &quot;clean&quot;: &quot;rimraf lib tsconfig.tsbuildinfo myextension/labextension&quot;,</span>
+<span class="gi">+    &quot;clean:all&quot;: &quot;jlpm run clean:lib &amp;&amp; jlpm run clean:labextension&quot;,</span>
+<span class="w"> </span>  &quot;clean:labextension&quot;: &quot;rimraf myextension/labextension&quot;,
+<span class="w"> </span>  &quot;eslint&quot;: &quot;eslint . --ext .ts,.tsx --fix&quot;,
+<span class="w"> </span>  &quot;eslint:check&quot;: &quot;eslint . --ext .ts,.tsx&quot;,
+<span class="gu">@@ -59,12 +63,12 @@</span>
+<span class="w"> </span>  ]
+<span class="w"> </span>  },
+<span class="w"> </span>  &quot;dependencies&quot;: {
+<span class="gd">-    &quot;@jupyterlab/application&quot;: &quot;^2.0.0&quot;,</span>
+<span class="gd">-    &quot;@jupyterlab/apputils&quot;: &quot;^2.0.0&quot;,</span>
+<span class="gd">-    &quot;@jupyterlab/observables&quot;: &quot;^3.0.0&quot;,</span>
+<span class="gi">+    &quot;@jupyterlab/builder&quot;: &quot;^3.0.0&quot;,</span>
+<span class="gi">+    &quot;@jupyterlab/application&quot;: &quot;^3.0.0&quot;,</span>
+<span class="gi">+    &quot;@jupyterlab/apputils&quot;: &quot;^3.0.0&quot;,</span>
+<span class="gi">+    &quot;@jupyterlab/observables&quot;: &quot;^3.0.0&quot;,</span>
+<span class="w"> </span>  &quot;@lumino/algorithm&quot;: &quot;^1.2.3&quot;,
+<span class="w"> </span>  &quot;@lumino/commands&quot;: &quot;^1.10.1&quot;,
+<span class="w"> </span>  &quot;@lumino/disposable&quot;: &quot;^1.3.5&quot;,
+<span class="gu">@@ -99,6 +103,13 @@</span>
+<span class="gd">-    &quot;typescript&quot;: &quot;~3.8.3&quot;</span>
+<span class="gi">+    &quot;typescript&quot;: &quot;~4.0.1&quot;</span>
+<span class="w"> </span>  },
+<span class="w"> </span>  &quot;jupyterlab&quot;: {
+<span class="gd">-    &quot;extension&quot;: &quot;lib/plugin&quot;</span>
+<span class="gi">+    &quot;extension&quot;: &quot;lib/plugin&quot;,</span>
+<span class="gi">+    &quot;outputDir&quot;: &quot;myextension/labextension/&quot;</span>
+<span class="w"> </span>  }
+}
+</pre></div>
+</div>
+<p>On the diff above, we see that additional development scripts are also added, as they are used by the new extension system workflow.</p>
+<p>The diff also shows the new <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/builder</span></code> as a <code class="docutils literal notranslate"><span class="pre">devDependency</span></code>.
+<code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/builder</span></code> is a package required to build the extension as a federated (prebuilt) extension.
+It hides away internal dependencies such as <code class="docutils literal notranslate"><span class="pre">webpack</span></code>, and produces the assets that can then be distributed as part of a Python package.</p>
+<p>Extension developers do not need to interact with <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/builder</span></code> directly, but instead can use the
+<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span> <span class="pre">build</span></code> command. This command is run automatically as part of the <code class="docutils literal notranslate"><span class="pre">build</span></code> script
+(<code class="docutils literal notranslate"><span class="pre">jlpm</span> <span class="pre">run</span> <span class="pre">build</span></code>).</p>
+<p>For more details about the new file structure and packaging of the extension, check out the extension tutorial: <a class="reference internal" href="extension_tutorial.html#extension-tutorial"><span class="std std-ref">Extension Tutorial</span></a></p>
+</section>
+<section id="publishing-the-extension-to-pypi-and-conda-forge">
+<h3>Publishing the extension to PyPI and conda-forge<a class="headerlink" href="#publishing-the-extension-to-pypi-and-conda-forge" title="Link to this heading">#</a></h3>
+<p>Starting from JupyterLab 3.0, extensions can be distributed as a Python package.</p>
+<p>The extension tutorial provides explanations to package the extension so it can be
+published on PyPI and conda forge: <a class="reference internal" href="extension_tutorial.html#extension-tutorial-publish"><span class="std std-ref">Publishing your extension</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While publishing to PyPI is the new recommended way for distributing extensions to users,
+it is still useful to continue publishing extensions to <code class="docutils literal notranslate"><span class="pre">npm</span></code> as well,
+so other developers can extend them in their own extensions.</p>
+</div>
+</section>
+</section>
+<section id="jupyterlab-1-x-to-2-x">
+<span id="extension-migration-1-2"></span><h2>JupyterLab 1.x to 2.x<a class="headerlink" href="#jupyterlab-1-x-to-2-x" title="Link to this heading">#</a></h2>
+<p>Here are some helpful tips for migrating an extension from JupyterLab 1.x to
+JupyterLab 2.x. We will look at two examples of extensions that cover most of
+the APIs that extension authors might be using:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/debugger</span></code> migration pull request:
+<a class="github reference external" href="https://github.com/jupyterlab/debugger/pull/337/files">jupyterlab/debugger#files</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/shortcutui</span></code> migration pull request:
+<a class="github reference external" href="https://github.com/jupyterlab/jupyterlab-shortcutui/pull/53/files">jupyterlab/jupyterlab-shortcutui#files</a></p></li>
+</ul>
+<section id="upgrading-library-versions">
+<h3>Upgrading library versions<a class="headerlink" href="#upgrading-library-versions" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;phosphor/*</span></code> libraries that JupyterLab 1.x uses have been renamed to
+<code class="docutils literal notranslate"><span class="pre">&#64;lumino/*</span></code>. Updating your <code class="docutils literal notranslate"><span class="pre">package.json</span></code> is straightforward. The easiest
+way to do this is to look in the
+<a class="reference external" href="https://github.com/jupyterlab/jupyterlab/tree/4.3.x/packages">JupyterLab core packages code base</a>
+and to simply adopt the versions of the relevant libraries that are used
+there.</p>
+<figure class="align-center" id="id4">
+<img alt="Updating the debugger extension's libraries in package.json" class="jp-screenshot" src="../_images/extension_migration_dependencies_debugger.png" />
+<figcaption>
+<p><span class="caption-text">Updating the debugger extension’s libraries in <code class="docutils literal notranslate"><span class="pre">package.json</span></code></span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<img alt="Updating the shortcuts UI extension's libraries in package.json" class="jp-screenshot" src="../_images/extension_migration_dependencies_shortcuts.png" />
+<figcaption>
+<p><span class="caption-text">Updating the shortcuts UI extension’s libraries in <code class="docutils literal notranslate"><span class="pre">package.json</span></code></span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In these examples, note that we are using the <code class="docutils literal notranslate"><span class="pre">2.0.0-beta.x</span></code> version of
+many libraries. This was to test the extensions against the JupyterLab 2.0
+beta release before the final version. For the final release, your
+<code class="docutils literal notranslate"><span class="pre">package.json</span></code> should depend on version <code class="docutils literal notranslate"><span class="pre">^2.0.0</span></code> of these packages.</p>
+</div>
+<p>Migrating from <code class="docutils literal notranslate"><span class="pre">&#64;phosphor</span></code> to <code class="docutils literal notranslate"><span class="pre">&#64;lumino</span></code>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-</p>
+<p>The foundational packages used by JupyterLab are now all prefixed with the NPM
+namespace <code class="docutils literal notranslate"><span class="pre">&#64;lumino</span></code> instead of <code class="docutils literal notranslate"><span class="pre">&#64;phosphor</span></code>. The APIs for these packages
+have not changed. The <code class="docutils literal notranslate"><span class="pre">&#64;phosphor</span></code> namespaced imports need to be updated to
+the new <code class="docutils literal notranslate"><span class="pre">&#64;lumino</span></code> namespaced packages:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id6">
+<caption><span class="caption-text">Update from <code class="docutils literal notranslate"><span class="pre">&#64;phosphor/...</span></code> to <code class="docutils literal notranslate"><span class="pre">&#64;lumino/...</span></code></span><a class="headerlink" href="#id6" title="Link to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/application</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/application</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/collections</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/collections</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/commands</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/commands</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/coreutils</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/coreutils</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/datagrid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/datagrid</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/datastore</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/datastore</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/default-theme</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/default-theme</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/disposable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/disposable</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/domutils</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/domutils</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/dragdrop</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/dragdrop</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/keyboard</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/keyboard</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/messaging</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/messaging</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/properties</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/properties</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/signaling</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/signaling</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/virtualdom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/virtualdom</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;phosphor/widgets</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/widgets</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">p-</span></code> prefixed CSS classes, <code class="docutils literal notranslate"><span class="pre">data-p-</span></code> attributes and <code class="docutils literal notranslate"><span class="pre">p-</span></code> DOM events
+are deprecated. They will continue to work until the next major release of
+Lumino.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.p-</span></code> CSS classes such as <code class="docutils literal notranslate"><span class="pre">.p-Widget</span></code> should be updated to <code class="docutils literal notranslate"><span class="pre">.lm-</span></code>,
+e.g. <code class="docutils literal notranslate"><span class="pre">.lm-Widget</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data-p-</span></code> attributes such as <code class="docutils literal notranslate"><span class="pre">data-p-dragscroll</span></code> should be updated to
+<code class="docutils literal notranslate"><span class="pre">data-lm-</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">data-lm-dragscroll</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p-</span></code> DOM events such as <code class="docutils literal notranslate"><span class="pre">p-dragenter</span></code> should be updated to <code class="docutils literal notranslate"><span class="pre">lm-</span></code>,
+e.g. <code class="docutils literal notranslate"><span class="pre">lm-dragenter</span></code></p></li>
+</ul>
+</div>
+<p>Updating former <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/coreutils</span></code> imports
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-</p>
+<p>JupyterLab 2.0 introduces several new packages with classes and tokens that
+have been moved out of <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/coreutils</span></code> into their own packages. These
+exports have been moved.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It might be helpful to delete <code class="docutils literal notranslate"><span class="pre">node_modules</span></code> and <code class="docutils literal notranslate"><span class="pre">yarn.lock</span></code> when
+updating these libraries.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Export</p></th>
+<th class="head"><p>Package</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DataConnector</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Debouncer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/polling</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DefaultSchemaValidator</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/settingregistry</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IDataConnector</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IObjectPool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IPoll</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/polling</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IRateLimiter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/polling</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IRestorable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IRestorer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ISchemaValidator</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/settingregistry</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ISettingRegistry</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/settingregistry</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IStateDB</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nbformat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/nbformat</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Poll</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/polling</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RateLimiter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/polling</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RestorablePool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SettingRegistry</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/settingregistry</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Settings</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/settingregistry</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">StateDB</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/statedb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Throttler</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;lumino/polling</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="using-session-and-sessioncontext-to-manage-kernel-sessions">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">Session</span></code> and <code class="docutils literal notranslate"><span class="pre">SessionContext</span></code> to manage kernel sessions<a class="headerlink" href="#using-session-and-sessioncontext-to-manage-kernel-sessions" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For full API documentation and examples of how to use
+<code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/services</span></code>,
+<a class="reference external" href="https://github.com/jupyterlab/jupyterlab/tree/4.3.x/packages/services#readme">consult the repository</a>.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ConsolePanel</span></code> and <code class="docutils literal notranslate"><span class="pre">NotebookPanel</span></code> now expose a
+<code class="docutils literal notranslate"><span class="pre">sessionContext:</span> <span class="pre">ISessionContext</span></code> attribute that allows for a uniform way to
+interact with kernel sessions.</p>
+<p>Any widget that matches the <code class="docutils literal notranslate"><span class="pre">interface</span> <span class="pre">IDocumentWidget</span></code> has a
+<code class="docutils literal notranslate"><span class="pre">context:</span> <span class="pre">DocumentRegistry.IContext</span></code> attribute with a
+<code class="docutils literal notranslate"><span class="pre">sessionContext:</span> <span class="pre">ISessionContext</span></code> attribute.</p>
+<p>For example, consider how the <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/debugger</span></code> extension’s
+<code class="docutils literal notranslate"><span class="pre">DebuggerService</span></code> updated its <code class="docutils literal notranslate"><span class="pre">isAvailable()</span></code> method.</p>
+<figure class="align-center" id="id7">
+<img alt="Updating the isAvailable method of the debugger service" class="jp-screenshot" src="../_images/extension_migration_session.png" />
+<figcaption>
+<p><span class="caption-text">From the <a class="reference external" href="https://github.com/jupyterlab/debugger/pull/337/files#diff-22ccf3ebb0cb6b300ee90a38b88edff8">PR migrating the debugger extension to JupyterLab 2.0</a></span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">kernel.ready</span></code> is no longer necessary before the kernel connection
+<code class="docutils literal notranslate"><span class="pre">kernel</span></code> can be used. Kernel messages will be buffered as needed while a
+kernel connection is coming online, so you should be able to use a kernel
+connection immediately. If you want to retrieve the kernel info (or if for
+some other reason you want to wait until at least one message has returned
+from a new kernel connection), you can do <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">kernel.info</span></code>.</p>
+</div>
+</section>
+<section id="using-the-new-icon-system-and-labicon">
+<h3>Using the new icon system and <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code><a class="headerlink" href="#using-the-new-icon-system-and-labicon" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For full API documentation and examples of how to use
+the new icon support based on <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code>,
+<a class="reference external" href="https://github.com/jupyterlab/jupyterlab/tree/4.3.x/packages/ui-components#readme">consult the repository</a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="extension_multiple_ui.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Targeting Multiple Applications</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../developer/contributing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contribute</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-4-2-to-4-3">JupyterLab 4.2 to 4.3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#css-styling">CSS styling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-galata">Testing with Galata</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-model">Shared model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-4-1-to-4-2">JupyterLab 4.1 to 4.2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-updates">API updates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shortcuts-extension-rework">Shortcuts extension rework</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-4-0-to-4-1">JupyterLab 4.0 to 4.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plugin-manager-and-extension-locks">Plugin manager and extension locks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-ui-toolkit-for-toolbar-and-toolbarbuttoncomponent">Use of UI toolkit for Toolbar and ToolbarButtonComponent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#css-class-name-change-in-the-windowedlist-superclass-of-staticnotebook">CSS class name change in the <code class="docutils literal notranslate"><span class="pre">WindowedList</span></code> superclass of <code class="docutils literal notranslate"><span class="pre">StaticNotebook</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-notebook-focus-handling-impacting-command-mode-shortcut-selectors">Change of notebook focus handling impacting command-mode shortcut selectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visibility-of-statusbar-elements-at-high-magnifications">Visibility of <code class="docutils literal notranslate"><span class="pre">StatusBar</span></code> elements at high magnifications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-3-x-to-4-x">JupyterLab 3.x to 4.x</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrading-extension-using-the-upgrade-script">Upgrading extension using the upgrade script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jlpm">jlpm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-breaking-changes">API breaking changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-jest">Testing with Jest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Testing with Galata</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-code-removed">Deprecated code removed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-development-changes">Extension Development Changes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-3-5-to-3-6">JupyterLab 3.5 to 3.6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asynciterable-support">AsyncIterable Support</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jest-configuration-update">Jest configuration update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-time-collaboration">Real-Time Collaboration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-3-0-to-3-1">JupyterLab 3.0 to 3.1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-main-and-context-menus-customization">New main and context menus customization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Jest configuration update</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-2-x-to-3-x">JupyterLab 2.x to 3.x</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrading-library-versions-manually">Upgrading library versions manually</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrading-library-versions-using-the-upgrade-script">Upgrading library versions using the upgrade script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#publishing-the-extension-to-pypi-and-conda-forge">Publishing the extension to PyPI and conda-forge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-1-x-to-2-x">JupyterLab 1.x to 2.x</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#upgrading-library-versions">Upgrading library versions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-session-and-sessioncontext-to-manage-kernel-sessions">Using <code class="docutils literal notranslate"><span class="pre">Session</span></code> and <code class="docutils literal notranslate"><span class="pre">SessionContext</span></code> to manage kernel sessions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-new-icon-system-and-labicon">Using the new icon system and <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/extension/extension_migration.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/extension/extension_migration.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/extension_migration.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:28 GMT -->
+</html>

@@ -1,0 +1,9 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.readthedocs.io	TRUE	/	FALSE	1999999999	_cfuvid	uKc2jgH9OUaFG9bwXXMwHmeKVg21a3eyMPQIagY346A-1740716182066-0.0.1.1-604800000
+jupyterlab.readthedocs.io	TRUE	/	FALSE	1999999999	SameSite	None
+github.com	TRUE	/	FALSE	1999999999	_gh_sess	5ZaSmOOZvnGAXaGH4CbRv8oBhIRYLny%2FuV41120FKqIvl%2BJhn3I5iSv2enbkeM2jZVXVLwNAAcKkJuR4U76kx104uJlKnmeF%2F9YcScU2gwNgx2WRRr2i2Brb7dR36MTLQKzsT%2FZVQzLQn7XBlrvH%2FATA%2BC%2FbFHGEoSxxNJ20ts51cr7cJNQajqiO7TIZhCfyBwZ95jDhefhyGQawyaaFUmDPOAQ%2BdXUxG0Nr87vqGPT0ga5PiBjNljF8I58EBRFVtKamLpaGFtFGyoaCoZkNCw%3D%3D--57YYvOlGOsvi7H%2Bz--snF64QQiRGRy6ByEhAvImA%3D%3D
+github.com	TRUE	/	FALSE	1999999999	_octo	GH1.1.791345367.1740716228
+github.com	TRUE	/	FALSE	1999999999	logged_in	no
+github.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+

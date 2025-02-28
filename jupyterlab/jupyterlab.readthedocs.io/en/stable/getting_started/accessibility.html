@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/getting_started/accessibility.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>JupyterLab Accessibility Statement &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started/accessibility';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Version lifecycle" href="lifecycle.html" />
+    <link rel="prev" title="JupyterLab Changelog" href="changelog.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/getting_started/accessibility.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starting.html">Starting JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issue.html">Reporting an issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">JupyterLab Changelog</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">JupyterLab Accessibility Statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Version lifecycle</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="overview.html" class="nav-link">Get Started</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">JupyterLab Accessibility Statement</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="jupyterlab-accessibility-statement">
+<span id="accessibility"></span><h1>JupyterLab Accessibility Statement<a class="headerlink" href="#jupyterlab-accessibility-statement" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This statement was last updated on the 22nd of July 2024.</p>
+</div>
+<section id="jupyter-notebook-versus-jupyterlab">
+<h2>Jupyter Notebook versus JupyterLab<a class="headerlink" href="#jupyter-notebook-versus-jupyterlab" title="Link to this heading">#</a></h2>
+<p>For accessibility purposes, it is recommended to use <cite>Jupyter Notebook
+&lt;https://jupyter-notebook.readthedocs.io/en/stable/&gt;</cite> over JupyterLab.</p>
+<p>A comparison of the two apps will help to explain this recommendation. Jupyter
+Notebook and JupyterLab are both web apps for authoring computational notebooks.
+But Jupyter Notebook has a document-centric user interface whereas JupyterLab
+provides multiple panels and tabs designed to work with several notebooks and
+extensions in the same interface. Jupyter Notebook is more like Google Docs, in
+which each document opens in a separate browser tab. JupyterLab is more like VS
+Code for the Web, in which the app provides its own, in-app tabs so that
+multiple documents can be opened without having to open more browser tabs.
+Because Jupyter Notebook has a simplified UI, it poses fewer accessibility
+challenges than JupyterLab (in particular, it’s easier to zoom in). But because
+it shares the same codebase, it also benefits from all of the accessibility work
+done in JupyterLab. This is why Jupyter Notebook is recommended over JupyterLab.</p>
+</section>
+<section id="jupyter-audits">
+<h2>Jupyter audits<a class="headerlink" href="#jupyter-audits" title="Link to this heading">#</a></h2>
+<p>This section includes audits from different stakeholders on Jupyter products.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Quansight-Labs/jupyterlab-accessible-themes/issues/34">JupyterLab v3.4.5 400% Zoom Audit</a> - conducted in 2022</p></li>
+<li><p><a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/9399">JupyterLab v2.2.6 WCAG 2.1</a> - conducted in 2020</p></li>
+<li><p><a class="reference external" href="https://github.com/jupyter/accessibility/issues/7">Jupyter Notebook WCAG 2.0</a> - conducted in 2019</p></li>
+</ul>
+<p>Many of the issues identified in these audits can be tracked in issues with the <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues?q=is%3Aopen+is%3Aissue+label%3Atag%3AAccessibility">tag:Accessibility</a> label.</p>
+</section>
+<section id="accessibility-statement-for-jupyterlab">
+<h2>Accessibility Statement for JupyterLab<a class="headerlink" href="#accessibility-statement-for-jupyterlab" title="Link to this heading">#</a></h2>
+<p>Edited from the <a class="reference external" href="https://www.w3.org/WAI/planning/statements/generator/#create">W3C accessibility statement generator</a></p>
+<p>This is an accessibility statement for JupyterLab from Jupyter accessibility contributors.</p>
+<section id="the-current-state-of-jupyterlab">
+<h3>The current state of JupyterLab<a class="headerlink" href="#the-current-state-of-jupyterlab" title="Link to this heading">#</a></h3>
+<p>Jupyter accessibility statements are living documents. This statement was first created for JupyterLab 3.4.4 on 16 May 2022 using the <a class="reference external" href="https://www.w3.org/WAI/planning/statements/">W3C Accessibility Statement Generator Tool</a> with additions and edits from the Jupyter accessibility contributors community.</p>
+<section id="conformance-status">
+<h4>Conformance status<a class="headerlink" href="#conformance-status" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://www.w3.org/WAI/standards-guidelines/wcag">Web Content Accessibility Guidelines (WCAG)</a> defines requirements for designers and developers to improve accessibility for people with disabilities. It defines three levels of conformance: Level A, Level AA, and Level AAA. JupyterLab is nonconforming with WCAG 2.0 Level AA (equivalent to Section 508 in the United States). Nonconforming means that the content does not meet the accessibility standard.</p>
+<p>JupyterLab’s accessibility does not exist in isolation. JupyterLab inherits much from the many projects it is built upon and its accessibility conformance may impact projects built off of JupyterLab or its components. The accessibility of this ecosystem is interlinked, so conformance may need to be resolved at different levels in order to impact JupyterLab positively.</p>
+</section>
+<section id="compatibility-with-browsers-and-assistive-technology">
+<h4>Compatibility with browsers and assistive technology<a class="headerlink" href="#compatibility-with-browsers-and-assistive-technology" title="Link to this heading">#</a></h4>
+</section>
+<section id="jupyterlab-is-designed-to-be-compatible-with-the-following">
+<h4>JupyterLab is designed to be compatible with the following<a class="headerlink" href="#jupyterlab-is-designed-to-be-compatible-with-the-following" title="Link to this heading">#</a></h4>
+<p><strong>Operating systems:</strong></p>
+<ul class="simple">
+<li><p>Windows</p></li>
+<li><p>macOS</p></li>
+<li><p>Linux</p></li>
+<li><p>iOS</p></li>
+<li><p>Android</p></li>
+</ul>
+<p><strong>Browsers (mobile and desktop):</strong></p>
+<ul class="simple">
+<li><p>Firefox</p></li>
+<li><p>Chrome</p></li>
+<li><p>Safari</p></li>
+<li><p>Chromium browsers</p></li>
+</ul>
+</section>
+<section id="jupyterlab-is-not-compatible-with">
+<h4>JupyterLab is not compatible with<a class="headerlink" href="#jupyterlab-is-not-compatible-with" title="Link to this heading">#</a></h4>
+<p><strong>Operating systems:</strong></p>
+<p><strong>Browsers (mobile and desktop):</strong></p>
+<ul class="simple">
+<li><p>Internet Explorer</p></li>
+<li><p>Edge &lt; 79</p></li>
+</ul>
+<p><strong>Assistive technology:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/JAWS_(screen_reader)">JAWS</a></p></li>
+<li><p><a class="reference external" href="https://assistivlabs.com/assistive-tech/screen-readers/nvda">NVDA</a></p></li>
+<li><p><a class="reference external" href="https://www.apple.com/accessibility/vision/">VoiceOver</a></p></li>
+<li><p>Narrator</p></li>
+<li><p>Orca screen readers</p></li>
+<li><p>Voice control technology</p></li>
+</ul>
+</section>
+</section>
+<section id="technical-specifications">
+<h3>Technical specifications<a class="headerlink" href="#technical-specifications" title="Link to this heading">#</a></h3>
+<p>Accessibility of JupyterLab relies on the following technologies to work with the particular combination of web browser and any assistive technologies or plugins installed on your computer:</p>
+<ul class="simple">
+<li><p>HTML</p></li>
+<li><p>WAI-ARIA</p></li>
+<li><p>CSS</p></li>
+<li><p>JavaScript</p></li>
+</ul>
+<p>These technologies are relied upon for conformance with the accessibility standards used.</p>
+<section id="limitations-and-alternatives">
+<h4>Limitations and alternatives<a class="headerlink" href="#limitations-and-alternatives" title="Link to this heading">#</a></h4>
+<p>Despite our best efforts to ensure accessibility of JupyterLab, there may be some limitations. Below is a description of known limitations, and potential solutions. Please contact us if you observe an issue not listed below.</p>
+<p><strong>Known limitations for JupyterLab:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Documents</strong>: Documents written by the community may not include accessible content because we do not and cannot review every document that can be opened and edited in JupyterLab.
+To support accessible documents, we are drafting guidelines for accessible document content with an emphasis on Jupyter notebooks.
+Please report the issue to the author and <a class="reference external" href="https://github.com/jupyter/accessibility/issues/new">open an issue on jupyter/accessibility</a>
+describing the problem and the behavior you expect, so we may integrate it into our content guidelines.</p></li>
+<li><p><strong>JupyterLab extensions</strong>: JupyterLab extensions written by the community may not be accessible
+because JupyterLab extensions can be written by anyone in the community and have no standard review process.
+We do not and can not review every JupyterLab extension. To support accessible extensions,
+we encourage extension authors to use existing, accessible JupyterLab components for their extensions.
+We also provide periodic opportunities for community education on accessibility.
+Please report the issue to the author and let them know the <a class="reference external" href="https://github.com/jupyter/accessibility/">jupyter/accessibility</a> community may be able to provide guidance.</p></li>
+</ol>
+</section>
+<section id="assessment-approach">
+<h4>Assessment approach<a class="headerlink" href="#assessment-approach" title="Link to this heading">#</a></h4>
+<p>Jupyter accessibility contributors assessed the accessibility of JupyterLab by the following approaches:</p>
+<ul class="simple">
+<li><p>Self-evaluation</p></li>
+<li><p>Automated testing (can be found at <a class="reference external" href="https://github.com/Quansight-Labs/jupyter-a11y-testing">the jupyter-a11y-testing repository</a>).</p></li>
+<li><p>User feedback</p></li>
+</ul>
+</section>
+<section id="evaluation-report">
+<h4>Evaluation report<a class="headerlink" href="#evaluation-report" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>An evaluation for JupyterLab is available at: <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/9399">jupyterlab/jupyterlab/issues/9399</a>.</p></li>
+<li><p>User reports on JupyterLab’s accessibility are available at: <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/labels/tag%3AAccessibility">the jupyterlab/jupyterlab label tag:Accessibility</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="what-the-community-is-doing">
+<h3>What the community is doing<a class="headerlink" href="#what-the-community-is-doing" title="Link to this heading">#</a></h3>
+<section id="measures-to-support-accessibility">
+<h4>Measures to support accessibility<a class="headerlink" href="#measures-to-support-accessibility" title="Link to this heading">#</a></h4>
+<p>Jupyter accessibility contributors take the following measures to ensure accessibility of JupyterLab:</p>
+<ul class="simple">
+<li><p>Include accessibility as part of our mission statement.</p></li>
+<li><p>Provide continual accessibility training for our community.</p></li>
+<li><p>Assign clear accessibility goals and responsibilities.</p></li>
+<li><p>Employ formal accessibility quality assurance methods.</p></li>
+<li><p>Document changes, approaches, and improvements to the above methods and to JupyterLab itself.</p></li>
+</ul>
+</section>
+</section>
+<section id="feedback-and-formal-complaints">
+<h3>Feedback and Formal complaints<a class="headerlink" href="#feedback-and-formal-complaints" title="Link to this heading">#</a></h3>
+<p>We welcome your feedback and formal complaints on the accessibility status of JupyterLab.
+Please let us know if you encounter accessibility barriers on JupyterLab:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jupyter/accessibility/issues/new">Write an issue on jupyter/accessibility</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/new">Write an issue on jupyterlab/jupyterlab</a> and request it be labeled <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/labels/tag%3AAccessibility">tag:Accessibility</a></p></li>
+<li><p>If you are interested in being part of any potential research or organized feedback initiatives, please reach out via one of the many JupyterLab community channels. Gauging community interest in user research participation helps us gain the support to make it happen.</p></li>
+</ul>
+<p>Please note there is no private way to contact us for JupyterLab accessibility issues.</p>
+<p>Also please note that JupyterLab is an open-source project and that Jupyter accessibility contributors are a group defined on a voluntary basis. Like many other open-source projects, we cannot guarantee how long it may take to respond to and resolve an issue, though we do make an effort to do it as quickly as is possible with our resources.</p>
+<p>Thanks for your patience and understanding.</p>
+</section>
+<section id="links">
+<h3>Links<a class="headerlink" href="#links" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jupyter/accessibility">jupyter-accessibility-repo</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jupyter/accessibility/issues/new">jupyter-accessibility-repo-issues</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/new">jupyterlab-repo-issues</a></p></li>
+<li><p><a class="reference external" href="https://jupyter-a11y.netlify.app/roadmap/intro.html">CZI - JupyterLab accessibility grant 2021-23 roadmap</a>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="changelog.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">JupyterLab Changelog</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lifecycle.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Version lifecycle</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-notebook-versus-jupyterlab">Jupyter Notebook versus JupyterLab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-audits">Jupyter audits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility-statement-for-jupyterlab">Accessibility Statement for JupyterLab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-state-of-jupyterlab">The current state of JupyterLab</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conformance-status">Conformance status</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compatibility-with-browsers-and-assistive-technology">Compatibility with browsers and assistive technology</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-is-designed-to-be-compatible-with-the-following">JupyterLab is designed to be compatible with the following</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab-is-not-compatible-with">JupyterLab is not compatible with</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-specifications">Technical specifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-alternatives">Limitations and alternatives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-approach">Assessment approach</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-report">Evaluation report</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-community-is-doing">What the community is doing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-to-support-accessibility">Measures to support accessibility</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-and-formal-complaints">Feedback and Formal complaints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#links">Links</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/getting_started/accessibility.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/getting_started/accessibility.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/getting_started/accessibility.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:39 GMT -->
+</html>

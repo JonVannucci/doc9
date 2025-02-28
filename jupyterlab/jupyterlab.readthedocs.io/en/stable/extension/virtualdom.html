@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/virtualdom.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>React &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extension/virtualdom';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Interface Helpers" href="ui_helpers.html" />
+    <link rel="prev" title="Notebook" href="notebook.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/extension/virtualdom.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="extension_points.html">Common Extension Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_components.html">Reusing JupyterLab UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebook</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">React</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_helpers.html">User Interface Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity.html">Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_tutorial.html">Extension Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_multiple_ui.html">Targeting Multiple Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_migration.html">Extension Migration Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="extension_dev.html" class="nav-link">Develop Extensions</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">React</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="react">
+<span id="id1"></span><h1>React<a class="headerlink" href="#react" title="Link to this heading">#</a></h1>
+<p>Many JupyterLab APIs require <cite>Lumino</cite>
+<a class="reference external" href="https://lumino.readthedocs.io/en/latest/api/modules/widgets.Widget.html">Widgets</a>
+which have some additional features over native DOM elements, including:</p>
+<ul class="simple">
+<li><p>Resize events that propagate down the Widget hierarchy.</p></li>
+<li><p>Lifecycle events (<code class="docutils literal notranslate"><span class="pre">onBeforeDetach</span></code>, <code class="docutils literal notranslate"><span class="pre">onAfterAttach</span></code>, etc.).</p></li>
+<li><p>Both CSS-based and absolutely positioned layouts.</p></li>
+</ul>
+<p>We support wrapping React components to turn them into Lumino
+widgets using the <code class="docutils literal notranslate"><span class="pre">ReactWidget</span></code> class from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+ <span class="o">*</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">Jupyter</span> <span class="n">Development</span> <span class="n">Team</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">Distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Modified</span> <span class="n">BSD</span> <span class="n">License</span><span class="o">.</span>
+ <span class="o">*/</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="o">*</span> <span class="k">as</span> <span class="n">React</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">Widget</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@lumino/widgets&#39;</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">ReactWidget</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@jupyterlab/ui-components&#39;</span><span class="p">;</span>
+
+<span class="n">function</span> <span class="n">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Widget</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">const</span> <span class="n">myWidget</span><span class="p">:</span> <span class="n">Widget</span> <span class="o">=</span> <span class="n">ReactWidget</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">&lt;</span><span class="n">MyComponent</span> <span class="o">/&gt;</span><span class="p">);</span>
+<span class="n">Widget</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">myWidget</span><span class="p">,</span> <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Here we use the <code class="docutils literal notranslate"><span class="pre">create</span></code> static method to transform a React element
+into a Lumino widget. Whenever the widget is mounted, the React
+element will be rendered on the page.</p>
+<p>If you need to handle other life cycle events on the Lumino widget
+or add other methods to it, you can subclass <code class="docutils literal notranslate"><span class="pre">ReactWidget</span></code> and
+override the <code class="docutils literal notranslate"><span class="pre">render</span></code> method to return a React element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+ <span class="o">*</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">Jupyter</span> <span class="n">Development</span> <span class="n">Team</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">Distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Modified</span> <span class="n">BSD</span> <span class="n">License</span><span class="o">.</span>
+ <span class="o">*/</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="o">*</span> <span class="k">as</span> <span class="n">React</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">Widget</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@lumino/widgets&#39;</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">ReactWidget</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@jupyterlab/ui-components&#39;</span><span class="p">;</span>
+
+<span class="n">function</span> <span class="n">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Widget</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span> <span class="n">extends</span> <span class="n">ReactWidget</span> <span class="p">{</span>
+  <span class="n">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="n">MyComponent</span> <span class="o">/&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">const</span> <span class="n">myWidget</span><span class="p">:</span> <span class="n">Widget</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MyWidget</span><span class="p">();</span>
+<span class="n">Widget</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">myWidget</span><span class="p">,</span> <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We use Lumino <a class="reference external" href="https://lumino.readthedocs.io/en/latest/api/interfaces/signaling.ISignal.html">Signals</a> to represent
+data that changes over time in JupyterLab.
+To have your React element change in response to a signal event, use the <code class="docutils literal notranslate"><span class="pre">UseSignal</span></code> component from <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/ui-components</span></code>,
+which implements the <a class="reference external" href="https://reactjs.org/docs/render-props.html">“render props”</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+ <span class="o">*</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">Jupyter</span> <span class="n">Development</span> <span class="n">Team</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">Distributed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">terms</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Modified</span> <span class="n">BSD</span> <span class="n">License</span><span class="o">.</span>
+ <span class="o">*/</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="o">*</span> <span class="k">as</span> <span class="n">React</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">ReactWidget</span><span class="p">,</span> <span class="n">UseSignal</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@jupyterlab/ui-components&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">ISignal</span><span class="p">,</span> <span class="n">Signal</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@lumino/signaling&#39;</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">{</span> <span class="n">Widget</span> <span class="p">}</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;@lumino/widgets&#39;</span><span class="p">;</span>
+
+<span class="n">function</span> <span class="n">MyComponent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span><span class="n">My</span> <span class="n">Widget</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">UseSignalComponent</span><span class="p">(</span><span class="n">props</span><span class="p">:</span> <span class="p">{</span> <span class="n">signal</span><span class="p">:</span> <span class="n">ISignal</span><span class="o">&lt;</span><span class="n">MyWidget</span><span class="p">,</span> <span class="n">void</span><span class="o">&gt;</span> <span class="p">})</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="n">UseSignal</span> <span class="n">signal</span><span class="o">=</span><span class="p">{</span><span class="n">props</span><span class="o">.</span><span class="n">signal</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="n">MyComponent</span> <span class="o">/&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">UseSignal</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyWidget</span> <span class="n">extends</span> <span class="n">ReactWidget</span> <span class="p">{</span>
+  <span class="n">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="n">UseSignalComponent</span> <span class="n">signal</span><span class="o">=</span><span class="p">{</span><span class="n">this</span><span class="o">.</span><span class="n">_signal</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">private</span> <span class="n">_signal</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Signal</span><span class="o">&lt;</span><span class="n">this</span><span class="p">,</span> <span class="n">void</span><span class="o">&gt;</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">const</span> <span class="n">myWidget</span><span class="p">:</span> <span class="n">Widget</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MyWidget</span><span class="p">();</span>
+<span class="n">Widget</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">myWidget</span><span class="p">,</span> <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/blob/f2e0cde0e7c960dc82fd9b010fcd3dbd9e9b43d0/packages/running/src/index.tsx#L157-L159">running component</a>
+and the <code class="docutils literal notranslate"><span class="pre">createSearchOverlay</span></code> function in the <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/blob/f2e0cde0e7c960dc82fd9b010fcd3dbd9e9b43d0/packages/documentsearch/src/searchoverlay.tsx#L440-L457">search overlay</a>
+use both of these features and serve as a good reference for best practices.</p>
+<p>There is also a <a class="reference external" href="https://github.com/jupyterlab/extension-examples/tree/71486d7b891175fb3883a8b136b8edd2cd560385/react/react-widget">simple example</a> making
+a Lumino react widget in the JupyterLab <a class="reference external" href="https://github.com/jupyterlab/extension-examples">extension examples repository</a>.</p>
+<p>We currently do not have a way of embedding Lumino widgets inside of React components. If you find yourself trying to do this, we would recommend either converting the Lumino widget to a React component or using a Lumino widget for the outer layer component.</p>
+<p>We follow the <a class="reference external" href="https://reactjs.org/docs/thinking-in-react.html">React documentation</a> and
+<a class="reference external" href="https://github.com/piotrwitek/react-redux-typescript-guide#readme">“React &amp; Redux in TypeScript - Static Typing Guide”</a>
+for best practices on using React in TypeScript.</p>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="notebook.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Notebook</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ui_helpers.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">User Interface Helpers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/extension/virtualdom.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/extension/virtualdom.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/virtualdom.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:24 GMT -->
+</html>

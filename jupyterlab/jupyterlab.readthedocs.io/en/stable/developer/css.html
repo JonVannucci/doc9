@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/developer/css.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CSS Patterns &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'developer/css';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance tricks" href="performance.html" />
+    <link rel="prev" title="Internationalization and Localization" href="internationalization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/developer/css.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="repo.html">General Codebase Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Using JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patterns.html">Design Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CSS Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">JupyterLab API Reference</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="contributing.html" class="nav-link">Contribute</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">CSS Patterns</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="css-patterns">
+<span id="css"></span><h1>CSS Patterns<a class="headerlink" href="#css-patterns" title="Link to this heading">#</a></h1>
+<p>This document describes the patterns we are using to organize and write
+CSS for JupyterLab. JupyterLab is developed using a set of npm packages
+that are located in <code class="docutils literal notranslate"><span class="pre">packages</span></code>. Each of these packages has its own
+style, but depend on CSS variables defined in a main theme package.</p>
+<section id="css-checklist">
+<h2>CSS checklist<a class="headerlink" href="#css-checklist" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>CSS classnames are defined inline in the code. We used to put them as
+all caps file-level <code class="docutils literal notranslate"><span class="pre">const</span></code>s, but we are moving away from that.</p></li>
+<li><p>CSS files for packages are located within the <code class="docutils literal notranslate"><span class="pre">style</span></code>
+subdirectory and imported into the plugin’s <code class="docutils literal notranslate"><span class="pre">index.css</span></code>.</p></li>
+<li><p>The JupyterLab default CSS variables in the <code class="docutils literal notranslate"><span class="pre">theme-light-extension</span></code>
+and <code class="docutils literal notranslate"><span class="pre">theme-dark-extension</span></code> packages are used to style packages
+wherever possible. Individual packages should not npm-depend on
+these packages though, to enable the theme to be swapped out.</p></li>
+<li><p>Additional public/private CSS variables are defined by plugins
+sparingly and in accordance with the conventions described below.</p></li>
+</ul>
+</section>
+<section id="css-variables">
+<h2>CSS variables<a class="headerlink" href="#css-variables" title="Link to this heading">#</a></h2>
+<p>We are using native CSS variables in JupyterLab. This is to enable
+dynamic theming of built-in and third party plugins. As of December
+2017, CSS variables are supported in the latest stable versions of all
+popular browsers, except for IE. If a JupyterLab deployment needs to
+support these browsers, a server side CSS preprocessor such as Myth or
+cssnext may be used.</p>
+<section id="naming-of-css-variables">
+<h3>Naming of CSS variables<a class="headerlink" href="#naming-of-css-variables" title="Link to this heading">#</a></h3>
+<p>We use the following convention for naming CSS variables:</p>
+<ul class="simple">
+<li><p>Start all CSS variables with <code class="docutils literal notranslate"><span class="pre">--jp-</span></code>.</p></li>
+<li><p>Words in the variable name should be lowercase and separated with
+<code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
+<li><p>The next segment should refer to the component and subcomponent, such
+as <code class="docutils literal notranslate"><span class="pre">--jp-notebook-cell-</span></code>.</p></li>
+<li><p>The next segment should refer to any state modifiers such as
+<code class="docutils literal notranslate"><span class="pre">active</span></code>, <code class="docutils literal notranslate"><span class="pre">not-active</span></code> or <code class="docutils literal notranslate"><span class="pre">focused</span></code>:
+<code class="docutils literal notranslate"><span class="pre">--jp-notebook-cell-focused</span></code>.</p></li>
+<li><p>The final segment will typically be related to a CSS properties, such
+as <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">font-size</span></code> or <code class="docutils literal notranslate"><span class="pre">background</span></code>:
+<code class="docutils literal notranslate"><span class="pre">--jp-notebook-cell-focused-background</span></code>.</p></li>
+</ul>
+</section>
+<section id="public-private">
+<h3>Public/private<a class="headerlink" href="#public-private" title="Link to this heading">#</a></h3>
+<p>Some CSS variables in JupyterLab are considered part of our public API.
+Others are considered private and should not be used by third party
+plugins or themes. The difference between public and private variables
+is simple:</p>
+<ul class="simple">
+<li><p>All private variables begin with <code class="docutils literal notranslate"><span class="pre">--jp-private-</span></code></p></li>
+<li><p>All variables without the <code class="docutils literal notranslate"><span class="pre">private-</span></code> prefix are public.</p></li>
+<li><p>Public variables should be defined under the <code class="docutils literal notranslate"><span class="pre">:root</span></code>
+pseudo-selector. This ensures that public CSS variables can be
+inspected under the top-level <code class="docutils literal notranslate"><span class="pre">&lt;html&gt;</span></code> tag in the browser’s dev
+tools.</p></li>
+<li><p>Where possible, private variables should be defined and scoped under
+an appropriate selector other than <code class="docutils literal notranslate"><span class="pre">:root</span></code>.</p></li>
+</ul>
+</section>
+<section id="css-variable-usage">
+<h3>CSS variable usage<a class="headerlink" href="#css-variable-usage" title="Link to this heading">#</a></h3>
+<p>JupyterLab includes a default set of CSS variables in the file
+<a class="reference external" href="../../../../github.com/jupyterlab/jupyterlab/blob/4.3.x/packages/theme-light-extension/style/variables.html">packages/theme-light-extension/style/variables.css</a>.</p>
+<p>To ensure consistent design in JupyterLab, all built-in and third party
+extensions should use these variables in their styles if at all
+possible. Documentation about those variables can be found in the
+<code class="docutils literal notranslate"><span class="pre">variables.css</span></code> file itself.</p>
+<p>Plugins are free to define additional public and private CSS variables
+in their own <code class="docutils literal notranslate"><span class="pre">index.css</span></code> file, but should do so sparingly.</p>
+<p>Again, we consider the names of the public CSS variables in this package
+to be our public API for CSS.</p>
+</section>
+</section>
+<section id="file-organization">
+<h2>File organization<a class="headerlink" href="#file-organization" title="Link to this heading">#</a></h2>
+<p>We are organizing our CSS files in the following manner:</p>
+<ul class="simple">
+<li><p>Each package in the top-level <code class="docutils literal notranslate"><span class="pre">packages</span></code> directory should contain
+any CSS files in a <code class="docutils literal notranslate"><span class="pre">style</span></code> subdirectory that are needed to style
+itself.</p></li>
+<li><p>All local styles should be consolidated into a <code class="docutils literal notranslate"><span class="pre">style/base.css</span></code> file.</p></li>
+<li><p>The top level <code class="docutils literal notranslate"><span class="pre">index.css</span></code> file is templated by <code class="docutils literal notranslate"><span class="pre">buildutils</span></code> as
+part of the <code class="docutils literal notranslate"><span class="pre">integrity</span></code> script.  It imports the CSS in dependency order,
+ending with the local <code class="docutils literal notranslate"><span class="pre">./base.css</span></code>.  CSS from external libraries is
+determined by their <code class="docutils literal notranslate"><span class="pre">style</span></code> field in <code class="docutils literal notranslate"><span class="pre">package.json</span></code>.  If additional
+files are desired or the external library does not have a <code class="docutils literal notranslate"><span class="pre">style</span></code> field,
+we use the <code class="docutils literal notranslate"><span class="pre">jupyterlab:</span> <span class="pre">{</span> <span class="pre">&quot;extraStyles&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;fooLibrary&quot;:</span> <span class="pre">[&quot;path/to/css&quot;]</span> <span class="pre">}</span> <span class="pre">}</span></code>
+pattern in our <code class="docutils literal notranslate"><span class="pre">package.json</span></code> to declare them.  For imports that should not be added to <code class="docutils literal notranslate"><span class="pre">index.css`,</span> <span class="pre">update</span> <span class="pre">``SKIP_CSS</span></code> in <code class="docutils literal notranslate"><span class="pre">buildutils/src/ensure-repo.ts</span></code>.</p></li>
+</ul>
+</section>
+<section id="css-class-names">
+<h2>CSS class names<a class="headerlink" href="#css-class-names" title="Link to this heading">#</a></h2>
+<section id="css-class-naming-conventions">
+<h3>CSS class naming conventions<a class="headerlink" href="#css-class-naming-conventions" title="Link to this heading">#</a></h3>
+<p>We have a fairly formal method for naming our CSS classes.</p>
+<p>First, CSS class names are associated with TypeScript classes that
+extend <code class="docutils literal notranslate"><span class="pre">lumino.Widget</span></code>:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.node</span></code> of each such widget should have a CSS class that matches
+the name of the TypeScript class:</p>
+<div class="highlight-TypeScript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">MyWidget</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Widget</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">();</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;jp-MyWidget&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Second, subclasses should have a CSS class for both the parent and
+child:</p>
+<div class="highlight-TypeScript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">MyWidgetSubclass</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">MyWidget</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">();</span><span class="w"> </span><span class="c1">// Adds `jp-MyWidget`</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;jp-MyWidgetSubclass&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In both of these cases, CSS class names with caps-case are reserved for
+situations where there is a named TypeScript <code class="docutils literal notranslate"><span class="pre">Widget</span></code> subclass. These
+classes are a way of a TypeScript class providing a public API for
+styling.</p>
+<p>Third, children nodes of a <code class="docutils literal notranslate"><span class="pre">Widget</span></code> should have a third segment in the
+CSS class name that gives a semantic naming of the component, such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-MyWidget-toolbar</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-MyWidget-button</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-MyWidget-contentButton</span></code></p></li>
+</ul>
+<p>In general, the parent <code class="docutils literal notranslate"><span class="pre">MyWidget</span></code> should add these classes to the
+children. This applies when the children are plain DOM nodes or
+<code class="docutils literal notranslate"><span class="pre">Widget</span></code> instances/subclasses themselves. Thus, the general naming of
+CSS classes is of the form <code class="docutils literal notranslate"><span class="pre">jp-WidgetName-semanticChild</span></code>. This enables
+the styling of these children in a manner that is independent of the
+children implementation or CSS classes they have themselves.</p>
+<p>Fourth, some CSS classes are used to modify the state of a widget:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-active</span></code>: applied to elements in the active state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-hover</span></code>: applied to elements in the hover state</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-selected</span></code>: applied to elements while selected</p></li>
+</ul>
+<p>Fifth, some CSS classes are used to distinguish different types of a
+widget:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-type-separator</span></code>: applied to menu items that are separators</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-type-directory</span></code>: applied to elements in the file browser that
+are directories</p></li>
+</ul>
+</section>
+<section id="edge-cases">
+<h3>Edge cases<a class="headerlink" href="#edge-cases" title="Link to this heading">#</a></h3>
+<p>Over time, we have found that there are some edge cases that these rules
+don’t fully address. Here, we try to clarify those edge cases.</p>
+<p><strong>When should a parent add a class to children?</strong></p>
+<p>Above, we state that a parent (<code class="docutils literal notranslate"><span class="pre">MyWidget</span></code>), should add CSS classes to
+children that indicate the semantic function of the child. Thus, the
+<code class="docutils literal notranslate"><span class="pre">MyWidget</span></code> subclass of <code class="docutils literal notranslate"><span class="pre">Widget</span></code> should add <code class="docutils literal notranslate"><span class="pre">jp-MyWidget</span></code> to itself
+and <code class="docutils literal notranslate"><span class="pre">jp-MyWidget-toolbar</span></code> to a toolbar child.</p>
+<p>What if the child itself is a <code class="docutils literal notranslate"><span class="pre">Widget</span></code> and already has a proper CSS
+class name itself, such as <code class="docutils literal notranslate"><span class="pre">jp-Toolbar</span></code>? Why not use selectors such as
+<code class="docutils literal notranslate"><span class="pre">.jp-MyWidget</span> <span class="pre">.jp-Toolbar</span></code> or <code class="docutils literal notranslate"><span class="pre">.jp-MyWidget</span> <span class="pre">&gt;</span> <span class="pre">.jp-Toolbar</span></code>?</p>
+<p>The reason is that these selectors are dependent on the implementation
+of the toolbar having the <code class="docutils literal notranslate"><span class="pre">jp-Toolbar</span></code> CSS class. When <code class="docutils literal notranslate"><span class="pre">MyWidget</span></code>
+adds the <code class="docutils literal notranslate"><span class="pre">jp-MyWidget-toolbar</span></code> class, it can style the child
+independent of its implementation. The other reason to add the
+<code class="docutils literal notranslate"><span class="pre">jp-MyWidget-toolbar</span></code> class is if the DOM structure is highly
+recursive, the usual descendant selectors may not be specific to target
+only the desired children.</p>
+<p>When in doubt, there is little harm done in parents adding selectors to
+children.</p>
+</section>
+<section id="commonly-used-css-selectors">
+<span id="css-selectors"></span><h3>Commonly used CSS selectors<a class="headerlink" href="#commonly-used-css-selectors" title="Link to this heading">#</a></h3>
+<p>We use CSS selectors to decide which context menu items to display and what command
+to invoke when a keyboard shortcut is used. The following common CSS selectors are
+intended to be used for adding context menu items and keyboard shortcuts.</p>
+<p><strong>CSS classes that target widgets and their children</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-Activity</span></code>: applied to elements in the main work area</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-Cell</span></code>: applied to cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-CodeCell</span></code>: applied to code cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-CodeConsole</span></code>: applied to consoles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-CodeConsole-content</span></code>: applied to content panels in consoles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-CodeConsole-promptCell</span></code>: applied to active prompt cells in consoles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-DirListing-content</span></code>: applied to contents of file browser directory listings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-DirListing-item</span></code>: applied to items in file browser directory listings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-FileEditor</span></code>: applied to file editors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-ImageViewer</span></code>: applied to image viewers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-InputArea-editor</span></code>: applied to cell input area editors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-Notebook</span></code>: applied to notebooks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-SettingEditor</span></code>: applied to setting editors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-SideBar</span></code>: applied to sidebars</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-Terminal</span></code>: applied to terminals</p></li>
+</ul>
+<p><strong>CSS classes that describe the state of a widget</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-current</span></code>: applied to elements on the current document only</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-completer-enabled</span></code>: applied to editors that can host a completer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-commandMode</span></code>: applied to a notebook in command mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-editMode</span></code>: applied to a notebook in edit mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-has-primary-selection</span></code>: applied to editors that have a primary selection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-in-leading-whitespace</span></code>: applied to editors that have a selection within the beginning whitespace of a line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-at-line-beginning</span></code>: applied to editors that can host a completer and have a selection within the beginning whitespace of a line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jp-mod-tooltip</span></code>: applied to the body when a tooltip exists on the page</p></li>
+</ul>
+<p><strong>CSS selectors that target data attributes</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-jp-code-runner]</span></code>: applied to widgets that can run code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-jp-interaction-mode=&quot;terminal&quot;]</span></code>: applied when a code console is in terminal mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-jp-interaction-mode=&quot;notebook&quot;]</span></code>: applied when a code console is in notebook mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-jp-isdir]</span></code>: applied to describe whether file browser items are directories</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-jp-undoer]</span></code>: applied to widgets that can undo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[data-type]</span></code>: applied to describe the type of element, such as “document-title”, “submenu”, “inline”</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="internationalization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Internationalization and Localization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="performance.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Performance tricks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-checklist">CSS checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-variables">CSS variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-of-css-variables">Naming of CSS variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-private">Public/private</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#css-variable-usage">CSS variable usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-organization">File organization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-class-names">CSS class names</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#css-class-naming-conventions">CSS class naming conventions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-cases">Edge cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-css-selectors">Commonly used CSS selectors</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/developer/css.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/developer/css.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/developer/css.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:47 GMT -->
+</html>

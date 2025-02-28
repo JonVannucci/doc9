@@ -1,0 +1,1138 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/extensions.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Extensions &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user/extensions';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Workspaces" href="workspaces.html" />
+    <link rel="prev" title="Table Of Contents" href="toc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/user/extensions.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="announcements.html">Announcements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">The JupyterLab Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">JupyterLab URLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_editor.html">Text Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_console.html">Code Consoles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="completer.html">Completer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal.html">Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Managing Kernels and Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="documents_kernels.html">Documents and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats.html">File and Output Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugger.html">Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc.html">Table Of Contents</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspaces.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterhub.html">JupyterLab on JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">Exporting Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Localization and language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rtc.html">Real Time Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lsp.html">Language Server Protocol support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface_customization.html">Interface Customization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="directories.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binder.html">JupyterLab on Binder</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Extensions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="extensions">
+<span id="user-extensions"></span><h1>Extensions<a class="headerlink" href="#extensions" title="Link to this heading">#</a></h1>
+<p>Fundamentally, JupyterLab is designed as an extensible environment. JupyterLab
+extensions can customize or enhance any part of JupyterLab. They can provide
+new themes, file viewers and editors, or renderers for rich outputs in
+notebooks. Extensions can add items to the menu or command palette, keyboard
+shortcuts, or settings in the settings system. Extensions can provide an API
+for other extensions to use and can depend on other extensions. In fact, the
+whole of JupyterLab itself is simply a collection of extensions that are no
+more powerful or privileged than any custom extension.</p>
+<p>For information about developing extensions, see the <a class="reference internal" href="../extension/extension_dev.html#developer-extensions"><span class="std std-ref">developer
+documentation</span></a>.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#installing-extensions" id="id9">Installing Extensions</a></p></li>
+<li><p><a class="reference internal" href="#managing-extensions-using-the-extension-manager" id="id10">Managing Extensions Using the Extension Manager</a></p></li>
+<li><p><a class="reference internal" href="#managing-plugins-with-plugin-manager" id="id11">Managing Plugins with Plugin Manager</a></p></li>
+<li><p><a class="reference internal" href="#managing-extensions-with-jupyter-labextension" id="id12">Managing Extensions with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code></a></p></li>
+<li><p><a class="reference internal" href="#un-installing-using-jupyter-labextension" id="id13">Un-/Installing using <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code></a></p></li>
+</ul>
+</nav>
+<section id="installing-extensions">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Installing Extensions</a><a class="headerlink" href="#installing-extensions" title="Link to this heading">#</a></h2>
+<p>A JupyterLab extension contains JavaScript that is installed into Jupyterlab and
+run in the browser. An extension contains one or more plugins that extend JupyterLab.
+The preferred JupyterLab extension type is a <em>prebuilt extension</em> because it does not
+require rebuilding JupyterLab JavaScript files.</p>
+<p>Most JupyterLab extensions can be installed using Python <a class="reference internal" href="#user-trove-classifiers"><span class="std std-ref">pip</span></a>
+or <code class="docutils literal notranslate"><span class="pre">conda</span></code> packages. These packages may also include a server-side component
+necessary for the extension to function.</p>
+<section id="browsing-extensions-on-pypi">
+<span id="user-trove-classifiers"></span><h3>Browsing Extensions on PyPI<a class="headerlink" href="#browsing-extensions-on-pypi" title="Link to this heading">#</a></h3>
+<p>The Python Package Index (PyPI) is a repository of software for the Python
+programming language, and the default source of packages for the <code class="docutils literal notranslate"><span class="pre">pip</span></code> package
+manager. While a <a class="reference external" href="https://pypi.org/search/?q=jupyterlab&amp;o=">simple text search</a>
+will reveal hundreds of packages, a number of
+<a class="reference external" href="https://pypi.org/classifiers">trove classifiers</a> are available for packages
+to self-describe the features and compatibility provided:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab">Framework :: Jupyter :: JupyterLab</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+1">Framework :: Jupyter :: JupyterLab :: 1</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+2">Framework :: Jupyter :: JupyterLab :: 2</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+3">Framework :: Jupyter :: JupyterLab :: 3</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+4">Framework :: Jupyter :: JupyterLab :: 4</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+Extensions">Framework :: Jupyter :: JupyterLab :: Extensions</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+Extensions+%3A%3A+Mime+Renderers">Framework :: Jupyter :: JupyterLab :: Extensions :: Mime Renderers</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+Extensions+%3A%3A+Prebuilt">Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+Extensions+%3A%3A+Themes">Framework :: Jupyter :: JupyterLab :: Extensions :: Themes</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These classifiers were accepted in early August 2021, and it will take some
+time for them to be broadly adopted.</p>
+<p><em>You can help!</em> The proposal of classifiers to a packages’s <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>,
+<code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>, or <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> can make a <em>great</em> first open source
+<a class="reference internal" href="../extension/extension_dev.html#dev-trove-classifiers"><span class="std std-ref">contribution</span></a>, as such contributions are:</p>
+<ul class="simple">
+<li><p>easy for <em>you</em>, often possible directly through a project’s source code
+website, e.g. GitHub or GitLab,</p></li>
+<li><p>easy for maintainers to review and merge, and</p></li>
+<li><p>can have a positive impact on the discoverability of the package</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="managing-extensions-using-the-extension-manager">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Managing Extensions Using the Extension Manager</a><a class="headerlink" href="#managing-extensions-using-the-extension-manager" title="Link to this heading">#</a></h2>
+<p id="extension-manager">You can use the Extension Manager in JupyterLab to manage extensions. That feature
+may have been disabled by your system administrator for security reasons.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since JupyterLab v4, the default manager uses PyPI.org as source for the available
+extensions and <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install them.</p>
+<p>An extension will be listed if the Python package has the classifier:
+<a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Jupyter+%3A%3A+JupyterLab+%3A%3A+Extensions+%3A%3A+Prebuilt">Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt</a>
+Moreover it is advised for extension author to provide the <code class="docutils literal notranslate"><span class="pre">install.json</span></code> file
+to specify the exact Python package name.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is no check to ensure the extension is compatible with the current JupyterLab
+version.</p>
+</div>
+<p>The Extension Manager is in the <a class="reference internal" href="interface.html#left-sidebar"><span class="std std-ref">left sidebar</span></a>.</p>
+<figure class="align-center" id="id4">
+<img alt="../_images/extensions-default.png" class="jp-screenshot" src="../_images/extensions-default.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure:</strong> The default view has three components: a search bar, an “Installed”
+section, and a “Discover” section.</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="disclaimer">
+<h3>Disclaimer<a class="headerlink" href="#disclaimer" title="Link to this heading">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Installing an extension allows it to execute arbitrary code on the server,
+kernel, and the browser. Therefore, we ask you to explicitly acknowledge
+this.</p>
+</div>
+<p>By default, the disclaimer is not acknowledged.</p>
+<figure class="align-center" id="id5">
+<img alt="../_images/extensions-disabled.png" class="jp-screenshot" src="../_images/extensions-disabled.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure:</strong> User has not acknowledged the disclaimer</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As the disclaimer is not acknowledged, you can search for an extension,
+but can not install it (no install button is available).</p>
+<p>To install an extension, you first have to explicitly acknowledge the disclaimer.
+Once done, this will remain across sessions and the user does not have to
+check it again.</p>
+<figure class="align-center" id="id6">
+<img alt="../_images/extensions-enabled.png" class="jp-screenshot" src="../_images/extensions-enabled.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure:</strong> Disclaimer checked</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>For ease of use, you can collapse the disclaimer so it takes less space on
+your screen.</p>
+</section>
+<section id="finding-extensions">
+<h3>Finding Extensions<a class="headerlink" href="#finding-extensions" title="Link to this heading">#</a></h3>
+<p>You can use the extension manager to find extensions for JupyterLab. To discovery
+freely among the currently available extensions, expand the “Discovery” section.
+This triggers a search for all JupyterLab extensions on the PyPI.org registry, and
+the results are listed alphabetically.</p>
+<figure class="align-center">
+<img alt="The discovery extension listing." class="jp-screenshot" src="../_images/extensions-default.png" />
+</figure>
+<p>Alternatively, you can limit your discovery by using the search bar. This
+performs a free-text search of JupyterLab extensions on the PyPI.org registry.</p>
+<img alt="An example search result in the discovery extension listing." class="jp-screenshot align-center" src="../_images/extensions-search.png" />
+</section>
+<section id="installing-an-extension">
+<h3>Installing an Extension<a class="headerlink" href="#installing-an-extension" title="Link to this heading">#</a></h3>
+<p>Once you have found an extension that you think is interesting, install
+it by clicking the “Install” button of the extension list entry.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Installing an extension allows it to execute arbitrary code on the
+server, kernel, and in the client’s browser. You should therefore
+avoid installing extensions you do not trust, and watch out for
+any extensions trying to masquerade as a trusted extension.</p>
+</div>
+<p>The newly installed extension may require JupyterLab to be restarted.</p>
+</section>
+<section id="managing-installed-extensions">
+<h3>Managing Installed Extensions<a class="headerlink" href="#managing-installed-extensions" title="Link to this heading">#</a></h3>
+<p>When there are some installed extensions, they will be shown in the “Installed”
+section. These can then be uninstalled or disabled. Disabling an extension will
+prevent it from being activated, but without rebuilding the application.</p>
+</section>
+<section id="configuring-the-extension-manager">
+<h3>Configuring the Extension Manager<a class="headerlink" href="#configuring-the-extension-manager" title="Link to this heading">#</a></h3>
+<p>By default there are two extension managers provided by JupyterLab:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pypi</span></code>: [default] Allow to un-/install extensions from PyPI.org</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">readonly</span></code>: Display installed extensions (with the ability to dis-/en-able them)</p></li>
+</ul>
+<p>You can specify the manager with the command line option <code class="docutils literal notranslate"><span class="pre">--LabApp.extension_manager</span></code>;
+e.g. to use the <em>read-only</em> manager:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab<span class="w"> </span>--LabApp.extension_manager<span class="o">=</span><span class="nb">readonly</span>
+</pre></div>
+</div>
+<section id="pypi-manager-settings">
+<h4>PyPI Manager settings<a class="headerlink" href="#pypi-manager-settings" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">pypi</span></code> manager have specific options that can be set using command line options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--PyPIExtensionManager.base_url</span></code>: PyPI warehouse base URL - default to <a class="reference external" href="https://pypi.org/pypi">https://pypi.org/pypi</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--PyPIExtensionManager.rpc_request_throttling</span></code>: Throttling time between requests to the PyPI XML-RPC API in seconds - default 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--PyPIExtensionManager.cache_timeout</span></code>: PyPI extensions list cache timeout in seconds - default 300.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--PyPIExtensionManager.package_metadata_cache_size</span></code>: The cache size for package metadata - default 1500.</p></li>
+</ul>
+</section>
+</section>
+<section id="listings">
+<span id="extension-listings"></span><h3>Listings<a class="headerlink" href="#listings" title="Link to this heading">#</a></h3>
+<p>When searching extensions in the Extension Manager, JupyterLab displays the complete
+search result and the user is free to install any source extension. This is the <a class="reference internal" href="#default-mode"><span class="std std-ref">Default mode</span></a>.</p>
+<p>To bring more security, you or your administrator can enable <code class="docutils literal notranslate"><span class="pre">blocklists</span></code> or <code class="docutils literal notranslate"><span class="pre">allowlists</span></code>
+mode. JupyterLab will check the extensions against the defined listings.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only one mode at a time is allowed. If you or your server administrator configures
+both block and allow listings, the allow listing takes precedence.</p>
+</div>
+<p>The following details the behavior for the <a class="reference internal" href="#blocklist-mode"><span class="std std-ref">Blocklist mode</span></a> and the <a class="reference internal" href="#allowlist-mode"><span class="std std-ref">Allowlist mode</span></a>.
+The details to enable configure the listings can be read <a class="reference internal" href="#listings-conf"><span class="std std-ref">Listing Configuration</span></a>.</p>
+<section id="default-mode">
+<span id="id1"></span><h4>Default mode<a class="headerlink" href="#default-mode" title="Link to this heading">#</a></h4>
+<p>In the <code class="docutils literal notranslate"><span class="pre">default</span></code> mode, no listing is enabled and the search behavior is unchanged and
+is the one described previously.</p>
+</section>
+<section id="blocklist-mode">
+<span id="id2"></span><h4>Blocklist mode<a class="headerlink" href="#blocklist-mode" title="Link to this heading">#</a></h4>
+<p>Extensions can be freely downloaded without going through a vetting process.
+However, users can add malicious extensions to a blocklist. The extension manager
+will show all extensions except for those that have
+been explicitly added to the blocklist. Therefore, the extension manager
+does not allow you to install blocklisted extensions.</p>
+<p>If you, or your administrator, has enabled the blocklist mode,
+JupyterLab will use the blocklist and remove all blocklisted
+extensions from your search result.</p>
+<p>If you have installed an extension before it has been blocklisted,
+the extension entry in the installed list will be highlighted
+in red. It is recommended that you uninstall it. You can move
+your mouse on the question mark icon to read the instructions.</p>
+<figure class="align-center" id="id7">
+<img alt="../_images/extensions-blocked-list.png" class="jp-screenshot" src="../_images/extensions-blocked-list.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure:</strong> Blocklisted installed extension which should be removed</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="allowlist-mode">
+<span id="id3"></span><h4>Allowlist mode<a class="headerlink" href="#allowlist-mode" title="Link to this heading">#</a></h4>
+<p>An allowlist maintains a set of approved extensions that users can freely
+search and install. Extensions need to go through some sort of vetting process
+before they are added to the allowlist. When using an allowlist, the extension manager
+will only show extensions that have been explicitly added to the allowlist.</p>
+<p>If you, or your administrator, has enabled the allowlist mode
+JupyterLab will use the allowlist and only show extensions present
+in the allowlist. The other extensions will not be show in the search result.</p>
+<p>If you have installed an allowlisted extension and at some point
+in time that extension is removed from the allowlist, the extension entry
+in the installed list will be highlighted in red. It is recommended that
+you uninstall it. You can move your mouse on the question mark icon to
+read the instructions.</p>
+<figure class="align-center" id="id8">
+<img alt="../_images/extensions-allowed-list.png" class="jp-screenshot" src="../_images/extensions-allowed-list.png" />
+<figcaption>
+<p><span class="caption-text"><strong>Figure:</strong> The second of the installed extensions was removed from the allowlist and should be removed</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="listing-configuration">
+<span id="listings-conf"></span><h4>Listing Configuration<a class="headerlink" href="#listing-configuration" title="Link to this heading">#</a></h4>
+<p>You or your administrator can use the following traits to define the listings loading.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blocked_extensions_uris</span></code>: A list of comma-separated URIs to fetch a blocklist file from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allowed_extensions_uris</span></code>: A list of comma-separated URIs to fetch an allowlist file from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">listings_refresh_seconds</span></code>: The interval delay in seconds to refresh the lists</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">listings_tornado_options</span></code>: The optional kwargs to use for the listings HTTP requests</p></li>
+</ul>
+<p>For example, to set blocked extensions, launch the server with
+<code class="docutils literal notranslate"><span class="pre">--LabServerApp.blocked_extensions_uris=http://example.com/blocklist.json</span></code> where
+<code class="docutils literal notranslate"><span class="pre">http://example.com/blocklist.json</span></code> is a JSON file as described below.</p>
+<p>The details for the <code class="docutils literal notranslate"><span class="pre">listings_tornado_options</span></code> are listed
+on <a class="reference external" href="https://www.tornadoweb.org/en/stable/httpclient.html#tornado.httpclient.HTTPRequest">this page</a>
+(for example, you could pass <code class="docutils literal notranslate"><span class="pre">{'request_timeout':</span> <span class="pre">10}</span></code> to change the HTTP request timeout value).</p>
+<p>The listings are json files hosted on the URIs you have given.</p>
+<p>For each entry, you have to define the <cite>name</cite> of the extension as published in the NPM registry.
+The <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute supports regular expressions.</p>
+<p>Optionally, you can also add some more fields for your records (<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">reason</span></code>, <code class="docutils literal notranslate"><span class="pre">creation_date</span></code>,
+<code class="docutils literal notranslate"><span class="pre">last_update_date</span></code>). These optional fields are not used in the user interface.</p>
+<p>This is an example of a blocklist file.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;blocked_extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@jupyterlab-examples/launcher&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jupyterlab&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@jupyterlab-examples/launcher is blocklisted for test purpose - Do NOT take this for granted!!!&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;creation_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-03-11T03:28:56.782Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_update_date&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;2020-03-11T03:28:56.782Z&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the following allowed extensions <code class="docutils literal notranslate"><span class="pre">&#64;jupyterlab/*</span></code> will allow
+all jupyterlab organization extensions.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;allowed_extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@jupyterlab/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jupyterlab&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;All @jupyterlab org extensions are allowed, of course…&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;creation_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-03-11T03:28:56.782Z&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;last_update_date&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;2020-03-11T03:28:56.782Z&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="managing-plugins-with-plugin-manager">
+<span id="plugin-manager"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Managing Plugins with Plugin Manager</a><a class="headerlink" href="#managing-plugins-with-plugin-manager" title="Link to this heading">#</a></h2>
+<p>Each JupyterLab extension is composed of one or more plugins. Plugins are also
+used by JupyterLab core itself.</p>
+<p>The Advanced Plugin Manager enables listing and disabling individual plugins,
+but may have been disabled by your system administrator.</p>
+<p>Functionally, toggling an extension from the plugin manager is equivalent to
+running the <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span> <span class="pre">enable</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span> <span class="pre">disable</span></code> commands.</p>
+<img alt="An example search result in the plugin extension listing." class="jp-screenshot align-center" src="../_images/plugin-manager-search-notebook.png" />
+<p>Plugins can be enabled/disabled on <code class="docutils literal notranslate"><span class="pre">system</span></code>, <code class="docutils literal notranslate"><span class="pre">sys-prefix</span></code> (default) or
+<code class="docutils literal notranslate"><span class="pre">user</span></code> level, which influences where the <code class="docutils literal notranslate"><span class="pre">page_config.json</span></code> configuration
+file is written to (see <code class="docutils literal notranslate"><span class="pre">config</span></code> section in results of <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">--paths</span></code>).
+To change the level for the plugin manager and the default extension manager
+use <code class="docutils literal notranslate"><span class="pre">PluginManager.level</span></code> trait (extension manager inherits from plugin manager).</p>
+<section id="locking-and-unlocking-plugins">
+<span id="locking-plugins"></span><h3>Locking and Unlocking Plugins<a class="headerlink" href="#locking-and-unlocking-plugins" title="Link to this heading">#</a></h3>
+<p>Administrators may lock specific plugins with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>lock<span class="w"> </span>my-extension:plugin
+</pre></div>
+</div>
+<p>To unlock a locked plugin:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>unlock<span class="w"> </span>my-extension:plugin
+</pre></div>
+</div>
+<p>The locked plugins appear on the plugin list with a lock icon and cannot be enabled/disabled from the user interface:</p>
+<img alt="An example row of the plugin list with `&#64;jupyterlab/pluginmanager-extension:plugin` plugin locked." class="jp-screenshot align-center" src="../_images/plugin-manager-plugin-locked.png" />
+</section>
+</section>
+<section id="managing-extensions-with-jupyter-labextension">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Managing Extensions with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code></a><a class="headerlink" href="#managing-extensions-with-jupyter-labextension" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code> command enables you to list all installed extensions,
+or disable any extension. It also brings helper commands for developers. See the
+help with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span> <span class="pre">--help</span></code>.</p>
+<section id="listing-installed-extensions">
+<h3>Listing installed extensions<a class="headerlink" href="#listing-installed-extensions" title="Link to this heading">#</a></h3>
+<p>List all installed extensions with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>list
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code> identifies an extension by its plugin namespace
+(the part prior to <code class="docutils literal notranslate"><span class="pre">:</span></code>), which may be different from the name of the
+<code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code> package used to distribute the extension.</p>
+</div>
+</section>
+<section id="enabling-and-disabling-extensions">
+<span id="enable-disable-config"></span><h3>Enabling and Disabling Extensions<a class="headerlink" href="#enabling-and-disabling-extensions" title="Link to this heading">#</a></h3>
+<p>Disabling an extension prevents all plugins in that extension from running in
+JupyterLab (though the code is still loaded). You can disable specific JupyterLab
+extensions (including core extensions) too:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>disable<span class="w"> </span>my-extension
+</pre></div>
+</div>
+<p>You can enable a disabled extension with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>my-extension
+</pre></div>
+</div>
+<p>Installed extensions are enabled by default unless there is configuration
+explicitly disabling them.
+Extensions can be disabled or enabled using the command line.
+Extensions or individual plugins within an extension can be disabled by another
+extension.</p>
+<p>The priority order for determining whether an extension is enabled or disabled
+is as follows:</p>
+<ul class="simple">
+<li><p>Presence of <code class="docutils literal notranslate"><span class="pre">&lt;jupyter_config_path&gt;/labconfig/page_config.json</span></code> file(s) with
+a <code class="docutils literal notranslate"><span class="pre">disabledExtensions</span></code> key that is a object with package names as keys and boolean values.</p></li>
+<li><p>(deprecated) Presence of <code class="docutils literal notranslate"><span class="pre">disabledExtensions</span></code> key in <code class="docutils literal notranslate"><span class="pre">&lt;lab_app_dir&gt;/settings/page_config.json</span></code>.
+This value is a list of extensions to disable, but is deprecated in favor of the
+layered configuration approach in the <cite>labconfig</cite> location(s).</p></li>
+<li><p>Presence of <code class="docutils literal notranslate"><span class="pre">disabledExtensions</span></code> key in another JupyterLab extension’s metadata
+that disables a given extension.  The key is ignored if that extension itself is
+disabled.</p></li>
+</ul>
+<p>When using the command line, you can target the <code class="docutils literal notranslate"><span class="pre">--level</span></code> of the config:
+<code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">system</span></code>, or <code class="docutils literal notranslate"><span class="pre">sys-prefix</span></code> (default).</p>
+<p>An example <code class="docutils literal notranslate"><span class="pre">&lt;jupyter_config_path&gt;/labconfig/page_config.json</span></code> could look as
+follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;disabledExtensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;@jupyterlab/notebook-extension&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="directories.html#labconfig-directories"><span class="std std-ref">documentation on LabConfig directories</span></a> for
+more information.</p>
+</section>
+</section>
+<section id="un-installing-using-jupyter-labextension">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Un-/Installing using <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code></a><a class="headerlink" href="#un-installing-using-jupyter-labextension" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This way of un-/installing JupyterLab extensions is highly discouraged.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code> command enables you to install or uninstall
+source extensions from <a class="reference external" href="https://www.npmjs.com/search?q=keywords:jupyterlab-extension">npm</a>.
+See the help with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span> <span class="pre">--help</span></code>. But to install those
+source extensions, you first need to install Node.js.</p>
+<section id="installing-node-js">
+<span id="installing-nodejs"></span><h3>Installing Node.js<a class="headerlink" href="#installing-node-js" title="Link to this heading">#</a></h3>
+<p>Source extensions require <a class="reference external" href="https://nodejs.org/">Node.js</a> to rebuild
+JupyterLab and activate the extension. If you use <code class="docutils literal notranslate"><span class="pre">conda</span></code> with
+<code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> packages, you can get Node.js with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>nodejs
+</pre></div>
+</div>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">conda</span></code> with default Anaconda packages (i.e., you don’t normally
+use <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>), you should install Node.js from the Anaconda default
+channel with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nodejs</span></code> instead.</p>
+<p>You may also be able to get Node.js from your system package manager, or you
+can download Node.js from the <a class="reference external" href="https://nodejs.org/">Node.js website</a>
+and install it directly.</p>
+</section>
+<section id="installing-and-uninstalling-source-extensions">
+<span id="install-command"></span><h3>Installing and Uninstalling Source Extensions<a class="headerlink" href="#installing-and-uninstalling-source-extensions" title="Link to this heading">#</a></h3>
+<p>You can install source extensions from <a class="reference external" href="https://www.npmjs.com/search?q=keywords:jupyterlab-extension">npm</a> with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>install<span class="w"> </span>my-extension<span class="w"> </span>my-other-extension
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">my-extension&#64;version</span></code> syntax to install a specific version
+of an extension, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>install<span class="w"> </span>my-extension@1.2.3
+</pre></div>
+</div>
+<p>You can also install a source extension that is not uploaded to npm, i.e.,
+<code class="docutils literal notranslate"><span class="pre">my-extension</span></code> can be a local directory containing the extension, a
+gzipped tarball, or a URL to a gzipped tarball.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Installing a source extension will require <a class="reference internal" href="#installing-nodejs"><span class="std std-ref">installing
+Node.js</span></a> and require a rebuild of JupyterLab.</p>
+</div>
+<p>Uninstall source extensions using the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>labextension<span class="w"> </span>uninstall<span class="w"> </span>my-extension<span class="w"> </span>my-other-extension
+</pre></div>
+</div>
+<p>If you are installing/uninstalling several extensions in several stages,
+you may want to defer rebuilding JupyterLab by including the flag
+<code class="docutils literal notranslate"><span class="pre">--no-build</span></code> in the install/uninstall step. Once you are ready to
+rebuild, you can run the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab<span class="w"> </span>build
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are rebuilding JupyterLab on Windows, you may encounter a
+<code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> due to the default path length on Windows.  Node
+modules are stored in a deeply nested directory structure, so paths can get
+quite long. If you have administrative access and are on Windows 10 or newer
+you can enable long paths by adding a dedicated
+<a class="reference external" href="https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation">registry key</a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="toc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Table Of Contents</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="workspaces.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Workspaces</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">Installing Extensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#browsing-extensions-on-pypi">Browsing Extensions on PyPI</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-extensions-using-the-extension-manager">Managing Extensions Using the Extension Manager</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disclaimer">Disclaimer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-extensions">Finding Extensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-an-extension">Installing an Extension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-installed-extensions">Managing Installed Extensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-the-extension-manager">Configuring the Extension Manager</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pypi-manager-settings">PyPI Manager settings</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listings">Listings</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#default-mode">Default mode</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#blocklist-mode">Blocklist mode</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#allowlist-mode">Allowlist mode</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-configuration">Listing Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-plugins-with-plugin-manager">Managing Plugins with Plugin Manager</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locking-and-unlocking-plugins">Locking and Unlocking Plugins</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-extensions-with-jupyter-labextension">Managing Extensions with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-installed-extensions">Listing installed extensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-and-disabling-extensions">Enabling and Disabling Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#un-installing-using-jupyter-labextension">Un-/Installing using <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">labextension</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-node-js">Installing Node.js</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-uninstalling-source-extensions">Installing and Uninstalling Source Extensions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/user/extensions.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user/extensions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/extensions.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:07 GMT -->
+</html>

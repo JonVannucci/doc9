@@ -1,0 +1,943 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/ui_components.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reusing JupyterLab UI &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extension/ui_components';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documents" href="documents.html" />
+    <link rel="prev" title="Common Extension Points" href="extension_points.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/extension/ui_components.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="extension_points.html">Common Extension Points</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reusing JupyterLab UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualdom.html">React</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_helpers.html">User Interface Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity.html">Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_tutorial.html">Extension Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_multiple_ui.html">Targeting Multiple Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_migration.html">Extension Migration Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="extension_dev.html" class="nav-link">Develop Extensions</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Reusing JupyterLab UI</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!--
+THIS FILE IS AUTOGENERATED, DO NOT EDIT
+
+Instead, make changes to docs sources in `packages/ui-components/docs`,
+then run "jlpm docs:init" to refresh the built docs
+--><section id="reusing-jupyterlab-ui">
+<span id="ui-components"></span><h1>Reusing JupyterLab UI<a class="headerlink" href="#reusing-jupyterlab-ui" title="Link to this heading">#</a></h1>
+<p>The <a class="reference external" href="../api/modules/ui_components.html">&#64;jupyterlab/ui-components</a>
+package provides UI elements that are widely used in JupyterLab core,
+and that can be reused in your own extensions.</p>
+<p>For example, all of the icons in JupyterLab core can be reused via
+<code class="docutils literal notranslate"><span class="pre">LabIcon</span></code>. You can also use <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> to create your own custom
+icons that will be able to automatically change color to match the
+current JupyterLab theme.</p>
+<nav class="contents local" id="explainer-docs">
+<p class="topic-title">Explainer docs</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#labicon-set-up-and-render-icons" id="id1"><code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> - set up and render icons</a></p></li>
+</ul>
+</nav>
+<section id="labicon-set-up-and-render-icons">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> - set up and render icons</a><a class="headerlink" href="#labicon-set-up-and-render-icons" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> is the icon class used by JupyterLab, and is part of the new
+icon system introduced in JupyterLab v2.0.</p>
+<section id="how-jupyterlab-handles-icons">
+<h3>How JupyterLab handles icons<a class="headerlink" href="#how-jupyterlab-handles-icons" title="Link to this heading">#</a></h3>
+<p>The &#64;jupyterlab/ui-components package provides icons to the rest of
+JupyterLab, in the form of a set of <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> instances (currently
+about 80). All of the icons in the core JupyterLab packages are rendered
+using one of these <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> instances.</p>
+</section>
+<section id="using-the-icons-in-your-own-code">
+<h3>Using the icons in your own code<a class="headerlink" href="#using-the-icons-in-your-own-code" title="Link to this heading">#</a></h3>
+<p>You can use any of JupyterLab icons in your own code via an <code class="docutils literal notranslate"><span class="pre">import</span></code>
+statement. For example, to use <code class="docutils literal notranslate"><span class="pre">jupyterIcon</span></code> you would first do:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">jupyterIcon</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@jupyterlab/ui-components&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-render-an-icon-into-a-dom-node">
+<h3>How to render an icon into a DOM node<a class="headerlink" href="#how-to-render-an-icon-into-a-dom-node" title="Link to this heading">#</a></h3>
+<p>Icons can be added as children to any <code class="docutils literal notranslate"><span class="pre">div</span></code> or <code class="docutils literal notranslate"><span class="pre">span</span></code> nodes using
+the <code class="docutils literal notranslate"><span class="pre">icon.element(...)</span></code> method (where <code class="docutils literal notranslate"><span class="pre">icon</span></code> is any instance of
+<code class="docutils literal notranslate"><span class="pre">LabIcon</span></code>). For example, to render the Jupyter icon you could do:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">jupyterIcon</span><span class="p">.</span><span class="nx">element</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="kt">elem</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;16px&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">marginLeft</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2px&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">elem</span></code> is any <code class="docutils literal notranslate"><span class="pre">HTMLElement</span></code> with a <code class="docutils literal notranslate"><span class="pre">div</span></code> or <code class="docutils literal notranslate"><span class="pre">span</span></code> tag. As
+shown in the above example, the icon can be styled by passing CSS
+parameters into <code class="docutils literal notranslate"><span class="pre">.element(...)</span></code>. Any valid CSS parameter can be used
+(one catch: snake case params do have to be converted to camel case:
+instead of <code class="docutils literal notranslate"><span class="pre">foo-bar:</span> <span class="pre">'8px'</span></code>, you’d need to use <code class="docutils literal notranslate"><span class="pre">fooBar:</span> <span class="pre">'8px'</span></code>.</p>
+</section>
+<section id="how-to-render-an-icon-as-a-react-component">
+<h3>How to render an icon as a React component<a class="headerlink" href="#how-to-render-an-icon-as-a-react-component" title="Link to this heading">#</a></h3>
+<p>Icons can also be rendered using React. The <code class="docutils literal notranslate"><span class="pre">icon.react</span></code> parameter
+holds a standard React component that will display the icon on render.
+Like any React component, <code class="docutils literal notranslate"><span class="pre">icon.react</span></code> can be used in various ways.</p>
+<p>For example, here is how you would add the Jupyter icon to the render
+tree of another React component:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">jupyterIcon</span><span class="o">.</span><span class="n">react</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;span&quot;</span> <span class="n">right</span><span class="o">=</span><span class="s2">&quot;7px&quot;</span> <span class="n">top</span><span class="o">=</span><span class="s2">&quot;5px&quot;</span> <span class="o">/&gt;</span>
+        <span class="s2">&quot;and here&#39;s a text node&quot;</span>
+      <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Alternatively, you can just render the icon directly into any existing
+DOM node <code class="docutils literal notranslate"><span class="pre">elem</span></code> by using the <code class="docutils literal notranslate"><span class="pre">ReactDOM</span></code> module:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">jupyterIcon</span><span class="p">.</span><span class="nx">react</span><span class="p">,</span><span class="w"> </span><span class="nx">elem</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If do you use <code class="docutils literal notranslate"><span class="pre">ReactDOM</span></code> to render, and if the <code class="docutils literal notranslate"><span class="pre">elem</span></code> node is ever
+removed from the DOM, you’ll first need to clean it up:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">unmountComponentAtNode</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This cleanup step is not a special property of <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code>, but is
+instead needed for any React component that is rendered directly at the
+top level by <code class="docutils literal notranslate"><span class="pre">ReactDOM</span></code>: failure to call <code class="docutils literal notranslate"><span class="pre">unmountComponentAtNode</span></code>
+can result in a memory leak.</p>
+</section>
+<section id="how-to-create-your-own-custom-labicon">
+<h3>How to create your own custom <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code><a class="headerlink" href="#how-to-create-your-own-custom-labicon" title="Link to this heading">#</a></h3>
+<p>You can create your own custom icon by constructing a new instance of
+<code class="docutils literal notranslate"><span class="pre">LabIcon</span></code>:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">fooIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LabIcon</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;barpkg:foo&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">svgstr</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;svg&gt;...&lt;/svg&gt;&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">name</span></code> should be of the form “your-pkg:icon-name”, and
+<code class="docutils literal notranslate"><span class="pre">svgstr</span></code> is the raw contents of your icon’s svg file.</p>
+</section>
+<section id="how-to-create-a-new-labicon-from-an-external-svg-file">
+<h3>How to create a new <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> from an external svg file<a class="headerlink" href="#how-to-create-a-new-labicon-from-an-external-svg-file" title="Link to this heading">#</a></h3>
+<p>Although you can copy-and-paste an svg directly into the <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code>
+constructor, the best practice is to keep the svg for each of your icons
+in its own separate svg file. You will need to have an <code class="docutils literal notranslate"><span class="pre">svg.d.ts</span></code> file
+at the root of your project’s <code class="docutils literal notranslate"><span class="pre">src</span></code> folder:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// svg.d.ts</span>
+
+<span class="kr">declare</span><span class="w"> </span><span class="nx">module</span><span class="w"> </span><span class="s1">&#39;*.svg&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can then <code class="docutils literal notranslate"><span class="pre">import</span></code> the contents of an svg file:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">fooSvgstr</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;path-to-your/foo.svg&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">fooIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LabIcon</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;barpkg:foo&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">svgstr</span><span class="o">:</span><span class="w"> </span><span class="kt">fooSvgstr</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="sync-icon-color-to-jupyterlab-theme">
+<h3>Sync icon color to JupyterLab theme<a class="headerlink" href="#sync-icon-color-to-jupyterlab-theme" title="Link to this heading">#</a></h3>
+<em>Example svgs with class annotation can be found in <a href="https://github.com/jupyterlab/jupyterlab/tree/f0153e0258b32674c9aec106383ddf7b618cebab/packages/ui-components/style/icons">ui-components/style/icons</a></em><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">You can ensure that the colors of your custom <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> sync up to the colors of the current JupyterLab theme by adding appropriate <code class="docutils literal notranslate"><span class="pre">class</span></code> annotations to each colored element of your icon’s svg.</div>
+<div class="line"><br /></div>
+<div class="line">In other words, each element of your svg that a <code class="docutils literal notranslate"><span class="pre">fill=&quot;...&quot;</span></code> or a <code class="docutils literal notranslate"><span class="pre">stroke=&quot;...&quot;</span></code> property should also have a <code class="docutils literal notranslate"><span class="pre">class=&quot;jp-icon&lt;whatever&gt;&quot;</span></code> property.</div>
+</div>
+<section id="available-icon-classes">
+<h4>Available icon classes<a class="headerlink" href="#available-icon-classes" title="Link to this heading">#</a></h4>
+<em>Icon-related CSS classes are defined in <a href="../../../../github.com/jupyterlab/jupyterlab/blob/f0153e0258b32674c9aec106383ddf7b618cebab/packages/ui-components/style/icons.html">ui-components/style/icons.css</a></em><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">All colors shown are for the standard light/dark theme, mouse over for hex values.</div>
+</div>
+<section id="jp-iconx-contrast-to-theme-background">
+<h5><code class="docutils literal notranslate"><span class="pre">jp-iconX</span></code>: contrast to theme background<a class="headerlink" href="#jp-iconx-contrast-to-theme-background" title="Link to this heading">#</a></h5>
+<ul>
+<li>jp-icon0: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#111"/><title>#111</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#fff"/><title>#fff</title></svg></li>
+<li>jp-icon1: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#212121"/><title>#212121</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#fff"/><title>#fff</title></svg></li>
+<li>jp-icon2: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#424242"/><title>#424242</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#eee"/><title>#eee</title></svg></li>
+<li>jp-icon3: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#616161"/><title>#616161</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#bdbdbd"/><title>#bdbdbd</title></svg></li>
+<li>jp-icon4: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#757575"/><title>#757575</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#757575"/><title>#757575</title></svg></li>
+</ul><p>Most one-color icons in JupyterLab (including the sidebar and toolbar
+icons) are colored using the <code class="docutils literal notranslate"><span class="pre">jp-icon3</span></code> class.</p>
+<p>For light/dark themes, <code class="docutils literal notranslate"><span class="pre">jp-icon0</span></code> corresponds to the darkest/lightest
+background color, while <code class="docutils literal notranslate"><span class="pre">jp-icon1</span></code> is somewhat lighter/darker, and so
+forth.</p>
+</section>
+<section id="jp-icon-accentx-match-to-theme-background">
+<h5><code class="docutils literal notranslate"><span class="pre">jp-icon-accentX</span></code>: match to theme background<a class="headerlink" href="#jp-icon-accentx-match-to-theme-background" title="Link to this heading">#</a></h5>
+<ul>
+<li>jp-icon-accent0: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#fff"/><title>#fff</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#111"/><title>#111</title></svg></li>
+<li>jp-icon-accent1: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#fff"/><title>#fff</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#212121"/><title>#212121</title></svg></li>
+<li>jp-icon-accent2: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#eee"/><title>#eee</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#424242"/><title>#424242</title></svg></li>
+<li>jp-icon-accent3: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#bdbdbd"/><title>#bdbdbd</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#616161"/><title>#616161</title></svg></li>
+<li>jp-icon-accent4: <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#757575"/><title>#757575</title></svg> / <svg width="16" viewBox="0 0 1 1"><rect width="1" height="1" fill="#757575"/><title>#757575</title></svg></li>
+</ul><p>For light/dark themes, <code class="docutils literal notranslate"><span class="pre">jp-icon-accent0</span></code> corresponds to the
+lightest/darkest background color, while <code class="docutils literal notranslate"><span class="pre">jp-icon-accent1</span></code> is somewhat
+darker/lighter, and so forth.</p>
+</section>
+</section>
+<section id="adding-classes-to-a-one-color-icon">
+<h4>Adding classes to a one-color icon<a class="headerlink" href="#adding-classes-to-a-one-color-icon" title="Link to this heading">#</a></h4>
+<p>For most simple, one-color icons, it is desirable for the icon’s color
+to strongly contrast with that of the application’s background. You can
+achieve this using one of the <code class="docutils literal notranslate"><span class="pre">jp-iconX</span></code> classes.</p>
+<p><strong>Example: check icon</strong></p>
+<p><em>svg source:</em></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 24 24&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">path</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;jp-icon3&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#616161&quot;</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><em>rendered icon:</em></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 24 24">
+  <path class="jp-icon3" fill="#616161" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+</svg></section>
+<section id="adding-classes-to-a-multi-colored-icon">
+<h4>Adding classes to a multi-colored icon<a class="headerlink" href="#adding-classes-to-a-multi-colored-icon" title="Link to this heading">#</a></h4>
+<p>For more complex icons, each element that needs to match the background
+should be annotated with a <code class="docutils literal notranslate"><span class="pre">jp-icon-accentX</span></code> class, while each element
+that needs to contrast with the background should be annotated with a
+<code class="docutils literal notranslate"><span class="pre">jp-iconX</span></code> class.</p>
+<p><strong>Example: close-circle icon</strong></p>
+<p><em>svg source:</em></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 24 24&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">circle</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;jp-icon3&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#616161&quot;</span> <span class="na">cx</span><span class="o">=</span><span class="s">&quot;12&quot;</span> <span class="na">cy</span><span class="o">=</span><span class="s">&quot;12&quot;</span> <span class="na">r</span><span class="o">=</span><span class="s">&quot;11&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;jp-icon-accent0&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#fff&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;18&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;11&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="na">transform</span><span class="o">=</span><span class="s">&quot;rotate(315, 12, 12)&quot;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">rect</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;jp-icon-accent0&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;#fff&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;18&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">x</span><span class="o">=</span><span class="s">&quot;11&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="na">transform</span><span class="o">=</span><span class="s">&quot;rotate(45, 12, 12)&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><em>rendered icon:</em></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" viewBox="0 0 24 24">
+  <circle class="jp-icon3" fill="#616161" cx="12" cy="12" r="11"/>
+  <rect class="jp-icon-accent0" fill="#fff" height="18" width="2" x="11" y="3" transform="rotate(315, 12, 12)"/>
+  <rect class="jp-icon-accent0" fill="#fff" height="18" width="2" x="11" y="3" transform="rotate(45, 12, 12)"/>
+</svg></section>
+</section>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h3>
+<section id="icon-handling-in-jupyterlab">
+<h4>Icon handling in Jupyterlab<a class="headerlink" href="#icon-handling-in-jupyterlab" title="Link to this heading">#</a></h4>
+<p>Pre JupyterLab 2.0, most icons were created using the icons-as-css-background
+pattern:</p>
+<ul>
+<li><p>Set up the icon’s svg as a <code class="docutils literal notranslate"><span class="pre">background-image</span></code> in CSS:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* CSS */</span>
+
+<span class="p">.</span><span class="nc">jp-FooIcon</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-image</span><span class="p">:</span><span class="w"> </span><span class="nb">url</span><span class="p">(</span><span class="s1">&#39;path-to-your/foo.svg&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add the icon to the DOM by constructing an otherwise empty DOM node
+with the appropriate class:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// typescript</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;jp-FooIcon&#39;</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>What you end up with is a single DOM node that has the “foo” icon as a
+background image.</p>
+<p>Post JupyterLab 2.0, nearly all icons in core are now created using
+<a class="reference external" href="https://github.com/jupyterlab/jupyterlab/blob/f0153e0258b32674c9aec106383ddf7b618cebab/packages/ui-components/src/icon/labicon.tsx">LabIcon</a>
+and the icons-as-inline-svg pattern:</p>
+<ul>
+<li><p>Construct a new instance of LabIcon from the icon’s name and svg:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// typescript</span>
+
+<span class="c1">// svgstr is the raw contents of an icon&#39;s svg file</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">fooIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LabIcon</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;barpkg:foo&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">svgstr</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;svg&gt;...&lt;/svg&gt;&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add the icon to the DOM using the appropriate property of your
+LabIcon instance (either LabIcon.element() to directly create a DOM
+node, or LabIcon.react to get the icon as a react component):</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// typescript</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooIcon</span><span class="p">.</span><span class="nx">element</span><span class="p">();</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>What you end up with is a DOM node (by default a ‘div’) that has an
+inline svg node as a child.</p>
+</section>
+<section id="background-image-vs-inline-svg">
+<h4><code class="docutils literal notranslate"><span class="pre">background-image</span></code> vs inline svg<a class="headerlink" href="#background-image-vs-inline-svg" title="Link to this heading">#</a></h4>
+<p>The big limitation of the old icon-as-css-background pattern is that svg
+images rendered as <code class="docutils literal notranslate"><span class="pre">background-image</span></code> are invisible to CSS. On the
+other hand, an icon rendered as an inline svg node is fully exposed to
+the CSS. This allows us to dynamically change icon styling as needed
+simply by modifying our CSS. Most importantly, this allows us to recolor
+icons according to Jupyterlab’s current theme.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="extension_points.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Common Extension Points</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="documents.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documents</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#labicon-set-up-and-render-icons"><code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> - set up and render icons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-jupyterlab-handles-icons">How JupyterLab handles icons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-icons-in-your-own-code">Using the icons in your own code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-render-an-icon-into-a-dom-node">How to render an icon into a DOM node</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-render-an-icon-as-a-react-component">How to render an icon as a React component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-create-your-own-custom-labicon">How to create your own custom <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-create-a-new-labicon-from-an-external-svg-file">How to create a new <code class="docutils literal notranslate"><span class="pre">LabIcon</span></code> from an external svg file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sync-icon-color-to-jupyterlab-theme">Sync icon color to JupyterLab theme</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#available-icon-classes">Available icon classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#jp-iconx-contrast-to-theme-background"><code class="docutils literal notranslate"><span class="pre">jp-iconX</span></code>: contrast to theme background</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#jp-icon-accentx-match-to-theme-background"><code class="docutils literal notranslate"><span class="pre">jp-icon-accentX</span></code>: match to theme background</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-classes-to-a-one-color-icon">Adding classes to a one-color icon</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-classes-to-a-multi-colored-icon">Adding classes to a multi-colored icon</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#icon-handling-in-jupyterlab">Icon handling in Jupyterlab</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#background-image-vs-inline-svg"><code class="docutils literal notranslate"><span class="pre">background-image</span></code> vs inline svg</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/extension/ui_components.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/extension/ui_components.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/ui_components.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:18 GMT -->
+</html>

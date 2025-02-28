@@ -1,0 +1,895 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/extension_multiple_ui.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Targeting Multiple Applications &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extension/extension_multiple_ui';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extension Migration Guide" href="extension_migration.html" />
+    <link rel="prev" title="Extension Tutorial" href="extension_tutorial.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/extension/extension_multiple_ui.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="extension_points.html">Common Extension Points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_components.html">Reusing JupyterLab UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualdom.html">React</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ui_helpers.html">User Interface Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="internationalization.html">Internationalization and Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity.html">Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_tutorial.html">Extension Tutorial</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Targeting Multiple Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension_migration.html">Extension Migration Guide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="extension_dev.html" class="nav-link">Develop Extensions</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Targeting Multiple Applications</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="targeting-multiple-applications">
+<span id="multiple-ui-extensions"></span><h1>Targeting Multiple Applications<a class="headerlink" href="#targeting-multiple-applications" title="Link to this heading">#</a></h1>
+<p><em>Make your extensions work in JupyterLab, Notebook 7+ and more!</em></p>
+<p>Jupyter Notebook 7 is built with components from JupyterLab, and since
+both use the same building blocks, that means your extension can work
+on both (or any other frontend built with JupyterLab components) with
+little or no modification depending on its design.</p>
+<p>This guide will give you an overview of compatibility features, then a
+tutorial and reference code covering some of the topics mentioned here.
+If you don’t know how to make extensions, you can read more about the
+basics at <a class="reference internal" href="extension_tutorial.html#extension-tutorial"><span class="std std-ref">the Extension Tutorial</span></a> or the
+<a class="reference external" href="extension_dev.html">Extensions page</a>.</p>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>At a high level, extensions for JupyterLab and Jupyter Notebook both
+typically start from a template project, which you can download and set up
+using instructions from <a class="reference external" href="extension_tutorial.html">the extension tutorial</a>).
+Once your template is ready, you can start adding components and features to build your extension.</p>
+</section>
+<section id="how-compatibility-works">
+<h2>How Compatibility Works<a class="headerlink" href="#how-compatibility-works" title="Link to this heading">#</a></h2>
+<p>An extension for JupyterLab (and for Notebook 7) is made up of a <a class="reference external" href="extension_dev.html">series</a>
+of bundled <a class="reference external" href="https://lumino.readthedocs.io/en/latest/api/interfaces/application.IPlugin.html#requires">plugins</a>,
+and those plugins typically use components from the interface toolkit <a class="reference external" href="https://lumino.readthedocs.io/en/latest/api/index.html">Lumino</a>
+as well as the <a class="reference external" href="../api/index-2.html">JupyterLab API</a>
+(among others) to help build your extension’s look and behavior. Both
+Lumino and JupyterLab API are written in Typescript.</p>
+<p>This is how basic compatibility features work: both apps use the same building
+blocks and methods. For instance, both JupyterLab and Notebook 7 accept Lumino widgets
+as interface components, both apps enable you to add them to the interface by
+specifying an “area” to place them into, and extensions for both use the same
+basic <code class="docutils literal notranslate"><span class="pre">JupyterFrontendPlugin</span></code> class.</p>
+</section>
+<section id="how-to-achieve-compatibility">
+<h2>How to Achieve Compatibility<a class="headerlink" href="#how-to-achieve-compatibility" title="Link to this heading">#</a></h2>
+<p>Compatibility can be achieved without additional effort in some simple
+cases. But for more complex cases, where the extension uses features in
+one app that are not available in other apps, you will need to decide
+how to handle those features in the other apps.</p>
+<p>The technical solutions to compatibility basically offer ways to disable
+features for some apps, or to check for the presence of a particular app
+or feature and then adjust behaviors accordingly.</p>
+<p>There are also design patterns and approaches that will make it easier to
+achieve compatibility in your extensions.</p>
+<p>You can read more about those below. Here are some general tips for making
+your extensions compatible:</p>
+<ul class="simple">
+<li><p>Use common features where possible, these offer compatibility without
+any extra effort</p></li>
+<li><p>Avoid using app-specific features (like the JupyterLab status bar) without
+first checking if they are available either when your extension loads, or
+while it’s running (more on that further down)</p></li>
+<li><p>Try to separate app-specific features from common features that are
+supported by both apps</p></li>
+<li><p>Decide what approach to take with any extension features that rely on
+app-specific capabilities (like the JupyterLab status bar). You can disable
+or modify those features in other apps using the techniques listed further
+down in this document.</p></li>
+</ul>
+<section id="using-only-common-features">
+<h3>Using Only Common Features<a class="headerlink" href="#using-only-common-features" title="Link to this heading">#</a></h3>
+<p>If your extension only uses features that both JupyterLab and Notebook 7
+have, you can simply install it and it will seamlessly work in both JupyterLab
+and Notebook 7.</p>
+<p>An extension that adds a single self-contained text widget to the top bar
+of the UI, for instance, doesn’t need to do anything at all to be compatible
+with both JupyterLab and Notebook 7 (both apps have a top area that can hold the
+widget, so it will be visible in both JupyterLab and Notebook 7 upon install and
+after launch).</p>
+<p>See <a class="reference external" href="https://www.youtube.com/watch?v=mqotG1MkHa4">this example video</a> of a
+compatible top-bar-text-widget that works in both JupyterLab and Notebook 7
+out of the box, and <a class="reference external" href="https://github.com/jupyterlab/extension-examples/tree/main/toparea-text-widget">read the full extension example code here</a>.</p>
+<p>Note that using features that are not common to both JupyterLab and Notebook 7 (or
+other apps) will break compatibility in apps where that feature is not available
+unless special steps are taken (more on these further down). The status bar in
+JupyterLab is an example of a feature that is available in JupyterLab but not in
+Notebook 7.</p>
+</section>
+<section id="using-plugin-metadata-to-drive-compatibility">
+<h3>Using Plugin Metadata to Drive Compatibility<a class="headerlink" href="#using-plugin-metadata-to-drive-compatibility" title="Link to this heading">#</a></h3>
+<p>JupyterLab’s extension system is designed so that plugins can depend on and
+reuse features from one another. A key part of this approach is <a class="reference internal" href="extension_dev.html#dependency-injection-basic-info"><span class="std std-ref">JupyterLab’s
+Provider-Consumer pattern</span></a> (a type of <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency-injection</a>
+pattern), and it is what enables the compatibility solutions discussed here.</p>
+<p>Each plugin uses some properties (the <code class="docutils literal notranslate"><span class="pre">requires</span></code> and <code class="docutils literal notranslate"><span class="pre">optional</span></code> properties) to
+request features it wants which are provided by other plugins that have been
+loaded into JupyterLab. When your plugin requests features, the system sends
+them to your plugin’s activate function if they are available.</p>
+<p>You can build compatible extensions by taking advantage of these plugin
+properties, and how the plugin system uses them:</p>
+<ul class="simple">
+<li><p>When you designate a feature in the <code class="docutils literal notranslate"><span class="pre">requires</span></code> list of your
+plugin, JupyterLab will only load your plugin if that feature is available.</p></li>
+<li><p>By designating a feature in the <code class="docutils literal notranslate"><span class="pre">optional</span></code> list, JupyterLab will pass you
+an object for it (if it’s available) or <code class="docutils literal notranslate"><span class="pre">null</span></code> if it’s not.</p></li>
+</ul>
+<p>So, these capabilities form the backbone of extension compatibility. You can
+use them to make checks in your extensions that will allow them to function in
+both JupyterLab and Jupyter Notebook 7 (and others).</p>
+<p>JupyterLab itself is a <a class="reference internal" href="extension_dev.html#dependency-injection-basic-info"><span class="std std-ref">provider</span></a> of many features through its built-in plugins,
+which you can read more about in the <a class="reference external" href="extension_points.html">Common Extension Points document</a>.
+It’s a good idea to use these extension points while you’re building your extensions (and
+by doing so you are acting as the <em>consumer</em> in JupyterLab’s <a class="reference internal" href="extension_dev.html#dependency-injection-basic-info"><span class="std std-ref">Provider-Consumer pattern</span></a>.</p>
+</section>
+<section id="testing-for-optional-features">
+<h3>Testing for Optional Features<a class="headerlink" href="#testing-for-optional-features" title="Link to this heading">#</a></h3>
+<p>Making an app-specific feature optional and checking if it is available before
+using it, is one technique you can use to make your extensions compatible.</p>
+<p>Take a look at a snippet from <a class="reference external" href="https://github.com/jupyterlab/extension-examples/tree/main/shout-button-message">this example extension</a>
+in the examples repo (you can read the full extension example code there):</p>
+<div class="highlight-TypeScript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">plugin</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEndPlugin</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@jupyterlab-examples/shout-button:plugin&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span>
+<span class="w">    </span><span class="s1">&#39;An extension that adds a button and message to the right toolbar, with optional status bar widget in JupyterLab.&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoStart</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// The IStatusBar is marked optional here. If it&#39;s available, it will</span>
+<span class="w">  </span><span class="c1">// be provided to the plugin as an argument to the activate function</span>
+<span class="w">  </span><span class="c1">// (shown below), and if not it will be null.</span>
+<span class="w">  </span><span class="nx">optional</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">IStatusBar</span><span class="p">],</span>
+<span class="w">  </span><span class="c1">// Make sure to list any &#39;requires&#39; and &#39;optional&#39; features as arguments</span>
+<span class="w">  </span><span class="c1">// to your activate function (activate is always passed an Application,</span>
+<span class="w">  </span><span class="c1">// then required arguments, then optional arguments)</span>
+<span class="w">  </span><span class="nx">activate</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEnd</span><span class="p">,</span><span class="w"> </span><span class="nx">statusBar</span><span class="o">:</span><span class="w"> </span><span class="kt">IStatusBar</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ... Extension code ...</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This plugin marks <code class="docutils literal notranslate"><span class="pre">IStatusBar</span></code> as optional, and adds an argument for it to the
+plugin’s <code class="docutils literal notranslate"><span class="pre">activate</span></code> function (which will be called by JupyterLab when the extension
+loads). If <code class="docutils literal notranslate"><span class="pre">IStatusBar</span></code> is not available, the second argument to the <code class="docutils literal notranslate"><span class="pre">activate</span></code>
+function will be <code class="docutils literal notranslate"><span class="pre">null</span></code>, as is the case when the extension is loaded in Jupyter
+Notebook 7.</p>
+<p>The extension always creates a common main widget, but when it comes time to use the
+status bar, the extension first checks if the <code class="docutils literal notranslate"><span class="pre">IStatusBar</span></code> is available, and only then
+proceeds to create a status bar item. This allows the extension to run successfully in both
+JupyterLab and Jupyter Notebook 7:</p>
+<div class="highlight-TypeScript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a ShoutWidget and add it to the interface in the right sidebar</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">shoutWidget</span><span class="o">:</span><span class="w"> </span><span class="kt">ShoutWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ShoutWidget</span><span class="p">();</span>
+<span class="nx">shoutWidget</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;JupyterShoutWidget&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Widgets need an id</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">shell</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">shoutWidget</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;right&#39;</span><span class="p">);</span>
+
+<span class="c1">// Check if the status bar is available, and if so, make</span>
+<span class="c1">// a status bar widget to hold some information</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">statusBar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">statusBarWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ShoutStatusBarSummary</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">statusBar</span><span class="p">.</span><span class="nx">registerStatusItem</span><span class="p">(</span><span class="s1">&#39;shoutStatusBarSummary&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">item</span><span class="o">:</span><span class="w"> </span><span class="kt">statusBarWidget</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// Connect to the messageShouted to be notified when a new message</span>
+<span class="w">  </span><span class="c1">// is published and react to it by updating the status bar widget.</span>
+<span class="w">  </span><span class="nx">shoutWidget</span><span class="p">.</span><span class="nx">messageShouted</span><span class="p">.</span><span class="nx">connect</span><span class="p">((</span><span class="nx">widget</span><span class="o">:</span><span class="w"> </span><span class="kt">ShoutWidget</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">statusBarWidget</span><span class="p">.</span><span class="nx">setSummary</span><span class="p">(</span>
+<span class="w">      </span><span class="s1">&#39;Last Shout: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">lastShoutTime</span><span class="o">?</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">&#39;(None)&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="using-required-features-to-switch-behaviors">
+<h3>Using Required Features to Switch Behaviors<a class="headerlink" href="#using-required-features-to-switch-behaviors" title="Link to this heading">#</a></h3>
+<p>Another pattern you can follow is to export a list of plugins from your
+extension, then use different “requires” features to select different
+behaviors based on which app the extension is currently running in.</p>
+<p>Here is a snippet from <a class="reference external" href="https://github.com/jupyterlab/extension-examples/tree/main/clap-button-message">this sample extension</a>
+which adds a <em>clap</em> button to the top area in JupyterLab, or to the
+right sidebar in Jupyter Notebook 7 (you can read the full extension
+example code there):</p>
+<div class="highlight-TypeScript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Data for the @jupyterlab-examples/clap-button JupyterLab plugin.</span>
+<span class="cm"> */</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pluginJupyterLab</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEndPlugin</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@jupyterlab-examples/clap-button:pluginLab&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Adds a clap button to the top area JupyterLab&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoStart</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">requires</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">ILabShell</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">activate</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEnd</span><span class="p">,</span><span class="w"> </span><span class="nx">labShell</span><span class="o">:</span><span class="w"> </span><span class="kt">ILabShell</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="w">      </span><span class="s1">&#39;JupyterLab extension @jupyterlab-examples/clap-button is activated!&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Create a ClapWidget and add it to the interface in the top area</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">clapWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ClapWidget</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">clapWidget</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;JupyterLabClapWidgetLab&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">shell</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">clapWidget</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;top&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Data for the @jupyterlab-examples/clap-button Jupyter Notebook plugin.</span>
+<span class="cm"> */</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pluginJupyterNotebook</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEndPlugin</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@jupyterlab-examples/clap-button:pluginNotebook&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Adds a clap button to the right sidebar of Jupyter Notebook 7&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoStart</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">requires</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">INotebookShell</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">activate</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEnd</span><span class="p">,</span><span class="w"> </span><span class="nx">notebookShell</span><span class="o">:</span><span class="w"> </span><span class="kt">INotebookShell</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="w">      </span><span class="s1">&#39;Jupyter Notebook extension @jupyterlab-examples/clap-button is activated!&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Create a ClapWidget and add it to the interface in the right area</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">clapWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ClapWidget</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">clapWidget</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;JupyterNotebookClapWidgetNotebook&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">shell</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">clapWidget</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;right&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Gather all plugins defined by this extension</span>
+<span class="cm"> */</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="kt">JupyterFrontEndPlugin</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nx">pluginJupyterLab</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">pluginJupyterNotebook</span>
+<span class="p">];</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">plugins</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>As you can see above, this extension exports multiple plugins in a list,
+and each plugin uses different <em>requires</em> features to switch between
+different behaviors (in this case, different layout areas) depending on
+the app it is being loaded into. The first plugin requires <code class="docutils literal notranslate"><span class="pre">ILabShell</span></code>
+(available in JupyterLab), and the second plugin requires <code class="docutils literal notranslate"><span class="pre">INotebookShell</span></code>
+(available in Jupyter Notebook 7).</p>
+<p>This approach (testing the shell at plugin load time) is not the preferred
+method for making compatible extensions since it is less granular, less
+universal (as the shell is specific to a given app generally) and offers
+only very broad behavior switching, though it can be used to make specialized
+features that target one particular app in your extensions. In general, you
+should prefer the “Testing for Optional Features” approach and target the
+“Common Extension Points” mentioned above.</p>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<p>For an explanation of JupyterLab’s plugin system and JupyterLab’s Provider-Consumer pattern (a type of <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency-injection</a>
+pattern), read the <a class="reference internal" href="extension_dev.html#dependency-injection-basic-info"><span class="std std-ref">Extension Development document</span></a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="extension_tutorial.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Extension Tutorial</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="extension_migration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Extension Migration Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-compatibility-works">How Compatibility Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-achieve-compatibility">How to Achieve Compatibility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-only-common-features">Using Only Common Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-plugin-metadata-to-drive-compatibility">Using Plugin Metadata to Drive Compatibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-for-optional-features">Testing for Optional Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-required-features-to-switch-behaviors">Using Required Features to Switch Behaviors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/extension/extension_multiple_ui.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/extension/extension_multiple_ui.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/extension/extension_multiple_ui.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:17:27 GMT -->
+</html>

@@ -1,0 +1,2249 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/commands.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:16:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Commands &#8212; JupyterLab 4.3.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-themeb6e5.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygmentsa032.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton3129.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom5657.css?v=90137069" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesomeb6e5.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options941c.js?v=f972b9b1"></script>
+    <script src="../_static/doctoolsfd15.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight7f57.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min4664.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton7689.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user/commands';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://jupyterlab.readthedocs.io/en/latest/_static/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'stable';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="icon" href="../_static/logo-icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documents and Kernels" href="documents_kernels.html" />
+    <link rel="prev" title="Managing Kernels and Terminals" href="running.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="4.3" />
+  <script async type="text/javascript" src="../../../_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="jupyterlab" /><meta name="readthedocs-version-slug" content="stable" /><meta name="readthedocs-resolver-filename" content="/user/commands.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="https://jupyterlab.readthedocs.io/en/stable/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-rectangle.svg" class="logo__image only-light" alt="JupyterLab"/>
+    <img src="../_static/logo-rectangle-dark.svg" class="logo__image only-dark pst-js-only" alt="JupyterLab"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started/overview.html">
+    Get Started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../extension/extension_dev.html">
+    Develop Extensions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../developer/contributing.html">
+    Contribute
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../privacy_policies.html">
+    Privacy policies
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.org/" title="jupyter.org" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../_static/jupyter_logo.svg" class="icon-link-image" alt="jupyter.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterlab/jupyterlab" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/jupyterlab/17" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://jupyter.zulipchat.com/channel/469762-jupyterlab" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-zulip fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="announcements.html">Announcements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">The JupyterLab Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="urls.html">JupyterLab URLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files.html">Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_editor.html">Text Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_console.html">Code Consoles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="completer.html">Completer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminal.html">Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Managing Kernels and Terminals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Commands</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="documents_kernels.html">Documents and Kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_formats.html">File and Output Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugger.html">Debugger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toc.html">Table Of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workspaces.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterhub.html">JupyterLab on JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="export.html">Exporting Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Localization and language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rtc.html">Real Time Collaboration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lsp.html">Language Server Protocol support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface_customization.html">Interface Customization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="directories.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binder.html">JupyterLab on Binder</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Commands</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="commands">
+<span id="id1"></span><h1>Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h1>
+<p>Commands are the entry points for triggering actions for the user interface. They are
+linked to menu entries, keyboard shortcuts, the launcher and the command palette.</p>
+<p>A command has an unique id that is used for referencing it or executing it. It could
+also require input arguments. Those arguments are maybe different in the command palette
+and the keyboard shortcuts for example. That can explain varying behavior depending on the
+source of a command trigger.</p>
+</section>
+<section id="commands-in-markdown-files">
+<h1>Commands in Markdown Files<a class="headerlink" href="#commands-in-markdown-files" title="Link to this heading">#</a></h1>
+<p>JupyterLab supports using commands in Markdown files with the following syntax:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">`&lt;button data-commandLinker-command=&quot;help:about&quot; href=&quot;#&quot;&gt;TEST&lt;/button&gt;`</span>
+</pre></div>
+</div>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">data-commandLinker-command</span></code> must be a valid command identifier (see list below).</p>
+<p>This allows you to embed buttons or other elements with custom commands in your Markdown documents.</p>
+<section id="command-palette">
+<h2>Command Palette<a class="headerlink" href="#command-palette" title="Link to this heading">#</a></h2>
+<p>All user actions in JupyterLab are processed through a centralized command
+system. These commands are shared and used throughout JupyterLab (menu bar,
+context menus, keyboard shortcuts, etc.). The command palette provides a
+keyboard-driven way to search for and run JupyterLab commands:</p>
+<img alt="../_images/command-palette.png" class="jp-screenshot align-center" src="../_images/command-palette.png" />
+<p id="access-palette">The command palette can be accessed from the View menu or using the keyboard shortcut
+<code class="docutils literal notranslate"><span class="pre">Command/Ctrl</span> <span class="pre">Shift</span> <span class="pre">C</span></code>.</p>
+<p>The command palette can be displayed in the sidebar by adding <code class="docutils literal notranslate"><span class="pre">'modal':</span> <span class="pre">false</span></code> to the Settings.</p>
+</section>
+<section id="commands-list">
+<span id="id2"></span><h2>Commands List<a class="headerlink" href="#commands-list" title="Link to this heading">#</a></h2>
+<p>The table below display the list of commands and the associated keyboard shortcuts. The
+unique identifier is useful if you want to customize the menus, the toolbars or the keyboard shortcuts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Mac OS, the <cite>Ctrl</cite> key should be replaced by <cite>Cmd</cite>.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command id</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Shortcuts</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:activate-next-tab</span></code></p></td>
+<td><p>Activate Next Tab</p></td>
+<td><p><kbd>Ctrl Shift ]</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:activate-next-tab-bar</span></code></p></td>
+<td><p>Activate Next Tab Bar</p></td>
+<td><p><kbd>Ctrl Shift .</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:activate-previous-tab</span></code></p></td>
+<td><p>Activate Previous Tab</p></td>
+<td><p><kbd>Ctrl Shift [</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:activate-previous-tab-bar</span></code></p></td>
+<td><p>Activate Previous Tab Bar</p></td>
+<td><p><kbd>Ctrl Shift ,</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:close</span></code></p></td>
+<td><p>Close Tab</p></td>
+<td><p><kbd>Alt W</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:close-all</span></code></p></td>
+<td><p>Close All Tabs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:close-other-tabs</span></code></p></td>
+<td><p>Close All Other Tabs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:close-right-tabs</span></code></p></td>
+<td><p>Close Tabs to Right</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:reset-layout</span></code></p></td>
+<td><p>Reset Default Layout</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:set-mode</span></code></p></td>
+<td><p>Set the layout <code class="docutils literal notranslate"><span class="pre">mode</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-fullscreen-mode</span></code></p></td>
+<td><p>Fullscreen Mode</p></td>
+<td><p><kbd>F11</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-header</span></code></p></td>
+<td><p>Show Header</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-left-area</span></code></p></td>
+<td><p>Show Left Sidebar</p></td>
+<td><p><kbd>Ctrl B</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-mode</span></code></p></td>
+<td><p>Simple Interface</p></td>
+<td><p><kbd>Ctrl Shift D</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-presentation-mode</span></code></p></td>
+<td><p>Presentation Mode</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-right-area</span></code></p></td>
+<td><p>Show Right Sidebar</p></td>
+<td><p><kbd>Ctrl J</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-side-tabbar</span></code></p></td>
+<td><p>Show Left Activity Bar</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">application:toggle-sidebar-widget</span></code></p></td>
+<td><p>Toggle Sidebar Element</p></td>
+<td><p><kbd>Alt 1</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:activate-command-palette</span></code></p></td>
+<td><p>Activate Command Palette</p></td>
+<td><p><kbd>Ctrl Shift C</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:adaptive-theme</span></code></p></td>
+<td><p>Synchronize with System Settings</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:change-dark-theme</span></code></p></td>
+<td><p>Switch to the provided dark <code class="docutils literal notranslate"><span class="pre">theme</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:change-font</span></code></p></td>
+<td><p>waiting for fonts</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:change-light-theme</span></code></p></td>
+<td><p>Switch to the provided light <code class="docutils literal notranslate"><span class="pre">theme</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:change-theme</span></code></p></td>
+<td><p>Switch to the provided <code class="docutils literal notranslate"><span class="pre">theme</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:decr-font-size</span></code></p></td>
+<td><p>Decrease Font Size</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:dismiss-notification</span></code></p></td>
+<td><p>Dismiss a notification</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:display-notifications</span></code></p></td>
+<td><p>Show Notifications</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:display-shortcuts</span></code></p></td>
+<td><p>Show Keyboard Shortcuts…</p></td>
+<td><p><kbd>Ctrl Shift H</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:incr-font-size</span></code></p></td>
+<td><p>Increase Font Size</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:load-statedb</span></code></p></td>
+<td><p>Load state for the current workspace.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:notify</span></code></p></td>
+<td><p>Emit a notification</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:print</span></code></p></td>
+<td><p>Print…</p></td>
+<td><p><kbd>Ctrl P</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:reset</span></code></p></td>
+<td><p>Reset Application State</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:reset-on-load</span></code></p></td>
+<td><p>Reset state when loading for the workspace.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:run-all-enabled</span></code></p></td>
+<td><p>Run All Enabled Commands Passed as Args</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:run-first-enabled</span></code></p></td>
+<td><p>Run First Enabled Command</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:theme-scrollbars</span></code></p></td>
+<td><p>Theme Scrollbars</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:toggle-header</span></code></p></td>
+<td><p>Show Header Above Content</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">apputils:update-notification</span></code></p></td>
+<td><p>Update a notification</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">code-viewer:open</span></code></p></td>
+<td><p>Open Code Viewer</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">codemirror:delete-line</span></code></p></td>
+<td><p>Delete the current line</p></td>
+<td><p><kbd>Ctrl D</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">codemirror:select-next-occurrence</span></code></p></td>
+<td><p>Select Next Occurrence</p></td>
+<td><p><kbd>Ctrl Shift D</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">codemirror:toggle-block-comment</span></code></p></td>
+<td><p>Toggle Block Comment</p></td>
+<td><p><kbd>Alt A</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">codemirror:toggle-comment</span></code></p></td>
+<td><p>Toggle Comment</p></td>
+<td><p><kbd>Ctrl /</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">completer:invoke-console</span></code></p></td>
+<td><p>Display the completion helper.</p></td>
+<td><p><kbd>Tab</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">completer:invoke-file</span></code></p></td>
+<td><p>Display the completion helper.</p></td>
+<td><p><kbd>Tab</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">completer:invoke-notebook</span></code></p></td>
+<td><p>Display the completion helper.</p></td>
+<td><p><kbd>Tab</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">completer:select-console</span></code></p></td>
+<td><p>Select the completion suggestion.</p></td>
+<td><p><kbd>Enter</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">completer:select-file</span></code></p></td>
+<td><p>Select the completion suggestion.</p></td>
+<td><p><kbd>Enter</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">completer:select-notebook</span></code></p></td>
+<td><p>Select the completion suggestion.</p></td>
+<td><p><kbd>Enter</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:change-kernel</span></code></p></td>
+<td><p>Change Kernel…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:clear</span></code></p></td>
+<td><p>Clear Console Cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:close-and-shutdown</span></code></p></td>
+<td><p>Close and Shut Down…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:create</span></code></p></td>
+<td><p>Console</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:get-kernel</span></code></p></td>
+<td><p>Get Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:inject</span></code></p></td>
+<td><p>Inject some code in a console.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:interaction-mode</span></code></p></td>
+<td><p>Set the console interaction mode.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:interrupt-kernel</span></code></p></td>
+<td><p>Interrupt Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:linebreak</span></code></p></td>
+<td><p>Insert Line Break</p></td>
+<td><p><kbd>Ctrl Enter</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:open</span></code></p></td>
+<td><p>Open a console for the provided <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:redo</span></code></p></td>
+<td><p>Redo</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:replace-selection</span></code></p></td>
+<td><p>Replace Selection in Console</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:restart-kernel</span></code></p></td>
+<td><p>Restart Kernel…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:run-forced</span></code></p></td>
+<td><p>Run Cell (forced)</p></td>
+<td><p><kbd>Shift Enter</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:run-unforced</span></code></p></td>
+<td><p>Run Cell (unforced)</p></td>
+<td><p><kbd>Enter</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:shutdown</span></code></p></td>
+<td><p>Shut Down</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:toggle-autoclosing-brackets</span></code></p></td>
+<td><p>Auto Close Brackets for Code Console Prompt</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">console:toggle-show-all-kernel-activity</span></code></p></td>
+<td><p>Show All Kernel Activity</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">console:undo</span></code></p></td>
+<td><p>Undo</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">csv:go-to-line</span></code></p></td>
+<td><p>Go to Line</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:continue</span></code></p></td>
+<td><p>Pause</p></td>
+<td><p><kbd>F9</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:copy-to-clipboard</span></code></p></td>
+<td><p>Copy to Clipboard</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:copy-to-globals</span></code></p></td>
+<td><p>Copy Variable to Globals</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:evaluate</span></code></p></td>
+<td><p>Evaluate Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:inspect-variable</span></code></p></td>
+<td><p>Inspect Variable</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:next</span></code></p></td>
+<td><p>Next</p></td>
+<td><p><kbd>F10</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:open-source</span></code></p></td>
+<td><p>Open Source</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:pause-on-exceptions</span></code></p></td>
+<td><p>Breakpoints on exception</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:render-mime-variable</span></code></p></td>
+<td><p>Render Variable</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:restart-debug</span></code></p></td>
+<td><p>Restart Kernel and Debug…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:show-panel</span></code></p></td>
+<td><p>Debugger Panel</p></td>
+<td><p><kbd>Ctrl Shift E</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:stepIn</span></code></p></td>
+<td><p>Step In</p></td>
+<td><p><kbd>F11</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:stepOut</span></code></p></td>
+<td><p>Step Out</p></td>
+<td><p><kbd>Shift F11</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debugger:terminate</span></code></p></td>
+<td><p>Terminate</p></td>
+<td><p><kbd>Shift F9</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:clear-recents</span></code></p></td>
+<td><p>Clear Recent Documents</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:clone</span></code></p></td>
+<td><p>New View for</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:delete</span></code></p></td>
+<td><p>Delete</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:delete-file</span></code></p></td>
+<td><p>Delete</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:download</span></code></p></td>
+<td><p>Download</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:duplicate</span></code></p></td>
+<td><p>Duplicate</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:new-untitled</span></code></p></td>
+<td><p>New undefined</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:open</span></code></p></td>
+<td><p>Open the provided <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:open-browser-tab</span></code></p></td>
+<td><p>Open in New Browser Tab</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:reload</span></code></p></td>
+<td><p>Reload  from Disk</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:rename</span></code></p></td>
+<td><p>Rename…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:restore-checkpoint</span></code></p></td>
+<td><p>Revert  to Checkpoint…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:save</span></code></p></td>
+<td><p>Save</p></td>
+<td><p><kbd>Ctrl S</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:save-all</span></code></p></td>
+<td><p>Save All</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:save-as</span></code></p></td>
+<td><p>Save  As…</p></td>
+<td><p><kbd>Ctrl Shift S</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:show-in-file-browser</span></code></p></td>
+<td><p>Show in File Browser</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">docmanager:toggle-autosave</span></code></p></td>
+<td><p>Autosave Documents</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">documentsearch:end</span></code></p></td>
+<td><p>End Search</p></td>
+<td><p><kbd>Escape</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">documentsearch:highlightNext</span></code></p></td>
+<td><p>Find Next</p></td>
+<td><p><kbd>Ctrl G</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">documentsearch:highlightPrevious</span></code></p></td>
+<td><p>Find Previous</p></td>
+<td><p><kbd>Ctrl Shift G</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">documentsearch:start</span></code></p></td>
+<td><p>Find…</p></td>
+<td><p><kbd>Ctrl F</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">documentsearch:startWithReplace</span></code></p></td>
+<td><p>Find and Replace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">documentsearch:toggleSearchInSelection</span></code></p></td>
+<td><p>Search in Selection</p></td>
+<td><p><kbd>Alt L</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">editmenu:clear-all</span></code></p></td>
+<td><p>Clear All</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">editmenu:clear-current</span></code></p></td>
+<td><p>Clear</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">editmenu:go-to-line</span></code></p></td>
+<td><p>Go to Line…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">editmenu:open</span></code></p></td>
+<td><p>Open Edit Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">editmenu:redo</span></code></p></td>
+<td><p>Redo</p></td>
+<td><p><kbd>Ctrl Shift Z</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">editmenu:undo</span></code></p></td>
+<td><p>Undo</p></td>
+<td><p><kbd>Ctrl Z</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">extensionmanager:show-panel</span></code></p></td>
+<td><p>Extension Manager</p></td>
+<td><p><kbd>Ctrl Shift X</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">extensionmanager:toggle</span></code></p></td>
+<td><p>Enable Extension Manager</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:activate</span></code></p></td>
+<td><p>Open the file browser for the provided <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:copy</span></code></p></td>
+<td><p>Copy</p></td>
+<td><p><kbd>Ctrl C</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:copy-download-link</span></code></p></td>
+<td><p>Copy Download Link</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:copy-path</span></code></p></td>
+<td><p>Copy Path</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:create-new-directory</span></code></p></td>
+<td><p>New Folder</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:create-new-file</span></code></p></td>
+<td><p>New File</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:create-new-markdown-file</span></code></p></td>
+<td><p>New Markdown File</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:cut</span></code></p></td>
+<td><p>Cut</p></td>
+<td><p><kbd>Ctrl X</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:delete</span></code></p></td>
+<td><p>Delete</p></td>
+<td><p><kbd>Delete</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:download</span></code></p></td>
+<td><p>Download</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:duplicate</span></code></p></td>
+<td><p>Duplicate</p></td>
+<td><p><kbd>Ctrl D</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:go-to-path</span></code></p></td>
+<td><p>Update the file browser to display the provided <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:go-up</span></code></p></td>
+<td><p>go up</p></td>
+<td><p><kbd>Backspace</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:hide-main</span></code></p></td>
+<td><p>Hide the file browser.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:open</span></code></p></td>
+<td><p>Open</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:open-browser-tab</span></code></p></td>
+<td><p>Open in New Browser Tab</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:open-path</span></code></p></td>
+<td><p>Open from Path…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:open-url</span></code></p></td>
+<td><p>Open from URL…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:paste</span></code></p></td>
+<td><p>Paste</p></td>
+<td><p><kbd>Ctrl V</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:refresh</span></code></p></td>
+<td><p>Refresh File List</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:rename</span></code></p></td>
+<td><p>Rename</p></td>
+<td><p><kbd>F2</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:search</span></code></p></td>
+<td><p>Search on File Names</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:share-main</span></code></p></td>
+<td><p>Copy Shareable Link</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:shutdown</span></code></p></td>
+<td><p>Shut Down Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-file-checkboxes</span></code></p></td>
+<td><p>Show File Checkboxes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-file-filter</span></code></p></td>
+<td><p>Toggle File Filter</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-file-size</span></code></p></td>
+<td><p>Show File Size Column</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-hidden-files</span></code></p></td>
+<td><p>Show Hidden Files</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-last-modified</span></code></p></td>
+<td><p>Show Last Modified Column</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-main</span></code></p></td>
+<td><p>File Browser</p></td>
+<td><p><kbd>Ctrl Shift F</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-navigate-to-current-directory</span></code></p></td>
+<td><p>Show Active File in File Browser</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-show-full-path</span></code></p></td>
+<td><p>Show Full Path</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-single-click-navigation</span></code></p></td>
+<td><p>Enable Single Click Navigation</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filebrowser:toggle-sort-notebooks-first</span></code></p></td>
+<td><p>Sort Notebooks Above Files</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:change-font-size</span></code></p></td>
+<td><p>Decrease Font Size</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:change-language</span></code></p></td>
+<td><p>Change editor language.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:change-tabs</span></code></p></td>
+<td><p>Indent with Tab</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:change-theme</span></code></p></td>
+<td><p>jupyter</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:copy</span></code></p></td>
+<td><p>Copy</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:create-console</span></code></p></td>
+<td><p>Create Console for Editor</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:create-new</span></code></p></td>
+<td><p>Text File</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:create-new-markdown-file</span></code></p></td>
+<td><p>Markdown File</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:cut</span></code></p></td>
+<td><p>Cut</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:find</span></code></p></td>
+<td><p>Find…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:go-to-line</span></code></p></td>
+<td><p>Go to Line…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:markdown-preview</span></code></p></td>
+<td><p>Show Markdown Preview</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:paste</span></code></p></td>
+<td><p>Paste</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:redo</span></code></p></td>
+<td><p>Redo</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:replace-selection</span></code></p></td>
+<td><p>Replace Selection in Editor</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:restart-console</span></code></p></td>
+<td><p>Restart Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:run-all</span></code></p></td>
+<td><p>Run All Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:run-code</span></code></p></td>
+<td><p>Run Selected Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:select-all</span></code></p></td>
+<td><p>Select All</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-autoclosing-brackets</span></code></p></td>
+<td><p>Auto Close Brackets in Text Editor</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-autoclosing-brackets-universal</span></code></p></td>
+<td><p>Auto Close Brackets</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-current-line-numbers</span></code></p></td>
+<td><p>Show Line Numbers</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-current-line-wrap</span></code></p></td>
+<td><p>Wrap Words</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-current-match-brackets</span></code></p></td>
+<td><p>Match Brackets</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-line-numbers</span></code></p></td>
+<td><p>Show Line Numbers</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-line-wrap</span></code></p></td>
+<td><p>Word Wrap</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:toggle-match-brackets</span></code></p></td>
+<td><p>Match Brackets</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fileeditor:undo</span></code></p></td>
+<td><p>Undo</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filemenu:close-and-cleanup</span></code></p></td>
+<td><p>Close and Shut Down</p></td>
+<td><p><kbd>Ctrl Shift Q</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filemenu:create-console</span></code></p></td>
+<td><p>New Console for Activity</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filemenu:logout</span></code></p></td>
+<td><p>Log Out</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filemenu:open</span></code></p></td>
+<td><p>Open File Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filemenu:shutdown</span></code></p></td>
+<td><p>Shut Down</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">help:about</span></code></p></td>
+<td><p>About JupyterLab</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">help:jupyter-forum</span></code></p></td>
+<td><p>Jupyter Forum</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">help:license-report</span></code></p></td>
+<td><p>Download All Licenses as Markdown</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">help:licenses</span></code></p></td>
+<td><p>Licenses</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">help:licenses-refresh</span></code></p></td>
+<td><p>Refresh Licenses</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">help:open</span></code></p></td>
+<td><p>Open the provided <code class="docutils literal notranslate"><span class="pre">url</span></code> in a tab.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">helpmenu:get-kernel</span></code></p></td>
+<td><p>Get Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">helpmenu:open</span></code></p></td>
+<td><p>Open Help Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">htmlviewer:trust-html</span></code></p></td>
+<td><p>Trust HTML File</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:flip-horizontal</span></code></p></td>
+<td><p>Flip image horizontally</p></td>
+<td><p><kbd>H</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:flip-vertical</span></code></p></td>
+<td><p>Flip image vertically</p></td>
+<td><p><kbd>V</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:invert-colors</span></code></p></td>
+<td><p>Invert Colors</p></td>
+<td><p><kbd>I</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:reset-image</span></code></p></td>
+<td><p>Reset Image</p></td>
+<td><p><kbd>0</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:rotate-clockwise</span></code></p></td>
+<td><p>Rotate Clockwise</p></td>
+<td><p><kbd>]</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:rotate-counterclockwise</span></code></p></td>
+<td><p>Rotate Counterclockwise</p></td>
+<td><p><kbd>[</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:zoom-in</span></code></p></td>
+<td><p>Zoom In</p></td>
+<td><p><kbd>=</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">imageviewer:zoom-out</span></code></p></td>
+<td><p>Zoom Out</p></td>
+<td><p><kbd>-</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inline-completer:accept</span></code></p></td>
+<td><p>Accept Inline Completion</p></td>
+<td><p><kbd>Tab</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inline-completer:invoke</span></code></p></td>
+<td><p>Invoke Inline Completer</p></td>
+<td><p><kbd>Alt &lt;/kbd&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inline-completer:next</span></code></p></td>
+<td><p>Next Inline Completion</p></td>
+<td><p><kbd>Alt ]</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inline-completer:previous</span></code></p></td>
+<td><p>Previous Inline Completion</p></td>
+<td><p><kbd>Alt [</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspector:close</span></code></p></td>
+<td><p>Hide Contextual Help</p></td>
+<td><p><kbd>Ctrl I</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inspector:open</span></code></p></td>
+<td><p>Show Contextual Help</p></td>
+<td><p><kbd>Ctrl I</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inspector:toggle</span></code></p></td>
+<td><p>Show Contextual Help</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jupyterlab-translation:en</span></code></p></td>
+<td><p>English</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">jupyterlab-translation:zh_CN</span></code></p></td>
+<td><p>Chinese (Simplified, China) - 中文 (简体, 中国)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:change</span></code></p></td>
+<td><p>Change Kernel…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:interrupt</span></code></p></td>
+<td><p>Interrupt Kernel</p></td>
+<td><p><kbd>I</kbd>, <kbd>I</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:open</span></code></p></td>
+<td><p>Open Kernel Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:reconnect-to-kernel</span></code></p></td>
+<td><p>Reconnect to Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:restart</span></code></p></td>
+<td><p>Restart Kernel…</p></td>
+<td><p><kbd>0</kbd>, <kbd>0</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:restart-and-clear</span></code></p></td>
+<td><p>Restart Kernel and Clear…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:shutdown</span></code></p></td>
+<td><p>Shut Down Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">kernelmenu:shutdownAll</span></code></p></td>
+<td><p>Shut Down All Kernels…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">launcher:create</span></code></p></td>
+<td><p>New Launcher</p></td>
+<td><p><kbd>Ctrl Shift L</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logconsole:add-checkpoint</span></code></p></td>
+<td><p>Add Checkpoint</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logconsole:clear</span></code></p></td>
+<td><p>Clear Log</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logconsole:open</span></code></p></td>
+<td><p>Show Log Console</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logconsole:set-level</span></code></p></td>
+<td><p>Set log level to <code class="docutils literal notranslate"><span class="pre">level</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mainmenu:open-first</span></code></p></td>
+<td><p>Open First Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">markdownviewer:edit</span></code></p></td>
+<td><p>Show Markdown Editor</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">markdownviewer:open</span></code></p></td>
+<td><p>Markdown Preview</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mathjax:clipboard</span></code></p></td>
+<td><p>MathJax Copy Latex</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mathjax:scale</span></code></p></td>
+<td><p>Mathjax Scale Reset</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mermaid:copy-source</span></code></p></td>
+<td><p>Mermaid Copy Diagram Source</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:access-next-history-entry</span></code></p></td>
+<td><p>Access Next Kernel History Entry</p></td>
+<td><p><kbd>Alt ArrowDown</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:access-previous-history-entry</span></code></p></td>
+<td><p>Access Previous Kernel History Entry</p></td>
+<td><p><kbd>Alt ArrowUp</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-code</span></code></p></td>
+<td><p>Change to Code Cell Type</p></td>
+<td><p><kbd>Y</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-heading-1</span></code></p></td>
+<td><p>Change to Heading 1</p></td>
+<td><p><kbd>1</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-heading-2</span></code></p></td>
+<td><p>Change to Heading 2</p></td>
+<td><p><kbd>2</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-heading-3</span></code></p></td>
+<td><p>Change to Heading 3</p></td>
+<td><p><kbd>3</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-heading-4</span></code></p></td>
+<td><p>Change to Heading 4</p></td>
+<td><p><kbd>4</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-heading-5</span></code></p></td>
+<td><p>Change to Heading 5</p></td>
+<td><p><kbd>5</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-heading-6</span></code></p></td>
+<td><p>Change to Heading 6</p></td>
+<td><p><kbd>6</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-markdown</span></code></p></td>
+<td><p>Change to Markdown Cell Type</p></td>
+<td><p><kbd>M</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-cell-to-raw</span></code></p></td>
+<td><p>Change to Raw Cell Type</p></td>
+<td><p><kbd>R</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:change-kernel</span></code></p></td>
+<td><p>Change Kernel…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:clear-all-cell-outputs</span></code></p></td>
+<td><p>Clear Outputs of All Cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:clear-cell-output</span></code></p></td>
+<td><p>Clear Cell Output</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:close-and-shutdown</span></code></p></td>
+<td><p>Close and Shut Down Notebook…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:collapse-all-headings</span></code></p></td>
+<td><p>Collapse All Headings</p></td>
+<td><p><kbd>Ctrl Shift ArrowLeft</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:copy-cell</span></code></p></td>
+<td><p>Copy Cell</p></td>
+<td><p><kbd>C</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:copy-to-clipboard</span></code></p></td>
+<td><p>Copy Output to Clipboard</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:create-console</span></code></p></td>
+<td><p>New Console for Notebook</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:create-new</span></code></p></td>
+<td><p>Notebook</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:create-output-view</span></code></p></td>
+<td><p>Create New View for Cell Output</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:cut-cell</span></code></p></td>
+<td><p>Cut Cell</p></td>
+<td><p><kbd>X</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:delete-cell</span></code></p></td>
+<td><p>Delete Cell</p></td>
+<td><p><kbd>D</kbd>, <kbd>D</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:deselect-all</span></code></p></td>
+<td><p>Deselect All Cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:disable-output-scrolling</span></code></p></td>
+<td><p>Disable Scrolling for Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:duplicate-below</span></code></p></td>
+<td><p>Duplicate Cell Below</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:enable-output-scrolling</span></code></p></td>
+<td><p>Enable Scrolling for Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:enter-command-mode</span></code></p></td>
+<td><p>Enter Command Mode</p></td>
+<td><p><kbd>Escape</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:enter-edit-mode</span></code></p></td>
+<td><p>Enter Edit Mode</p></td>
+<td><p><kbd>Enter</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:expand-all-headings</span></code></p></td>
+<td><p>Expand All Headings</p></td>
+<td><p><kbd>Ctrl Shift ArrowRight</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:export-to-format</span></code></p></td>
+<td><p>Save and Export Notebook to the given <code class="docutils literal notranslate"><span class="pre">format</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:extend-marked-cells-above</span></code></p></td>
+<td><p>Extend Selection Above</p></td>
+<td><p><kbd>Shift ArrowUp</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:extend-marked-cells-below</span></code></p></td>
+<td><p>Extend Selection Below</p></td>
+<td><p><kbd>Shift ArrowDown</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:extend-marked-cells-bottom</span></code></p></td>
+<td><p>Extend Selection to Bottom</p></td>
+<td><p><kbd>Shift End</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:extend-marked-cells-top</span></code></p></td>
+<td><p>Extend Selection to Top</p></td>
+<td><p><kbd>Shift Home</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:get-kernel</span></code></p></td>
+<td><p>Get Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:hide-all-cell-code</span></code></p></td>
+<td><p>Collapse All Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:hide-all-cell-outputs</span></code></p></td>
+<td><p>Collapse All Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:hide-cell-code</span></code></p></td>
+<td><p>Collapse Selected Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:hide-cell-outputs</span></code></p></td>
+<td><p>Collapse Selected Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:insert-cell-above</span></code></p></td>
+<td><p>Insert Cell Above</p></td>
+<td><p><kbd>A</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:insert-cell-below</span></code></p></td>
+<td><p>Insert Cell Below</p></td>
+<td><p><kbd>B</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:insert-heading-above</span></code></p></td>
+<td><p>Insert Heading Above Current Heading</p></td>
+<td><p><kbd>Shift A</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:insert-heading-below</span></code></p></td>
+<td><p>Insert Heading Below Current Heading</p></td>
+<td><p><kbd>Shift B</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:interrupt-kernel</span></code></p></td>
+<td><p>Interrupt Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:merge-cell-above</span></code></p></td>
+<td><p>Merge Cell Above</p></td>
+<td><p><kbd>Ctrl Backspace</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:merge-cell-below</span></code></p></td>
+<td><p>Merge Cell Below</p></td>
+<td><p><kbd>Ctrl Shift M</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:merge-cells</span></code></p></td>
+<td><p>Merge Selected Cells</p></td>
+<td><p><kbd>Shift M</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:move-cell-down</span></code></p></td>
+<td><p>Move Cell Down</p></td>
+<td><p><kbd>Ctrl Shift ArrowDown</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:move-cell-up</span></code></p></td>
+<td><p>Move Cell Up</p></td>
+<td><p><kbd>Ctrl Shift ArrowUp</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:move-cursor-down</span></code></p></td>
+<td><p>Select Cell Below</p></td>
+<td><p><kbd>ArrowDown</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:move-cursor-heading-above-or-collapse</span></code></p></td>
+<td><p>Select Heading Above or Collapse Heading</p></td>
+<td><p><kbd>ArrowLeft</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:move-cursor-heading-below-or-expand</span></code></p></td>
+<td><p>Select Heading Below or Expand Heading</p></td>
+<td><p><kbd>ArrowRight</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:move-cursor-up</span></code></p></td>
+<td><p>Select Cell Above</p></td>
+<td><p><kbd>ArrowUp</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:paste-and-replace-cell</span></code></p></td>
+<td><p>Paste Cell and Replace</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:paste-cell-above</span></code></p></td>
+<td><p>Paste Cell Above</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:paste-cell-below</span></code></p></td>
+<td><p>Paste Cell Below</p></td>
+<td><p><kbd>V</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:reconnect-to-kernel</span></code></p></td>
+<td><p>Reconnect to Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:redo</span></code></p></td>
+<td><p>Redo</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:redo-cell-action</span></code></p></td>
+<td><p>Redo Cell Operation</p></td>
+<td><p><kbd>Shift Z</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:render-all-markdown</span></code></p></td>
+<td><p>Render All Markdown Cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:replace-selection</span></code></p></td>
+<td><p>Replace Selection in Notebook Cell</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:restart-and-run-to-selected</span></code></p></td>
+<td><p>Restart Kernel and Run up to Selected Cell…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:restart-clear-output</span></code></p></td>
+<td><p>Restart Kernel and Clear Outputs of All Cells…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:restart-kernel</span></code></p></td>
+<td><p>Restart Kernel…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:restart-run-all</span></code></p></td>
+<td><p>Restart Kernel and Run All Cells…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-all-above</span></code></p></td>
+<td><p>Run All Above Selected Cell</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-all-below</span></code></p></td>
+<td><p>Run Selected Cell and All Below</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-all-cells</span></code></p></td>
+<td><p>Run All Cells</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-cell</span></code></p></td>
+<td><p>Run Selected Cell and Do not Advance</p></td>
+<td><p><kbd>Ctrl Enter</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-cell-and-insert-below</span></code></p></td>
+<td><p>Run Selected Cell and Insert Below</p></td>
+<td><p><kbd>Alt Enter</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-cell-and-select-next</span></code></p></td>
+<td><p>Run Selected Cell</p></td>
+<td><p><kbd>Shift Enter</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:run-in-console</span></code></p></td>
+<td><p>Run Selected Text or Current Line in Console</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:select-all</span></code></p></td>
+<td><p>Select All Cells</p></td>
+<td><p><kbd>Ctrl A</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:select-last-run-cell</span></code></p></td>
+<td><p>Select current running or last run cell</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:set-side-by-side-ratio</span></code></p></td>
+<td><p>Set side-by-side ratio</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:show-all-cell-code</span></code></p></td>
+<td><p>Expand All Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:show-all-cell-outputs</span></code></p></td>
+<td><p>Expand All Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:show-cell-code</span></code></p></td>
+<td><p>Expand Selected Code</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:show-cell-outputs</span></code></p></td>
+<td><p>Expand Selected Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:shutdown-kernel</span></code></p></td>
+<td><p>Shut Down Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:split-cell-at-cursor</span></code></p></td>
+<td><p>Split Cell</p></td>
+<td><p><kbd>Ctrl Shift -</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:toggle-all-cell-line-numbers</span></code></p></td>
+<td><p>Show Line Numbers</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:toggle-autoclosing-brackets</span></code></p></td>
+<td><p>Auto Close Brackets for All Notebook Cell Types</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:toggle-cell-outputs</span></code></p></td>
+<td><p>Toggle Visibility of Selected Outputs</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:toggle-heading-collapse</span></code></p></td>
+<td><p>Toggle Collapse Notebook Heading</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:toggle-render-side-by-side-current</span></code></p></td>
+<td><p>Render Side-by-Side</p></td>
+<td><p><kbd>Shift R</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:toggle-virtual-scrollbar</span></code></p></td>
+<td><p>Show Minimap</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:trust</span></code></p></td>
+<td><p>Trust Notebook</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:undo</span></code></p></td>
+<td><p>Undo</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notebook:undo-cell-action</span></code></p></td>
+<td><p>Undo Cell Operation</p></td>
+<td><p><kbd>Z</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pluginmanager:open</span></code></p></td>
+<td><p>Advanced Plugin Manager</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pluginmanager:refresh</span></code></p></td>
+<td><p>Refresh Plugin List</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">property-inspector:show-panel</span></code></p></td>
+<td><p>Property Inspector</p></td>
+<td><p><kbd>Ctrl Shift U</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recentmenu:open-recent</span></code></p></td>
+<td><p>Open a Recent Document (given by <code class="docutils literal notranslate"><span class="pre">recent</span></code> argument)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">recentmenu:reopen-last</span></code></p></td>
+<td><p>Reopen Closed Document</p></td>
+<td><p><kbd>Ctrl Shift T</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rendermime:handle-local-link</span></code></p></td>
+<td><p>Handle Local Link</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">runmenu:open</span></code></p></td>
+<td><p>Open Run Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">runmenu:restart-and-run-all</span></code></p></td>
+<td><p>Restart Kernel and Run All</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">runmenu:run</span></code></p></td>
+<td><p>Run Selected</p></td>
+<td><p><kbd>Shift Enter</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">runmenu:run-all</span></code></p></td>
+<td><p>Run All</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">running:kernel-new-console</span></code></p></td>
+<td><p>New Console for Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">running:kernel-new-notebook</span></code></p></td>
+<td><p>New Notebook for Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">running:kernel-open-session</span></code></p></td>
+<td><p>Unknown Session</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">running:kernel-shut-down</span></code></p></td>
+<td><p>Shut Down Kernel</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">running:kernel-shut-down-unused</span></code></p></td>
+<td><p>Shut Down Unused</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">running:show-modal</span></code></p></td>
+<td><p>Search Tabs and Running Sessions</p></td>
+<td><p><kbd>Ctrl Alt A</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">running:show-panel</span></code></p></td>
+<td><p>Sessions and Tabs</p></td>
+<td><p><kbd>Ctrl Shift B</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">settingeditor:open</span></code></p></td>
+<td><p>Settings Editor</p></td>
+<td><p><kbd>Ctrl ,</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">settingeditor:open-json</span></code></p></td>
+<td><p>Advanced Settings Editor</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">settingeditor:revert</span></code></p></td>
+<td><p>Revert User Settings</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">settingeditor:save</span></code></p></td>
+<td><p>Save User Settings</p></td>
+<td><p><kbd>Ctrl S</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">settingsmenu:open</span></code></p></td>
+<td><p>Open Settings Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shortcuts:add-keybinding</span></code></p></td>
+<td><p>Add Keybinding</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shortcuts:delete-keybinding</span></code></p></td>
+<td><p>Delete Keybinding</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shortcuts:edit-keybinding</span></code></p></td>
+<td><p>Edit Keybinding</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shortcuts:reset-all</span></code></p></td>
+<td><p>Reset All</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">shortcuts:toggle-selectors</span></code></p></td>
+<td><p>Toggle Selectors</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sidebar:switch</span></code></p></td>
+<td><p>Switch Sidebar Side</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">statusbar:toggle</span></code></p></td>
+<td><p>Show Status Bar</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tabsmenu:activate-by-id</span></code></p></td>
+<td><p>Activate a widget by its <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tabsmenu:activate-previously-used-tab</span></code></p></td>
+<td><p>Activate Previously Used Tab</p></td>
+<td><p><kbd>Ctrl Shift ‘</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tabsmenu:open</span></code></p></td>
+<td><p>Open Tabs Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:copy</span></code></p></td>
+<td><p>Copy</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:create-new</span></code></p></td>
+<td><p>Terminal</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:decrease-font</span></code></p></td>
+<td><p>Decrease Terminal Font Size</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:increase-font</span></code></p></td>
+<td><p>Increase Terminal Font Size</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:open</span></code></p></td>
+<td><p>Open a terminal by its <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:paste</span></code></p></td>
+<td><p>Paste</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:refresh</span></code></p></td>
+<td><p>Refresh Terminal</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:set-theme</span></code></p></td>
+<td><p>Set terminal theme to the provided <code class="docutils literal notranslate"><span class="pre">theme</span></code>.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">terminal:shut-down</span></code></p></td>
+<td><p>Shutdown Terminal</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">toc:display-h1-numbering</span></code></p></td>
+<td><p>Show first-level heading number</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">toc:display-numbering</span></code></p></td>
+<td><p>Show heading number in the document</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">toc:display-outputs-numbering</span></code></p></td>
+<td><p>Show output headings</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">toc:run-cells</span></code></p></td>
+<td><p>Select and Run Cell(s) for this Heading</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">toc:show-panel</span></code></p></td>
+<td><p>Table of Contents</p></td>
+<td><p><kbd>Ctrl Shift K</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">toc:toggle-collapse</span></code></p></td>
+<td><p>Collapse All Headings</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tooltip:dismiss</span></code></p></td>
+<td><p>Dismiss the tooltip</p></td>
+<td><p><kbd>Escape</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tooltip:launch-console</span></code></p></td>
+<td><p>Open the tooltip</p></td>
+<td><p><kbd>Shift Tab</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tooltip:launch-file</span></code></p></td>
+<td><p>Open the tooltip</p></td>
+<td><p><kbd>Shift Tab</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tooltip:launch-notebook</span></code></p></td>
+<td><p>Open the tooltip</p></td>
+<td><p><kbd>Shift Tab</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tsv:go-to-line</span></code></p></td>
+<td><p>Go to Line</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewmenu:line-numbering</span></code></p></td>
+<td><p>Show Line Numbers</p></td>
+<td><p><kbd>Shift L</kbd></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewmenu:match-brackets</span></code></p></td>
+<td><p>Match Brackets</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">viewmenu:open</span></code></p></td>
+<td><p>Open View Menu</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viewmenu:word-wrap</span></code></p></td>
+<td><p>Wrap Words</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:clone</span></code></p></td>
+<td><p>Clone Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:create-new</span></code></p></td>
+<td><p>Create New Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:delete</span></code></p></td>
+<td><p>Delete Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:export</span></code></p></td>
+<td><p>Export Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:import</span></code></p></td>
+<td><p>Import Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:open</span></code></p></td>
+<td><p>Open Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:rename</span></code></p></td>
+<td><p>Rename Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:reset</span></code></p></td>
+<td><p>Reset Workspace…</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:save</span></code></p></td>
+<td><p>Save Current Workspace</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">workspace-ui:save-as</span></code></p></td>
+<td><p>Save Current Workspace As…</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="running.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Managing Kernels and Terminals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="documents_kernels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documents and Kernels</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Commands</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-in-markdown-files">Commands in Markdown Files</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-palette">Command Palette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-list">Commands List</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterlab/jupyterlab/edit/4.3.x/docs/source/user/commands.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user/commands.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrapb6e5.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-themeb6e5.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item"><!--
+  ~ Copyright (c) Jupyter Development Team.
+  ~ Distributed under the terms of the Modified BSD License.
+-->
+
+<div role="contentinfo">
+  <p>
+      &copy; Copyright 2018-2025, Project Jupyter.<br/>
+      The Jupyter Trademark is registered with the U.S. Patent &amp Trademark Office.
+      
+
+  </p>
+</div></div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+
+<!-- Mirrored from jupyterlab.readthedocs.io/en/stable/user/commands.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Feb 2025 04:16:59 GMT -->
+</html>
